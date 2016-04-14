@@ -1,24 +1,20 @@
 <?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header");?>
 
 <!-- The classes of products used for the page top start -->
-<div class="main">
-	<table  border="0" cellspacing="1" cellpadding="6" width="100%" class="tablebordercolor">
-	<tr>
-		<td>
-			<img src="<?=$styles['imagedir']?>/bull_sm_r.gif">
-			<a href="index.php" target=_self><?=$lang_header['index']?></a>
-			<?if(is_array($showinheaderlist)){ foreach($showinheaderlist as $key=>$value){ ?>
-				<img src="<?=$styles['imagedir']?>/bull_sm_r.gif">
+<div class='container'>
+	<ol class="breadcrumb">
+		<li><a href="index.php" target=_self><?=$lang_header['index']?></a></li>
+		<?if(is_array($showinheaderlist)){ foreach($showinheaderlist as $key=>$value){ ?>
+			<li>
 				<a href="classes.php?classes_id=<?=$value['classes_id']?>" target=_self><?=$value['title']?></a>
-			<?}}?> 
-		</td>
-	</tr>
-	</table>
+			</li>
+		<?}}?>
+	</ol>
 </div>
 <!-- The classes of products used for the page top end -->
 
 <!-- Store news start -->
-<div class="main">
+<div class="container">
 	<table cellSpacing=0 cellPadding=0 width="100%" border=0 background="<?=$styles['imagedir']?>/title_bg.gif">
 	<tr>
 		<td><img src="<?=$styles['imagedir']?>/title_right.gif" align="middle">&nbsp;<?=$lang_index['store_news']?></td>
@@ -26,7 +22,7 @@
 	</tr>
 	</table>
 </div>
-<div class="main">
+<div class="container">
 	<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tablebordercolor">
 	<tr>
 		<td align="center">
@@ -45,7 +41,7 @@
 
 <!-- Specials product start -->
 <?if($show_specials){?>
-<div class="main">		
+<div class="container">		
 	<table cellSpacing=0 cellPadding=0 width="100%" border=0 background="<?=$styles['imagedir']?>/title_bg.gif">
 	<tr>
 		<td><img src="<?=$styles['imagedir']?>/title_right.gif" align="middle">&nbsp;<?=$lang_index['product_s']?></td>
@@ -54,7 +50,7 @@
 	</table>
 </div>
 <?foreach($s_products_list as $key=>$value){?>
-<div class="main">		
+<div class="container">		
 	<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tableout" style="table-layout: fixed; word-wrap: break-word;">
 	<tr class="bgcolor1">
 		 <?for($i=0;$i<$num_a_row;$i++){?>
@@ -70,7 +66,7 @@
 
 <!-- New product start -->
 <?if($show_new){?>
-<div class="main">
+<div class="container">
 	<table cellSpacing=0 cellPadding=0 width="100%" border=0 background="<?=$styles['imagedir']?>/title_bg.gif">
 	<tr>
 		<td>&nbsp;<img src="<?=$styles['imagedir']?>/title_right.gif" align="middle">&nbsp;<?=$lang_index['product_new']?></td>
@@ -79,7 +75,7 @@
 	</table>
 </div>
 <?foreach($new_products_list as $key=>$value){?>
-<div class="main">
+<div class="container">
 	<table cellSpacing=1 cellPadding=4 width="100%" border="0" class="tableout" style="table-layout: fixed; word-wrap: break-word;">
 	<tr class="bgcolor1" align="center" valign="top">
 		<?for($i=0;$i<$num_a_row;$i++){?>
@@ -94,7 +90,7 @@
 
 
 <!-- Faq in bottom start -->
-<div class="main">
+<div class="container">
 	<br />
 	<br />
 	<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tableout" style="table-layout: fixed; word-wrap: break-word;">
@@ -117,7 +113,7 @@
 <!-- Faq in bottom end -->
 
 <!-- Links in bottom start -->
-<div class="main">
+<div class="container">
 	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
 	<tr class="header">
 		<td><?=$lang_index['links']?></td>

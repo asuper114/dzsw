@@ -1,6 +1,5 @@
 <?if(!defined('IN_dzsw')) exit('Access Denied'); ?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd";>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?=$charset?>">
@@ -8,6 +7,17 @@
 <meta name="MSSmartTagsPreventParsing" content="TRUE">
 <meta http-equiv="MSThemeCompatible" content="Yes">
 <script src="js/global.js"></script>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <?=$header_redirect?>
 <title><?=navgation()?><?=$settings['store_name']?> - powered by dzsw</title>
 <link rel="stylesheet" href="styles/<?=$styles['cssfilename']?>" type="text/css">
@@ -15,11 +25,4 @@
 </head>
 <body leftmargin="0" topmargin="0">				
 
-<div class="main">
-	<table  border="0" cellspacing="1" cellpadding="6" width="100%" class="tablebordercolor">
-	<tr>
-		<td><a href="index.php"><?php echo $settings['store_name'];?></a></td>
-		<td align="right"><?php include template("header_top");?></td>
-	</tr>
-	</table>
-</div>
+<?php include template("header_top");?>

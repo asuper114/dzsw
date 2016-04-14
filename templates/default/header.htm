@@ -1,7 +1,6 @@
 <?if(!defined('IN_dzsw')) exit('Access Denied'); ?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd";>
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?=$charset?>">
 <meta name="robots" content="index,follow">
@@ -12,47 +11,55 @@
 <meta name="MSSmartTagsPreventParsing" content="TRUE">
 <meta http-equiv="MSThemeCompatible" content="Yes">
 <script src="js/global.js"></script>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <?=$header_redirect?>
-<title><?=navgation();?><?=$settings['store_name']?> - powered by dzsw,<?=$settings['seo_title']?></title>
+<title><?=navgation();?><?=$settings['store_name']?> - powered by 北理工,<?=$settings['seo_title']?></title>
 <link rel="stylesheet" href="styles/<?=$styles['cssfilename']?>" type="text/css">
 
 </head>
-<body leftmargin="0" topmargin="0">				
+<body>				
 
-<div class="main">	
-	<table  border="0" cellspacing="1" cellpadding="6" width="100%" class="tablebordercolor">
-	<tr>
-		<td><a href="index.php"><?php echo $settings['store_name'];?></a></td>
-		<td align="right">
-			<?php include template("header_top");?>
-		</td>
-	</tr>
-	</table>
-</div>
-<div class="main">
-	<table border="0" cellspacing="0" cellpadding="0" width="100%">
-	<tr>
-		<td align=left width="35%" rowspan="2"><a href="index.php"><img src="<?=$styles['imagedir']?>/logo.gif" border="0" alt="<?php echo $lang_header['welcome'];?>" title="<?php echo $lang_header['welcome'];?>"></a></td>
-		<td align="center">
-			<h2>
-				<a href="search.php"><?=$lang_header['search_advanced']?></a> | <a href="newproducts.php"><?=$lang_header['newproduct']?></a> | <a href="specials.php"><?=$lang_header['specials']?></a> | <a href="showclasses.php"><?=$lang_header['classes']?></a>
-			</h2>
-		</td>
-	</tr>
-	<tr>
-		<td background="<?=$styles['imagedir']?>/search_bg.gif" style="background-position:right;background-attachment: fixed;background-repeat: repeat-y;" align="right">
-			<form name="form" action="search.php" method="get">
+<?php include template("header_top");?>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6"></div>
+		<div class="col-md-6">
+					<h1>
+						<a href="search.php"><?=$lang_header['search_advanced']?></a> | <a href="newproducts.php"><?=$lang_header['newproduct']?></a> | <a href="specials.php"><?=$lang_header['specials']?></a> | <a href="showclasses.php"><?=$lang_header['classes']?></a>
+					</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6"></div>
+		<div class="col-md-6">
+			<form class="form-inline" name="form" action="search.php" method="get" class="form-inline">
 			<input type="hidden" name="action" value="search">
 			<input type="hidden" name="cludesub" value="1">
-			<img src="<?=$styles['imagedir']?>/search_icon.gif" align="absmiddle" border="0" height="25">
-			<input type="text" name="keywords" size="40" maxlength="30" >
-			<select name="classes_id" style="width: 100px;">
+			<span class ="glyphicon glyphicon-search"></span>
+			<div class="form-group">
+				<input type="text" name="keywords" class="form-control" placeholder="关键词">
+			</div>
+			<div class="form-group">
+			<select name="classes_id" class="form-control">
 					<option value=""><?=$lang_common['allclass']?></option>
 					<?=$classeslist?>
 			</select>
-			<input type="submit" name="submit" value="<?=$lang_common['startsearch']?>">&nbsp;
+			</div>
+			
+			<div class="form-group">
+			<input class="btn btn-default" type="submit" name="submit" value="<?=$lang_common['startsearch']?>">&nbsp;
+			</div>
 			</form>
-		</td>
-	</tr>
-	</table>
+		</div>
+	</div>
 </div>

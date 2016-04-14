@@ -1,10 +1,20 @@
 <?if(!defined('IN_dzsw')) exit('Access Denied'); ?>
-
-<a href="index.php" target=_self><?=$lang_header['index']?></a>  
-<?php if($settings['user_lossremark'] == 'true'){?>
-| <a href="lossremark.php"><?=$lang_header['lossremark']?></a> 
-<?php }?>
-| <a href="gbook.php"><?=$lang_header['gbook']?></a> 
-| <a href="myaccount.php"><?=$lang_header['myaccount']?></a> 
-| <a href="cart.php"><?=$lang_header['cart']?></a>
+<nav class="navbar navbar-inverse ">
+      <div class="container">
+        <div class="navbar-header">
+        	<a class="navbar-brand" href="index.php"><?php echo $settings['store_name'];?>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.php" target=_self><?=$lang_header['index']?></a></li>
+            <?php if($settings['user_lossremark'] == 'true'){?>
+            <li><a href="lossremark.php"><?=$lang_header['lossremark']?></a></li>
+            <?php }?>
+            <li><a href="gbook.php"><?=$lang_header['gbook']?></a></li>
+            <li><a href="myaccount.php"><?=$lang_header['myaccount']?></a></li>
+            <li><a href="cart.php"><?=$lang_header['cart']?></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
