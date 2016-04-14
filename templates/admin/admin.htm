@@ -1,0 +1,37 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<form method="post" action="admin.php">
+<input type="hidden" name="act" value="admin">
+<input type="hidden" name="action" value="delete">
+
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr align="center" class="header">
+	<td><input type="checkbox" name="chkall" onclick="checkall(this.form, 'delete')"><?=$lang_common['delete']?></td>
+	<td>ID</td>
+	<td><?=$lang_a_admin['account']?></td>
+	<td></td>
+</tr>
+<?if(is_array($admin_array)){foreach($admin_array as $val){?>
+<tr align="center" class="bgcolor1"> 
+	 <td><?if($val['admingroupsid']!='1'){?><input type="checkbox" name="delete[]" value="<?=$val['adminid']?>"><?}?></td>
+	 <td><?=$val['adminid']?></td>
+	 <td><?=$val['email']?></td>
+	 <td><a href="admin.php?act=admin&type=detail&adminid_=<?=$val[adminid]?>">[<?=$lang_common['detail']?>]</a></td>
+</tr>
+<?}}?>
+</table>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="bgcolor1">
+	<td align="center" ><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">&nbsp;&nbsp;<input type="button" name="button" value="  <?=$lang_common['back']?>  " onclick="javascrpt:history.go(-1)">
+	</td>
+</tr>
+</table>
+</form>
+
+
+<?include(ADMIN_TPL.'footer.htm')?>

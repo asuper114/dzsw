@@ -1,0 +1,50 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+
+<?php include template("navbar");?>
+
+<?if(is_array($message_all) && $message_all['0']){?>
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+	<?foreach($message_all as $key=>$value){?>
+	<tr class="bgcolor1">
+		<td><h1><img src="./images/icons/error.gif" border="0">&nbsp;&nbsp;&nbsp;<?=$value?></h1></td>
+	</tr>
+	<?}?>
+	</table>
+</div>
+<?}?>
+
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+	<?if($pay_info['result'] == 'true'){?>
+	<tr class="bgcolor1">
+		<td width="50%" align="right"><?=$lang_get_onlinepay['money:']?></td>
+		<td><?=$pay_info['money']?></td>
+	</tr>
+	<tr class="bgcolor1">
+		<td align="right"><?=$lang_get_onlinepay['platform:']?></td>
+		<td><?=$pay_info['platform']?></td>
+	</tr>
+	<tr class="bgcolor1">
+		<td colspan="2" align="center" height="60"><span style="font-size:25px;color:red;"><?=$lang_get_onlinepay['result_success']?></span></td>
+	</tr>
+	<?}else{?>
+	<tr class="bgcolor1" >
+		<td colspan="2" align="center" height="60"  ><h1><?=$lang_get_onlinepay['result_fail']?></h1></td>
+	</tr>
+	<?}?>
+	</table>
+</div>
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%"  align="center" class="tableout">
+	<tr class="bgcolor1">
+		<td><a href="myaccount.php?type=order&act=detail&orders_id=<?=$orders_id?>"><?=$lang_get_onlinepay['orders_clicktolook']?></a></td>
+	</tr></table>
+
+	<br />
+	<br />
+
+</div>
+
+<?include template("footer");?>

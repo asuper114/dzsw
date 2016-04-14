@@ -1,0 +1,42 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+
+<?php include template("navbar");?>
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<tr class="bgcolor1">
+		<td valign="top">
+			<?php include template("myaccount_left");?>
+		</td>
+		<td width="76%" valign="top">
+
+			<div>
+				<h1><?php echo $lang_myaccount_address['list_description'];?></h2>
+			</div>
+
+			<table border="0" cellspacing="1" cellpadding="4" width="95%" class="tableout">
+			<tr class="header">
+				<td><?=$lang_myaccount_address['name']?></td>
+				<td><?=$lang_myaccount_address['street']?></td>
+				<td><?=$lang_myaccount_address['postcode']?></td>
+				<td></td>
+			</tr>
+			<?php if(is_array($addresses)){foreach($addresses as $key=>$val){?>  
+			<tr class="bgcolor1">
+				<td width="15%"><?=$val['name']?></td>
+				<td><?=$val['street_address']?></td>
+				<td width="10%"><?=$val['postcode']?></td>
+				<td align="center" width="13%"><a href="myaccount.php?type=address&act=edit&abid=<?=$val['abid']?>"><?=$lang_common['detail']?></a>&nbsp;<a href="myaccount.php?type=address&action=delete&abid=<?=$val['abid']?>"><?=$lang_common['delete']?></a></td>
+			</tr>
+			<?php }}?>
+			</table>
+		
+			<br />
+			<br />
+			<br />
+
+		</td>
+
+	</tr></table>
+</div>
+<?php include template("footer");?>

@@ -1,0 +1,44 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?if($message_all['0']){?>
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="95%" class="tableout" align="center">
+<?foreach($message_all as $key=>$value){?>
+<tr class="bgcolor1">
+	<td width="5%"><img src="images/icons/error.gif" border="0"></td>
+	<td class="messagetxt"><?=$value?></td>
+</tr>
+<?}?>
+</table>
+<?}?>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="95%" class="tableout" align="center">
+<tr class="bgcolor1">
+	<td>
+		<br />
+		<ul><li><?=$lang_a_renzheng['header_desc_1']?></li></ul>
+		<ul><li><?=$lang_a_renzheng['header_desc_2']?></li></ul>
+	</td>
+</tr>
+</table>
+
+<br />
+<form method="post" action="admin.php">
+<input type="hidden" name="act" value="renzheng">
+<input type="hidden" name="action" value="update">
+<table  border="0" cellspacing="1" cellpadding="4" width="95%" class="tableout" align="center">
+<tr class="header">
+	<td><?=$lang_a_renzheng['import_code']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="center"><input type="text" size="60" name="renzheng_code" value="<?=$query_data['value']?>" /></td>
+</tr>
+<tr align="center" class="bgcolor1">
+	<td colspan="2"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+
+<?include(ADMIN_TPL.'footer.htm')?>

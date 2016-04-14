@@ -1,0 +1,44 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header");?>
+
+<table style="margin-top:5px" border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="bgcolor1">
+	<td width="3%"><img src="<?=$styles['imagedir']?>/nav_bullet.gif" border="0"></td>
+	<td align="left" >&nbsp;<b><?=$lang_common['you_position_now_']?></b><a href="index.php"><?=$settings['store_name']?></a> -&gt; <?=$page_position?></td>
+</tr>
+</table>
+
+<table style="margin-top:5px" class="tableout" cellspacing="1" cellpadding="4" width="100%" border="0">
+<tr align="center" class="bgcolor1"><td valign="top">
+  
+    <?if(is_array($message_all)){?>
+    <br />
+	<table  border="0" cellspacing="1" cellpadding="4" width="80%" class="tableout" align="center">
+    <?foreach($message_all as $key=>$value){?>
+	<tr class="messagetxt">
+		<td class="bgcolor1"><img src="./images/icons/error.gif" border="0">&nbsp;&nbsp;&nbsp;<?=$value?></td>
+	</tr>
+    <?}?>
+    </table>
+    <?}?>
+
+	<table border="0" width="80%" cellspacing="1" cellpadding="4" class="tableout" style="table-layout: fixed; word-wrap: break-word;">
+	<form method="post" name="form" action="gbook.php">
+	<input type="hidden" name="action" value="dowrite">
+	<tr class="bgcolor1">
+		<td valign="top" width="20%"><?=$lang_gbook['gbookmain_']?></td>
+		<td><textarea rows="10" cols="85" name="text"><?=$text?></textarea></td>
+	</tr>
+	</table>
+
+	<br>
+	<table  border="0" cellspacing="1" cellpadding="4" width="80%" class="tableout">
+	<tr class="bgcolor1">
+		<td align="center"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+	</tr>
+	</form>
+	</table> 
+	<br><br> 
+	
+</td></tr></table>
+
+<? include template("footer");?>

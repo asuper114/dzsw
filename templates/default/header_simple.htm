@@ -1,0 +1,25 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd";>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?=$charset?>">
+<meta name="robots" content="index,follow">
+<meta name="MSSmartTagsPreventParsing" content="TRUE">
+<meta http-equiv="MSThemeCompatible" content="Yes">
+<script src="js/global.js"></script>
+<?=$header_redirect?>
+<title><?=navgation()?><?=$settings['store_name']?> - powered by dzsw</title>
+<link rel="stylesheet" href="styles/<?=$styles['cssfilename']?>" type="text/css">
+
+</head>
+<body leftmargin="0" topmargin="0">				
+
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="6" width="100%" class="tablebordercolor">
+	<tr>
+		<td><a href="index.php"><?php echo $settings['store_name'];?></a></td>
+		<td align="right"><?php include template("header_top");?></td>
+	</tr>
+	</table>
+</div>

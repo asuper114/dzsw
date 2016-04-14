@@ -1,0 +1,26 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+<br />
+<?=$multipage?>
+
+<br />
+<table cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header">
+	<td><?=$lang_a_news['title']?></td>
+	<td width="15%"><?=$lang_a_news['adddate']?></td>
+	<td width="15%"></td>
+</tr>
+<?if(is_array($news_all)){foreach($news_all as $val){?> 
+<tr  class="bgcolor1">
+	<td><a href="newsdetail.php?id=<?=$val['id']?>" target=_blank><?=$val['subject']?></a></td>
+	<td><?=date('Y-n-j',$val['date_add'])?></td>
+	<td align="center"><a href="admin.php?act=news&type=edit&id=<?=$val['id']?>"><?=$lang_common['detail']?></a>&nbsp;<a href="admin.php?act=news&action=delete&id=<?=$val['id']?>"><?=$lang_common['delete']?></a></td>
+</tr>
+<?}}?>
+</table>  
+<br />
+
+<br />
+<?=$multipage?>
+
+<?include(ADMIN_TPL.'footer.htm')?>

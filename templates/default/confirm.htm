@@ -1,0 +1,176 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+
+<?php include template("navbar");?>
+
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center" class="tablebordercolor">
+	<tr>
+		<td>
+			<?php echo $lang_confirm_step['confirm_step_'];?>
+			<?php echo $confirm_step;?>
+		</td>
+	</tr>
+	</table>   
+</div>	
+
+<div class="main">
+	<h2><?=$lang_confirm['description']?></h2>
+</div>	 
+
+<div class="main">	
+	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td width="20%">
+			<span class="bold"><?=$lang_confirm['address_shipping']?></span>
+		</td>
+		<td>
+			<a href="address_ship.php"><span class="bold"><?=$lang_confirm['editordelete']?></span></a>
+		</td>
+	</tr>
+	</table>	
+</div>
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor">
+	<tr>
+		<td ><li><?=$shipping_data['country']?>&nbsp;&nbsp;<?=$shipping_data['province']?>&nbsp;&nbsp;<?=$shipping_data['city']?></li></td>
+		<td width="35%"><?=$lang_confirm['regular_'].$shipping_data['tel_regular']?></td>
+	</tr>
+	<tr>
+		<td><li><?=$lang_confirm['name_']?><?=$shipping_data['name']?></li></td>
+		<td><?=$lang_confirm['mobile_'].$shipping_data['tel_mobile']?></td>
+	</tr>
+	<tr>
+		<td><li><?=$lang_confirm['address_detail_']?><?=$shipping_data['street_address']?></td>
+		<td><?=$lang_confirm['postcode_'].$shipping_data['postcode']?></td>
+	</tr>
+	</table>
+</div>
+		
+<div class="main">	
+	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td width="20%">
+			<span class="bold"><?=$lang_confirm['shipping_method']?></span>
+		</td>
+		<td>
+			<a href="shipping_method.php"><span class="bold"><?=$lang_confirm['editordelete']?></span></a>
+		</td>
+	</tr>
+	</table>
+</div>
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor">
+	<tr>
+		<td><?=$shipping_method_array['title']?></td>
+	</tr>
+	</table>
+</div>
+   
+<div class="main">	
+	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td width="20%">
+			<span class="bold"><?=$lang_confirm['address_billing']?></span>
+		</td>
+		<td>
+			<?php if($customer_data['deli_s_bill'] != 1){?>  
+		<a href="address_bill.php"><span class="bold"><?=$lang_confirm['editordelete']?></span></a>
+		<?php }?>
+		</td>
+	</tr>
+	</table>
+</div>
+<?if($customer_data['deli_s_bill'] != 1){?>  
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center" class="tablebordercolor">
+	<tr>
+		<td><li><?=$billing_data['country']?>&nbsp;&nbsp;<?=$billing_data['province']?>&nbsp;&nbsp;<?=$billing_data['city']?></li></td>
+		<td width="35%"><?=$lang_confirm['regular_'].$billing_data['tel_regular']?></td>
+	</tr>
+	<tr>
+		<td><li><?=$lang_confirm['name_']?><?=$billing_data['name']?></li></td><td><?=$lang_confirm['mobile_'].$billing_data['tel_mobile']?></td>
+	</tr>
+	<tr>
+		<td><li><?=$lang_confirm['address_detail_']?><?=$billing_data['street_address']?></li></td>
+		<td><?=$lang_confirm['postcode_'].$billing_data['postcode']?></td>
+	</tr>
+	</table>
+</div>
+<?}else{?> 
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center" class="tablebordercolor">
+	<tr>
+		<td><?=$lang_confirm['deli_s_bill']?></td>
+	</tr>
+	</table>
+</div>	
+<?php }?>
+
+<div class="main">	
+	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td width="20%">
+			<span class="bold"><?=$lang_confirm['products']?></span>
+		</td>
+		<td>
+			<a href="cart.php"><span class="bold"><?=$lang_confirm['editordelete']?></span></a>
+		</td>
+	</tr>
+	</table>
+</div>
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor" align="center">
+	<?if(is_array($products_data)){ foreach($products_data as $key=>$val){?>
+	<tr>
+		<td align="right" width="10%">
+			<?=$val['buy_quantity']?>
+		</td>
+		<td align="center">
+			x
+		</td>
+		<td><span class="bold"><?=$val['name']?></span> (<?=$val['model']?>)</td>
+		<td width="35%"><?=$val['price_total_text']?></td>
+	</tr>
+	<?}}?>
+	</table>
+</div>
+
+<div class="main">	
+	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td width="20%">
+			<span class="bold"><?=$lang_confirm['payment_method']?></span>
+		</td>
+		<td>
+			<a href="payment_method.php"><span class="bold"><?=$lang_confirm['editordelete']?></span></a>
+		</td>
+	</tr>
+	</table>
+</div>
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center" class="tablebordercolor">
+	<tr>
+		<td><?=$payment_title?></td>
+	</tr>
+	</table>
+</div>
+<div class="main">
+	<div><span class="bold"><?=$lang_confirm['order_money']?></span></div>
+</div>
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor" align="center">
+	<?if(is_array($order_total)){ foreach($order_total as $key=>$val){?>
+	<tr>
+		<td align="right" valign="top" width="20%"><?=$val['title']?></td>
+		<td valign="top" width="80%"><?=$val['money_text']?></td>
+	</tr>
+	<?}}?>
+	</table>
+	<br />
+</div>
+<div class="main">
+	<div align="center">
+		<input type="button" name="button" value="    <?php echo $lang_common['submit'];?>    " onclick="window.location='process.php'" />
+	</div>
+</div>
+<?php include template("footer");?>

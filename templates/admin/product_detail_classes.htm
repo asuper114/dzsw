@@ -1,0 +1,63 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'product_detail_top.htm')?>
+
+<?if($message_all['0']){?>
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="95%" class="tablebordercolor">
+<?foreach($message_all as $key=>$value){?>
+<tr>
+	<td><img src="images/icons/error.gif" border="0"><?=$value?></td>
+</tr>
+<?}?>
+</table>
+<?}?>
+
+<br />
+<form method="get" name="products" action="<?=$form_action?>">
+<input type="hidden" name="act" value="products">
+<input type="hidden" name="h_action" value="update_classes">
+<input type="hidden" name="products_id" value="<?=$products_id?>">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center" style="word-break:break-all;">
+<tr class="header">
+	<td width="6%"><?=$lang_a_common['delete_small']?></td>
+	<td><?=$lang_a_product['classesnow_']?></td>
+</tr>
+<?php foreach($product_classes as $key=>$val){?>
+<tr class="bgcolor1">
+	<td>
+		<input type="checkbox" name="delete[]" value="<?=$val['id']?>" />
+	</td>
+	<td>
+		<?=$val['string']?>
+	</td>
+</tr>
+<?php }?>
+</table>
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center" style="word-break:break-all;">
+
+<tr class="header">
+	<td width="6%"><?=$lang_a_product['newclasses_']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td>
+		<select name="newcid"> 
+			<option value=""><?=$lang_a_product['choose_classes']?></option>
+			<?=$classes_select?>
+		</select>
+	</td>
+</tr>
+</table>
+
+<br />
+<center>
+<input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">&nbsp;
+<input type="button" value="  <?=$lang_common['back']?>  " onClick="javascript:history.back(-1)" class="bginput">
+</center>
+</form>
+<br />
+<br />
+
+<?include(ADMIN_TPL.'footer.htm')?>

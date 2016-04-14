@@ -1,0 +1,93 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header");?>
+
+<?php include template("navbar_table");?>
+
+<div class="main">
+	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td valign="top">
+			<?php include template("box_hassee");?>
+			<br />
+			<?php include template("box_search_history");?>
+			<br />
+			<?php include template("box_cart");?>
+			<br />
+		</td>
+		<td width="6px"></td>
+		<td width="76%" valign="top">
+
+			<?if($childs['0']){?>
+			<table cellSpacing=0 cellPadding=0 width="100%" border=0 background="<?=$styles['imagedir']?>/title_bg.gif">
+			<tr>
+				<td>
+					&nbsp;<img src="<?=$styles['imagedir']?>/title_right.gif" align="middle">&nbsp;&nbsp;&nbsp;<?=$class_name_left?> <?=$lang_classes['class_sub']?>
+				</td>
+			</tr>
+			</table>
+
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" style="table-layout: fixed; word-wrap: break-word">
+			<?foreach($childs as $val){?>
+			<tr>
+				<?foreach($val as $val2){?>
+				<td>
+					<?if($val2[title]){?><a href="classes.php?classes_id=<?=$val2[classes_id]?>"><?=$val2[title]?></a><?}?>
+				</td>
+				<?}?>
+			</tr>
+			<?}?>
+			</table>
+			<br />
+			<?}?>
+		 
+			<table cellSpacing=0 cellPadding=0 width="100%" border=0 background="<?=$styles['imagedir']?>/title_bg.gif">
+			<tr>
+				<td>
+					&nbsp;<img src="<?=$styles['imagedir']?>/title_right.gif" align="middle">&nbsp;&nbsp;&nbsp;<?=$class_name_left?>
+				</td>
+			</tr>
+			</table>
+			<br />
+
+			<?php echo $products_array['multipage'];?>
+			<br />
+
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" style="table-layout: fixed; word-wrap: break-word;">
+			<?php if(is_array($products_array['detail'])) { foreach($products_array['detail'] as $val){?> 
+			<tr>
+				<td valign="top" width="<?php echo $image_width;?>">
+					<a href="product_detail.php?products_id=<?=$val['products_id']?>" target="_blank">
+					<img src="<?=$val['imagesrc']?>" alt="" title="" border="0" width="<?=$settings['smallimage_width2']?>"></a>
+				</td>
+				<td valign="top">
+					<font>
+						<?=$lang_classes['product_name_']?><a href="product_detail.php?products_id=<?=$val['products_id']?>" target="_blank"><span class="bold"><?=$val['name']?></span></a>
+						<br />
+								
+						<?if($val['model']){?>
+							<?=$lang_classes['product_module_']?><?=$val['model']?>
+							<br />
+						<?}?>
+						<?=$val['price']['one']['text']?><?=$val['price']['one']['price']?>
+						<br />
+						<?if($val['price']['two']['type'] != 'one'){?>
+							<span style="color:red">
+								<?=$val['price']['two']['text']?><?=$val['price']['two']['price']?></span>
+							<br />
+						<?}?>
+						<?=$val['base_info']?>
+						<br />
+
+						<h2><a href="cart.php?action=add&products_id=<?=$val['products_id']?>"><?=$lang_common['cartinput']?></a>&nbsp;&nbsp;&nbsp; <a href="product_detail.php?products_id=<?=$val['products_id']?>" target="_blank"><?=$lang_common['detail']?></a></h2>	
+					</font>	
+				</td>
+			</tr>
+			<?}}?>
+			</table>
+		
+			<br />
+			<?php echo $products_array['multipage'];?>
+
+		</td>
+	</tr></table>
+</div>
+<? include template("footer")?>				

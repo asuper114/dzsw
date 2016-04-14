@@ -1,0 +1,35 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+
+<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tableout">
+<tr class="bgcolor2">
+	<td><?php echo $lang_box['cart'];?></td>
+</tr>
+<tr class="bgcolor1">
+	<td>
+		<?if(is_array($cart_contents)){?>
+		<table border="0" width="100%" cellspacing="0" cellpadding="4" style="table-layout: fixed; word-wrap: break-word">
+		<?foreach($cart_contents as $key=>$value){?>
+		<tr>
+			<td align="right" width="10%"><?=$value['quantity'];?></td>
+			<td align="center" width="5px">x</td>
+			<td><a href="product_detail.php?products_id=<?= $value['products_id']?>"><?=$value['name'];?></a></td>
+		</tr>
+		<?}?>
+		</table>
+		<table border="0" width="100%" cellspacing="0" cellpadding="4">
+		<tr>
+			<td><a href="cart.php"><?=$lang_box['intocart']?></a></td>
+			<td colspan="3" align="right"><a href="confirm.php"><?=$lang_box['confirm']?></a></td>
+		</tr>
+		</table>
+		<?}else{?>
+		<table border="0" width="90%" cellspacing="0" cellpadding="3" style="table-layout: fixed; word-wrap: break-word">
+		<tr>
+			<td><i><?=$lang_box['cart_empty']?></i></td>
+		</tr>
+		</table>
+		<?}?>
+	</td>
+</tr>
+</table>
+<br />

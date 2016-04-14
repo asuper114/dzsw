@@ -1,0 +1,29 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<form name="form" action="admin.php" method="post">
+<input type="hidden" name="act" value="links">
+<input type="hidden" name="action" value="save">
+<input type="hidden" name="id" value="<?=$links_data['id']?>">
+<table cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header">
+	<td colspan="2"><?=$lang_a_links['friend_links']?></td>
+</tr>
+<tr>
+	<td class="bgcolor2" align="right"><?=$lang_a_links['sitename_']?></td>
+	<td class="bgcolor1"><input type="text" name="name" value="<?=$links_data['name']?>" size="60"></td>
+</tr>
+<tr>
+	<td class="bgcolor2" align="right"><?=$lang_a_links['link_']?></td>
+	<td  class="bgcolor1"><input type="text" name="url" value="<?=$links_data['url']?>" size="60"></td>
+</tr>
+<tr>
+	<td class="bgcolor2" align="right"><?=$lang_a_links['logosrc_']?></td>
+	<td  class="bgcolor1"><input type="text" name="logo" value="<?=$links_data['logo']?>" size="60"></td>
+</tr>
+<tr>
+	<td class="bgcolor1" align="center" colspan="2"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">
+	</td>
+</tr>
+</table>
+</form>
+<?include(ADMIN_TPL.'footer.htm')?>

@@ -1,0 +1,51 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied')?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header" >
+	<td colspan="2"><?=$lang_common['system_notice:']?></td>
+</tr>
+<tr class="bgcolor1">
+   <td><?=$lang_a_mail['notice']?></td>
+</tr>
+</table>
+
+<br />
+<form method="post" name="form"  action="admin.php">
+<input type="hidden" name="act" value="mail">
+<input type="hidden" name="action" value="send">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header" >
+	<td colspan="2"><?=$lang_a_mail['sendmail:']?></td>
+</tr>
+<tr class="bgcolor1">
+   <td width="20%"><?=$lang_a_mail['sendto:']?></td>
+   <td>
+	 <?if($c_email){?>
+	 <input type="text" name="c_email" value="<?=$c_email?>" size="40">
+	 <?}else{?>
+	 <select name="groupid">
+	    <option value="all"><?=$lang_a_mail['allcustomer']?></option>
+		<?if(is_array($usergroups)){foreach($usergroups as $val){?>
+		<option value="<?=$val['groupid']?>"><?=$val['grouptitle']?></option>
+	    <?}}?>
+	 </select>
+	 <?}?>
+	 </td>
+</tr>
+<tr class="bgcolor1">
+   <td><?=$lang_a_mail['subject:']?></td>
+   <td><input type="text" name="subject" value="<?=$subject?>" size="40"></td>
+</tr>
+<tr class="bgcolor2">
+   <td valign="top"><?=$lang_a_mail['mailmain:']?></td>
+   <td><textarea name="message" wrap="soft" cols="80" rows="15"><?=$message?></textarea></td>
+</tr>
+
+<tr class="bgcolor1">
+	<td colspan="2" align="center"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">&nbsp;&nbsp;&nbsp;<input type="button" name="button" value="  <?=$lang_common['back']?>  " onclick="javascrpt:history.go(-1)" class="bginput"></td>
+</tr>
+</table>           
+</form>
+<?include(ADMIN_TPL.'footer.htm')?>

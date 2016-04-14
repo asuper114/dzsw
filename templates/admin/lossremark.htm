@@ -1,0 +1,27 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<br />
+<?=$multipage?>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="header">
+	<td><?=$lang_a_lossremark['pname_']?></td>
+	<td width="25%"><?=$lang_a_lossremark['date_add_']?></td>
+	<td width="20%" align="center"></td>
+</tr>
+<?if(is_array($lossremark_list)){foreach($lossremark_list as $val){?> 
+<tr  class="bgcolor1">
+	<td><?=$val['product_name']?></td>
+	<td><?=date('Y-n-j',$val['date_add'])?></td>
+	<td align="center"><a href="admin.php?act=lossremark&type=detail&id=<?=$val['id']?>"><?=$lang_common['detail']?></a>&nbsp;&nbsp;&nbsp;<a href="admin.php?act=lossremark&action=delete&id=<?=$val['id']?>"><?=$lang_common['delete']?></a></td>
+</tr>
+<?}}?>
+</table>  
+<br />
+
+<?=$multipage?>
+<br />
+
+<?include(ADMIN_TPL.'footer.htm')?>

@@ -1,0 +1,46 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="header">
+	<td><?=$lang_common['system_notice_']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td><ul><?=$lang_a_classes['notice_merge']?></ul></td>
+</tr>
+</table>
+<br />
+
+<form name="classes" method="get" action="admin.php">
+<input type="hidden" name="act" value="classes">
+<input type="hidden" name="action" value="merge">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center" style="word-break:break-all;">
+<tr class="bgcolor1">
+	<td><?=$lang_a_classes['merge_formerly_']?></td>
+	<td width="70%">
+		<select name="formerly_classes" style="width:100%" onchange="javascript:window.location='admin.php?act=classes&type=merge&formerly_id='+this.value + '';">
+		<option value=""><?=$lang_a_classes['merge_formerly']?></option>
+		<?=$classes_select?>
+		</select>
+	</td>
+</tr>
+<?if($formerly_id != ''){?>
+<tr class="bgcolor1">
+	<td><?=$lang_a_classes['merge_aim_']?></td>
+	<td width="70%">		
+		<select name="aim_classes" style="width:100%">
+		<?=$classes_select_aim?>
+		</select>
+	</td>
+</tr>
+<tr align="center" class="bgcolor1">
+	<td colspan="2"><input type="submit" name="submit" value="   <?=$lang_common['submit']?>   " class="bginput"></td>
+</tr>
+<?}?>
+</table>
+</form>
+
+<?include(ADMIN_TPL.'footer.htm')?>		     

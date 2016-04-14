@@ -1,0 +1,128 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple")?>
+
+<?php include template("navbar");?>
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor">
+	<tr>
+		<td>
+			<?php echo $lang_confirm_step['confirm_step_'];?>
+			<?php echo $confirm_step;?>
+		</td>
+	</tr>
+	</table> 
+</div> 
+
+<div class="main">
+
+	<table class="tablebordercolor" cellspacing="1" cellpadding="4" width="100%" border="0" align="center">
+	<tr><td>
+		<br />
+
+		<?if(is_array($message_all) && $message_all['0']){?>
+		<table  border="0" cellspacing="1" cellpadding="4" width="80%" class="tableout" align="center">
+		<?foreach($message_all as $key=>$value){?>
+		<tr>
+			<td class="bgcolor1" align="left">
+				<img src="./images/icons/error.gif" border="0">&nbsp;&nbsp;&nbsp;<?=$value?>
+			</td>
+		</tr>
+		<?}?>
+		</table>
+		<?}?>
+
+	<?if($info_box_contents){?>
+		<br />
+		<form name="cart" action="cart.php" method="post">
+		<input type="hidden" name="action" value="update">
+		<table  border="0" cellspacing="0" cellpadding="0" width="80%" align="center">
+		<tr>
+			<td>
+				<?=$lang_cart['notice_update_quantity']?>&nbsp;&nbsp;&nbsp;
+				<input type="submit" name="submit" value=" <?=$lang_cart['updatenum']?> " />
+			</td>
+		</tr>
+		</table>
+	
+		<br />
+		<table  border="0" cellspacing="1" cellpadding="4" width="80%" class="tableout" align="center" style="table-layout: fixed; word-wrap: break-word">
+		<tr class="header" align="center">
+			<td width="6%"></td>
+			<td><?=$lang_cart['product_name']?></td>
+			<?if($settings['customer_mark'] == 'true'){?>
+			<td width="15%"><?=$lang_cart['price_old']?></td>
+			<td width="15%"><?=$lang_cart['price_now']?></td>
+			<?}else{?>
+			<td width="15%"><?=$lang_cart['price']?></td>
+			<?}?>
+			<td width="10%"><?=$lang_cart['product_quantity']?></td>
+			<td width="18%"><?=$lang_cart['total_small']?></td>
+		</tr>
+		<?if(is_array($info_box_contents)) {foreach($info_box_contents as $value){?> 
+		<tr class="bgcolor1">
+			<td align="center"><a href="cart.php?action=delete&products_id=<?=$value['products_id']?>"><?php echo $lang_common['delete'];?></a></td>
+			<td>
+				<a href="product_detail.php?products_id=<?=$value['products_id']?>"><b><?=$value['name']?></b></a>&nbsp;<?=$value['stock_limitsign']?>
+			</td>
+			<?if($settings['customer_mark'] == 'true'){?>
+			<td><?=$value['price_array']['one']['price']?></td>
+			<td><?=$value['price_array']['two']['price']?></td>
+			<?}else{?>
+			<td><?=$value['price_array']['two']['price']?></td>
+			<?}?>
+			<td>
+				<input type="text" name="cart_quantity[]" size="3" value="<?=$value['buy_quantity']; ?>"><input type="hidden" name="products_id[]" value="<?=$value['products_id']; ?>">
+			</td>
+			<td><?=$value[price_total_text]?></td>
+		</tr>
+		<?}}?>
+		<tr class="bgcolor1">
+			<td align="right" colspan="<?if($settings['customer_mark'] == 'true'){?>6<?}else{?>5<?}?>">
+				<input type="submit" name="submit" value=" <?=$lang_cart['updatenum']?> " /> &nbsp;&nbsp;&nbsp;<b><?=$lang_cart['total_big:']?> <?=$cart_sum?></b>
+			</td>
+		</tr>
+		</table>
+
+		<br>
+		
+		<table border="0" width="80%" cellspacing="1" cellpadding="4" class="tablebordercolor"  align="center">
+		<tr>
+			<td align="center" >
+				<input type="button" name="index" value="  <?=$lang_cart['continue_shopping']?>  " onclick="window.location='index.php'" />
+			</td>
+			<td align="center">
+				<input type="button" name="confirm" value="    <?=$lang_cart['checkout']?>    " onclick="window.location='confirm.php'" />
+			</td>
+		</tr>
+		</table>
+		</form>
+	<?}else{?>
+	   
+		<br />
+		<br />
+		<table  border="0" cellspacing="1" cellpadding="4" width="60%" class="tableout" align="center">
+		<tr class="header">
+			<td><?=$lang_common['system_notice:']?></td>
+		</tr>
+		<tr class="bgcolor1" align="center">
+			<td>
+				<br />
+				<?=$lang_cart['cart_empty']?>
+				<br />
+				<br />
+				<input type="button" name="button" value="  <?=$lang_cart['start_shopping']?> " onclick="window.location='index.php'">
+				<br />
+				<br />
+			</td>
+		</tr> 
+		</table>
+		<br />
+		<br />
+	<?}?>
+		<br />
+		<br />
+		<br />
+
+	</td></tr></table>
+</div>
+<?include template("footer")?>

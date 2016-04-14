@@ -1,0 +1,26 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<form method="post" action="admin.php">
+<input type="hidden" name="act" value="style">
+<input type="hidden" name="action" value="editfile">
+<input type="hidden" name="cssfilename" value="<?=$style_data['cssfilename']?>">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header">
+	<td><?=$lang_a_style['style_editfile']?> - <?=$style_data['cssfilename']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="center">
+		<textarea cols="100" rows="15" name="cssfilenamenew"><?=$file_contents?></textarea>
+	</td>
+</tr>
+<tr align="center" class="bgcolor1">
+	<td><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">&nbsp;&nbsp;<input type="button" name="button" value="  <?=$lang_common['back']?>  " onclick="window:location='admin.php?act=style'" class="bginput"></td>
+</tr>
+</table>
+</form>
+
+<?include(ADMIN_TPL.'footer.htm')?>

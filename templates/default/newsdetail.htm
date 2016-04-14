@@ -1,0 +1,57 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header");?>
+
+<?php include template("navbar_table");?>
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<tr class="bgcolor1">
+
+		<td valign="top">
+  
+			<table border="0" cellspacing="1" cellpadding="6" width="70%"  align="center">
+			<?if($news_exist){?>
+			<tr>
+				<td>
+					<br />
+					<table width="100%" border="0" cellspacing="0" cellpadding="2" align="center" height="29">
+					<tr>
+						<td align="center"><h2><?=$news_data['subject']?></h2></td>
+					</tr>
+					<tr>
+						<td align="center" class="dobor"><?=$news_data['date_add']?> &nbsp;&nbsp;<?=$settings['store_name']?><br>
+						</td>
+					</tr>
+					<tr>
+						<td><p class="text"><?=$news_data['text']?></p></td>
+					</tr>
+					</table>
+					<br />
+				</td>
+			</tr> 
+			<?}else{?>
+			<tr>
+				<td>
+				
+					<br />
+					<br />
+					<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+					<tr class="header">
+						<td><?=$lang_common['system_notice:']?></td>
+					</tr>
+					<tr><td align="center" height="150"><?=$lang_newsdetail['news_notfont']?></td>
+					</tr>
+					</table>
+
+					<br />
+					<br />
+					<br />
+				</td>
+			</tr>
+			<?}?>
+			</table>
+      
+		</td>
+	</tr>
+	</table>
+</div>
+<?php include template("footer");?>

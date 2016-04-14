@@ -1,0 +1,93 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header")?>
+
+<script language="javascript"><!--
+	function validate(thisForm) {
+
+		var pattern = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+([a-zA-Z]{2}|net|NET|com|COM|gov|GOV|mil|MIL|org|ORG|edu|EDU|int|INT|cn|CN|tw|TW|hk|HK|kg|KG|jp|JP)+/; 
+		if(!pattern.test(thisForm.email.value)) { 
+			alert("<?=$lang_review['post_email_error']?>"); 
+			return false; 	  
+		}
+	
+		if (thisForm.review.value =='') {
+			alert("<?=$lang_review['post_review_empty']?>");
+			return false;
+		}
+
+		if (thisForm.rating[0].checked || thisForm.rating[1].checked || thisForm.rating[2].checked || thisForm.rating[3].checked || thisForm.rating[4].checked) {
+		} else {
+			alert("<?=$lang_review['post_rating_empty']?>");
+			return false;
+		}
+	}
+//-->
+</script>
+
+<?php include template("navbar_table");?>
+
+<?if(is_array($message_all) && $message_all['0']){?>
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<?foreach($message_all as $key=>$value){?>
+	<tr class="bgcolor2" style="color:red">
+		<td><img src="./images/icons/error.gif" border="0">&nbsp;&nbsp;&nbsp;<?=$value?></td>
+	</tr>
+	<?}?>
+	</table>
+</div>
+<?}?>
+
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<tr class="bgcolor1">
+		<td><span class="text"><?=$lang_review['attention']?></span></td>
+	</tr>
+	</table>   
+</div>		
+
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<form id="form" name="form" action="writereviews.php" method="post" onSubmit="return validate(this);">
+	<input type="hidden" name="action" value="process">
+	<input type="hidden" name="products_id" value="<?=$products_id?>">
+	<tr   class="bgcolor1">
+		<td align="right"><?=$lang_review['product_name_']?></td>
+		<td><a href="product_detail.php?products_id=<?=$products_id?>"><span class="bold"><?=$product_data['name']?></span></a></td>
+	</tr>
+	<tr   class="bgcolor1">
+		<td align="right"><?=$lang_review['customer_email_']?></td>
+		<td ><input type="text" name="email" value="<?=$email?>"></td>
+	</tr>
+	<tr  class="bgcolor1">
+		<td align="right"><?=$lang_review['review_']?></td>
+		<td ><textarea name="review" wrap="soft" cols="80" rows="8"><?=$review?></textarea></td>
+	</tr>
+	<tr  class="bgcolor1">
+		<td align="right"><?=$lang_review['rating_']?></td>
+		<td>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="20%"><input type="radio" name="rating" value="5"><font color=#cc6600>★★★★★</font></td>
+				<td width="20%"><input type="radio" name="rating" value="4"><font color=#cc6600>★★★★</font>☆</td>
+				<td width="20%"><input type="radio" name="rating" value="3"><font color=#cc6600>★★★</font>☆☆</td>
+				<td width="20%"><input type="radio" name="rating" value="2"><font color=#cc6600>★★</font>☆☆☆</td>
+				<td width="20%"><input type="radio" name="rating" value="1"><font color=#cc6600>★</font>☆☆☆☆</td>
+			</tr>
+			<tr>
+				<td>&nbsp;<?=$lang_review['rating_5']?></td>
+				<td width="20%">&nbsp;<?=$lang_review['rating_4']?></td>
+				<td width="20%">&nbsp;<?=$lang_review['rating_3']?></td>
+				<td width="20%">&nbsp;<?=$lang_review['rating_2']?></td>
+				<td width="20%">&nbsp;<?=$lang_review['rating_1']?></td>
+			</tr>
+		</table>
+	</td>
+	</tr>
+	<tr  class="bgcolor1">
+		<td align="center" colspan="2"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+	</tr>
+	</form>
+	</table> 
+</div>		
+
+<?include template("footer")?>

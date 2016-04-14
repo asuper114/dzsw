@@ -1,0 +1,41 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header");?>
+
+<?php include template("navbar_table");?>
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<tr class="bgcolor1">
+		<td valign="top">
+
+			<table border="0" cellpadding="4" cellspacing="1" width="80%" align="center">
+			<tr>
+				<td colspan="3">
+					<?=$multipage?>
+				</td>
+			</tr>
+
+			<?if(is_array($dzsw_news)){?>
+			<?foreach($dzsw_news as $key=>$val){?>
+			<tr>
+				<td width="5%">#<?=$val['id'];?>
+				</td>
+				<td><a href="newsdetail.php?id=<?=$val['id']?>"><?=$val['subject'];?></a>
+				</td>
+				<td width="20%" style="word-break:break-all;"><?=$val['date'];?>
+				</td>
+			</tr>
+			<?}?>
+
+			<?}?>
+			<tr>
+				<td colspan="3">
+					<?=$multipage?>
+				</td>
+			</tr>
+			</table>
+			<br />
+		  
+		</td>
+	</tr></table>
+</div>
+<? include template("footer");?>

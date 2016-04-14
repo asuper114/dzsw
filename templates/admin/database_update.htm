@@ -1,0 +1,33 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header" >
+	<td colspan="2"><?=$lang_common['system_notice_']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td><ul><?=$lang_a_database['update_desc']?></ul></td>
+</tr>
+</table>
+
+<br />
+<form method="post" action="admin.php">
+<input type="hidden" name="act" value="database">
+<input type="hidden" name="action" value="update">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="header">
+	<td><?=$lang_a_database['update_']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="center"><textarea name="querystr" rows="10" cols="80"></textarea></td>
+</tr>
+<tr align="center" class="bgcolor1">
+	<td colspan="2"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+
+<?include(ADMIN_TPL.'footer.htm')?>

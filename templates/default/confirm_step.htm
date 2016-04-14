@@ -1,0 +1,17 @@
+<?php if(!defined('IN_dzsw')) exit('Access Denied');?>
+<span class="bold"><?php echo $lang_confirm_step['confirm_step_'];?></span>
+<?php echo $lang_confirm_step['register'];?>
+&gt;&gt;
+<?php echo $lang_confirm_step['listincart'];?>
+<?php if($currscript == 'address_ship' || $currscript == 'address_bill'){?>
+	&gt;&gt;
+	<?php echo $lang_confirm_step['address'];?>
+<?}?>
+&gt;&gt;
+<?php echo $lang_confirm_step['shipping'];?>
+&gt;&gt;
+<?php echo $lang_confirm_step['payment'];?>
+<?php if($currscript == 'address_ship' || $currscript == 'address_bill'){?>
+	&gt;&gt;
+	<?php echo $lang_confirm_step['confirm'];?>
+<?}?>

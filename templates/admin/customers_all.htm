@@ -1,0 +1,53 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<?=$multipage?>
+
+<br />
+<form method="post" action="admin.php">
+<input type="hidden" name="act" value="customers">
+<input type="hidden" name="action" value="editall">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr align="center" class="header">
+	<td><input type="checkbox" name="chkall" class="category" onclick="checkall(this.form)"><?=$lang_common['delete_small']?></td>
+	<td><?=$lang_a_customer['account']?></td>
+	<td><?=$lang_a_customer['sendmail']?></td>
+	<td><?=$lang_a_customer['group']?></td>
+	<td></td>
+</tr>
+
+<?if(is_array($customer_array)){foreach($customer_array as $val){?>
+<tr align="center" class="bgcolor1"> 
+	<td><input type="checkbox" name="delete[]" value="<?=$val['customers_id']?>"></td>
+	<td><?=$val['email']?></td>
+	<td><a href="admin.php?act=mail&c_email=<?=$val['email']?>"><?=$lang_a_customer['click_to_send']?></a></td>
+	<td>
+		<select name="groupidnew[<?=$val['customers_id']?>]">
+		<?if(is_array($usergroup_array)){foreach($usergroup_array as $value){?>
+			<?if(in_array($value['groupid'],$val['showgroup'])){?>
+			<option value="<?=$value['groupid']?>" <?if($val['groupid']==$value['groupid']){?>selected<?}?>><?=$value['grouptitle']?></option>
+			<?}?>
+		<?}}?>
+		</select>
+	 </td>
+	 <td><a href="admin.php?act=orders&customers_id=<?=$val['customers_id']?>"><?=$lang_a_customer['order']?></a>&nbsp;&nbsp;<a href="admin.php?act=customers&type=detail&customers_id=<?=$val['customers_id']?>"><?=$lang_common['detail']?></a></td>
+</tr>
+<?}}?>
+</table>
+
+<br />
+<?=$multipage?>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr align="center" class="bgcolor1">
+	<td>
+		<input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">&nbsp;&nbsp;<input type="button" name="button" value="  <?=$lang_common['back']?>  " onclick="javascrpt:history.go(-1)" class="bginput">
+	</td>
+</tr>
+</table>
+</form>
+
+<?include(ADMIN_TPL.'footer.htm')?>

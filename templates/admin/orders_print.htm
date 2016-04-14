@@ -1,0 +1,92 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?=$styles['charset']?>">
+<style type="text/css">
+body,table {font-size: 12px; font-family: Tahoma, Verdana }
+</style>
+</head>
+<body leftmargin="80">
+
+<?=$lang_a_order['order_id_']?><?=$order_detail['orders_id']?>&nbsp;&nbsp;&nbsp;<?=$lang_a_order['orderstatus_']?><?=$order_detail['status']?>&nbsp;&nbsp;&nbsp;<a href="javascript:void 0" onclick="this.style.visibility='hidden';window.print();this.style.visibility='visible'">[打印本页]</a>
+<br />
+<br />
+<b><?=$lang_a_order['dillingaddress_']?></b>
+
+<table  border="0" cellspacing="1" cellpadding="4" width="95%" align="center">
+<tr>
+	<td width="65%"><li><?=$order_detail['d_country']?>&nbsp;&nbsp;&nbsp;<?=$order_detail['d_province']?>&nbsp;&nbsp;&nbsp;<?=$order_detail['d_city']?></td>
+	<td><li><?=$lang_a_order['tel_regular_']?><?=$order_detail['d_tel_regular']?></td>
+</tr>
+<tr>
+	<td><li><?=$lang_a_order['customer_name_']?><?=$order_detail['d_name']?></td>
+	<td><li><?=$lang_a_order['tel_mobile_']?><?=$order_detail['d_tel_mobile']?></td>
+</tr>
+<tr>						
+	<td><li><?=$lang_a_order['address_detail_']?><?=$order_detail['d_street_address']?></td>
+	<td><li><?=$lang_a_order['postcode_']?><?=$order_detail['d_postcode']?></td>
+</tr>
+</table>
+
+<br />
+<b><?=$lang_a_order['dellingaddress_']?></b>
+<table  border="0" cellspacing="1" cellpadding="4" width="95%" align="center">
+<?if($order_detail['deli_s_bill']=='1'){?>
+	<tr><td><?=$lang_a_order['dell_s_bill']?></td></tr>
+<?}else{?>
+	<tr>
+		<td width="65%"><li><?=$order_detail['b_country']?>&nbsp;&nbsp;&nbsp;<?=$order_detail['b_province']?>&nbsp;&nbsp;&nbsp;<?=$order_detail['b_city']?></td>
+		<td align="left"><li><?=$lang_a_order['tel_regular_']?><?=$order_detail['b_tel_regular']?></td>
+	</tr>
+	<tr>
+		<td><li><?=$lang_a_order['customer_name_']?><?=$order_detail['b_name']?></td>
+		<td><li><?=$lang_a_order['tel_mobile_']?><?=$order_detail['b_tel_mobile']?></td>
+	</tr>
+	<tr>
+		<td><li><?=$lang_a_order['address_detail_']?><?=$order_detail['b_street_address']?></td><td><li><?=$lang_a_order['postcode_']?><?=$order_detail['b_postcode']?></td>
+	</tr>
+<?}?>
+</table>
+
+<br />
+<b><?=$lang_a_order['products_']?></b>
+<table  border="0" cellspacing="1" cellpadding="4" width="95%" align="center">
+<?for ($i=0, $n=sizeof($order_products); $i<$n; $i++) {?>
+	<tr>
+		<td align="right" width="15%"><?=$order_products[$i]['quantity']?></td>
+		<td align="center" width="5%">x</td>
+		<td><b><?=$order_products[$i]['name']?></b> (<?=$order_products[$i]['model']?>)</td>
+		<td width="35%"><?=$order_products[$i]['final_price_text']?></td>
+    </tr>
+<?}?>
+</table>
+
+<br />
+<b><?=$lang_a_order['total_']?></b>
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center">
+<?if(is_array($order_totallist)){ foreach($order_totallist as $key=>$val){?>
+<tr>
+	<td align="right" width="25%"><?=$val['title']?></td>
+	<td><?=$val['value_text']?></td>
+</tr>
+<?}}?>
+</table>
+<br />
+
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center">
+<tr>
+	<td><?=$lang_a_order['shipping_method_']?><?=$order_detail['shipping_title']?></td>
+	<td><?=$lang_a_order['payment_method_']?><?=$order_detail['payment_title']?></td>
+</tr>
+</table>
+
+<hr size="0" noshade color="#000000" width="100%" />
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+<tr>
+	<td><?php echo $lang_a_order['print_footer'];?></td>
+	<td align="right">Powered by dzsw <?=$settings['store_version']?></td>
+</tr>
+</table>
+</body>
+</html>
+
+<?output()?>

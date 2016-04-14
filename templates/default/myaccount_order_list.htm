@@ -1,0 +1,52 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+
+<?php include template("navbar");?>
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<tr class="bgcolor1">
+		<td valign="top">
+			<?include template("myaccount_left");?>
+		</td>
+		<td width="76%" valign="top">
+
+			<?=$multipage?>
+
+			<br />
+			<br />
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+			<tr class="header">
+				<td><?=$lang_myaccount_order['order_num:']?></td>
+				<td><?=$lang_myaccount_order['product_name:']?></td>
+				<td><?=$lang_myaccount_order['order_status:']?></td>
+				<td></td>
+			</tr>
+			<?if(is_array($order_array)){foreach($order_array as $key=>$val){?>  
+			<tr class="bgcolor1">
+				<td align="left" width="12%"><?=$val['orders_id']?></td>
+				<td align="left">
+				<?if(is_array($val['products'])){foreach($val['products'] as $prod){?> 
+					<a href="product_detail.php?products_id=<?=$prod['products_id']?>" target="_blank"><?=$prod['name']?></a><br>
+				<?}}?>
+				</td>
+				<td align="left" width="20%"><?=$val['orders_status']?></td>
+				<td align="center" width="13%">
+					<a href="myaccount.php?type=order&act=detail&orders_id=<?=$val['orders_id']?>"><?=$lang_common['detail']?></a>
+					<?if($val['showcancel']){?>
+					  &nbsp;<a href="myaccount.php?type=order&action=cancel&orders_id=<?=$val['orders_id']?>"><?=$lang_common['cancel']?></a>
+					<?}?>
+				</td>
+			</tr>
+			<?}}else{?>
+			  
+			<?}?>
+			</table>
+
+			<br />
+			<?=$multipage?>
+
+		</td>
+	</tr>
+	</table>
+</div>
+<? include template("footer");?>

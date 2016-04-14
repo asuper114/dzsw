@@ -1,0 +1,20 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?=$styles['charset']?>">
+<link rel="stylesheet" href="styles/<?=$styles['cssfilename']?>" type="text/css">
+</head>
+<body leftmargin="0" topmargin="0" style="background: threedface; color: windowtext;">
+<table cellspacing="0" cellpadding="2" border="0" width="100%" height="100%">
+<tr valign="middle">
+	<td width="2%"></td>
+	<td width="32%"><a href="admin.php?act=main" target="main"><?=$lang_a_top['border_system']?></a>&nbsp;&nbsp;&nbsp;<a href="admin.php?act=adminchangepw" target="main"><?=$lang_a_top['changepw']?></a>&nbsp;&nbsp;&nbsp;<a href="admin.php?act=logout" target="_parent"><?=$lang_a_top['logout']?></a></td>
+	<td width="16%" align="right"><a href="http://www.dzsw.com/help" target="_blank"><?=$lang_a_top['user_help']?></a></TD>
+	<td width="16%" align="right"><a href="http://forum.dzsw.com" target="_blank">dzsw <?=$lang_a_top['user_bbs']?></a></TD>
+	<td width="32%" align="right"><a href="index.php" target="_blank"><?=$lang_a_top['shop_index']?></a></TD>
+	<td width="2%"></td>
+</tr>
+</table>
+</body>
+</html>
+<?output()?>

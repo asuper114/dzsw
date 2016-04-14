@@ -1,0 +1,46 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<table height="86%" border="0" cellspacing="1" cellpadding="4" width="100%">
+<tr>
+	<td>
+		<table  border="0" cellspacing="1" cellpadding="4" width="480px" class="tableout" align="center">
+		<?foreach($message_all as $key=>$value){?>
+		<tr class="bgcolor1">
+			<td width="5%"><img src="images/icons/error.gif" border="0"><?=$value?></td>
+		</tr>
+		<?}?>
+		</table>
+		
+		<br />
+		<form method="post" action="admin.php" target="_parent">
+		<table cellspacing="1" cellpadding="4" width="480px" class="tableout" align="center">
+		<tr class="header">
+			<td colspan="3"><?=$lang_a_login['header_title:']?><font style="color:red"><?=$iillog?></font></td>
+		</tr>
+		<tr class="bgcolor1">
+			<td align="right" width="35%"><?=$lang_a_login['username:']?></td>
+			<td width="65%"><input type="text" size="25" name="l_adminusername" value="<?=$adminusername?>"></td>
+		</tr>
+		<tr class="bgcolor1">
+			<td align="right"><?=$lang_a_login['password:']?></td>
+			<td><input type="password" size="25" name="l_adminpassword"></td>
+		</tr>
+		<?if($settings['user_checknum_infooter'] == 'true'){?>
+		<tr class="bgcolor1">
+			<td align="right"><?=$lang_a_login['checknum:']?></td>
+			<td width="30%"><input type="text" size="15" name="l_imgnum"><img src="imgcheck.php" align="absmiddle"></td>
+		</tr>
+		<?}?>
+		<tr class="bgcolor1">
+			<td align="center" colspan="2">
+				<input name="submit" type="submit" value="  <?=$lang_common['submit']?>  " class="bginput">
+			</td>
+		</tr>
+		</table>
+		</form>
+	</td>
+</tr>
+</table>
+
+<?include(ADMIN_TPL.'footer.htm')?>
+

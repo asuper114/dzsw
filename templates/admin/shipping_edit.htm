@@ -1,0 +1,98 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<?if($message_all['0']){?>
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<?foreach($message_all as $key=>$value){?>
+<tr class="bgcolor1">
+	<td width="5%"><img src="images/icons/error.gif" border="0"></td>
+	<td class="messagetxt"><?=$value?></td>
+</tr>
+<?}?>
+</table>
+<?}?>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<form name="form" action="admin.php" method="post">
+<input type="hidden" name="act" value="shipping">
+<input type="hidden" name="action" value="doedit_shipping">
+<input type="hidden" name="id" value="<?=$shipping_detail['id']?>">
+<tr class="header">
+	<td colspan="2"><?=$lang_a_shipping['shipping_control']?></td>
+</tr>
+<?if($shipping_detail['type'] == 'system'){?>
+<tr class="bgcolor1">
+	<td align="right" width="30%"><?=$lang_a_shipping['shipping_title_']?></td>
+	<td align="left"><?=$shipping_detail['title']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="right" width="30%"><?=$lang_a_shipping['define_title_']?></td>
+	<td align="left"><input type="text" name="title" value="<?=$shipping_detail_define['title']?>"></td>
+</tr>
+<?}else{?>
+<tr class="bgcolor1">
+	<td align="right" width="30%"><?=$lang_a_shipping['shipping_title_']?></td>
+	<td align="left"><input type="text" name="title" value="<?=$shipping_detail['title']?>"></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="right"><?=$lang_a_shipping['shipping_filename']?></td>
+	<td align="left">
+		<input type="text" name="filename" value="<?=$shipping_detail['filename']?>">
+	</td>
+</tr>
+<?}?>
+<tr class="bgcolor1">
+	<td align="right"><?=$lang_common['description_']?></td>
+	<td align="left">
+		<textarea cols="60" rows="3" name="description" ><?=$shipping_detail['description']?></textarea>
+	</td>
+</tr>
+<?if($shipping_detail['type'] == 'define'){?>
+<tr class="bgcolor1">
+	<td align="right"><?=$lang_a_shipping['desc_faq:']?><br /><?=$lang_common['example:']?><a href="faq.php?faq_page=shipping" target="_blank"><?=$lang_common['click_to_look']?></a></td>
+	<td align="left">
+		<textarea cols="60" rows="5" name="desc_faq" ><?=$shipping_detail['desc_faq']?></textarea>
+	</td>
+</tr>
+<?}?>
+<tr align="center"  class="bgcolor1">
+	<td colspan="2"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">&nbsp;&nbsp;&nbsp<a href="admin.php?act=shipping&action=addnewfee&id=<?=$shipping_detail['id']?>"><?=$lang_a_shipping['addnewfeearea']?></a></td>
+</tr>
+</table>
+</form>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header">
+	<td colspan="2"><?=$lang_a_shipping['fee_area:']?></td>
+</tr>
+<?if(is_array($shipping_data)){foreach($shipping_data as $val){?>
+<tr class="bgcolor1">
+	<td align="left" width="30%"><?=$lang_a_shipping['area:']?><?=$lang_a_shipping['click_to_deletearea']?><br><?=$lang_common['add:']?>
+	<?if($settings['show_country'] == 'true'){?>
+	<a href="admin.php?act=shipping&action=showarea&areatype=country&afid=<?=$val['id']?>"><?=$lang_common['country']?></a>
+	<?}?>
+	<a href="admin.php?act=shipping&action=showarea&areatype=province&afid=<?=$val['id']?>"><?=$lang_common['province']?></a>
+	<a href="admin.php?act=shipping&action=showarea&areatype=city&afid=<?=$val['id']?>"><?=$lang_common['city']?></a>
+	</td>
+	<td><?=$val['area']?></td>
+</tr>
+<form name="form" action="admin.php" method="post">
+<input type="hidden" name="act" value="shipping">
+<input type="hidden" name="action" value="updatefee">
+<input type="hidden" name="sfid" value="<?=$val['id']?>">
+<tr class="bgcolor1">
+	<td align="right" width="20%"><?=$lang_a_shipping['fee_']?></td>
+	<td><input name="fee" type="text" value="<?=$val['fee']?>"><input type="submit" name="submit" value="  <?=$lang_common['update']?>  " class="bginput">&nbsp;&nbsp;&nbsp<a href="admin.php?act=shipping&action=deletefeearea&sfid=<?=$val['id']?>"><?=$lang_a_shipping['deletefeearea']?></a></td>
+</tr>
+</form>
+<tr>
+	<td class="bgcolor1" colspan="2"></td>
+</tr>
+<?}}?>
+</table>	
+
+<br />
+<br />
+<?include(ADMIN_TPL.'footer.htm')?>

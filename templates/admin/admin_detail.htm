@@ -1,0 +1,58 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<form method="post" action="admin.php" name="form">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="bgcolor1">
+	<td><?=$lang_a_admin['updatemessage']?></td>
+</tr>
+</table>
+
+<br />
+<input type="hidden" name="act" value="admin">
+<input type="hidden" name="action" value="detail">
+<input type="hidden" name="adminid_" value="<?=$get_one['adminid']?>">
+
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr align="center" class="header"><td colspan="2" align="left"><?=$get_one['email']?></td></tr>
+<tr class="bgcolor1">
+	<td width="50%"><?=$lang_a_admin['account_']?></td>
+	<td b><input type="text" name="email" value="<?=$get_one['email']?>"></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_admin['password_']?></td>
+	<td><input type="text" name="password"></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_admin['groupof_']?></td>
+	<td>
+		 <select name="groupidnew">
+		 <?if(is_array($admingroup_array)){foreach($admingroup_array as $value){?>
+		   <option value="<?=$value['admingroupsid']?>" <?if($get_one['admingroupsid']==$value['admingroupsid']){?>selected<?}?>><?=$value['grouptitle']?></option>
+		 <?}}?>
+		 </select>
+	</td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_admin['createdate_']?></td>
+	<td><input type="text" name="createdate" value="<?=$get_one['createdate']?>"></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_admin['lastvisit_']?></td>
+	<td><input type="text" name="lastvisit" value="<?=$get_one['lastvisit']?>"></td>
+</tr>
+</table>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr align="center" class="bgcolor1">
+	<td><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">&nbsp;&nbsp;<input type="button" name="button" value="  <?=$lang_common['back']?>  " onclick="javascrpt:history.go(-1)" class="bginput">
+</td>
+</tr>
+</table>
+</form>
+
+
+
+<?include(ADMIN_TPL.'footer.htm')?>

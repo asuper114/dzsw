@@ -1,0 +1,51 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<form name="form" action="admin.php" method="post">
+<input type="hidden" name="act" value="payment">
+<input type="hidden" name="action" value="editsort">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center" style="table-layout: fixed; word-wrap: break-word">
+<tr class="bgcolor1">
+	<td><?=$payment_all?></td>
+</tr>			
+<tr align="center" class="bgcolor1">
+	<td><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+
+<br />
+<form name="form" action="admin.php" method="post">
+<input type="hidden" name="act" value="payment">
+<input type="hidden" name="action" value="add_payment">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="header">
+	<td colspan="2"><?=$lang_a_payment['add_new_payment']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="left"><font class="bold" ><?=$lang_a_payment['payment_parent']?></font></td>
+	<td align="left" width="65%">
+	<select name="payment_parent_id">
+	<?=$payment_select?>
+	</select>
+	</td>
+</tr>
+<tr class="bgcolor1">
+	<td align="left"><font class="bold" ><?=$lang_a_payment['payment_title']?></font></td>
+	<td align="left" width="25%"><input name="title" value="<?=$title?>"></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="left"><font class="bold" ><?=$lang_a_common['key:']?></font><br>
+	<?=$lang_a_payment['payment_key_desc']?>
+	</td>
+	<td align="left" width="25%"><input name="pay_key" value="<?=$pay_key?>"></td>
+</tr>
+<tr align="center" class="bgcolor1">
+	<td colspan="2"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+
+<?include(ADMIN_TPL.'footer.htm')?>

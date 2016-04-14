@@ -1,0 +1,66 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header");?>
+
+<?php include template("navbar_table");?>
+
+<div class="main">
+	<h2><?php echo $lang_search['description'];?></h2>
+</div>	
+
+<?if(is_array($message_all)){?>
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+    <?foreach($message_all as $key=>$value){?>
+	<tr class="messagetxt">
+		<td class="bgcolor1"><img src="./images/icons/error.gif" border="0">&nbsp;&nbsp;&nbsp;<?=$value?></td>
+	</tr>
+    <?}?>
+    </table>
+</div>
+<?}?>
+
+<div class="main">	
+  	
+	<form name="form" action="search.php" method="get">
+    <input type="hidden" name="action" value="search">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout"  align="center">
+    <tr class="header">
+		<td width="50%"><?=$lang_search['keywords']?></td>
+		<td><?=$lang_search['productclass']?></td>
+	</tr>
+	<tr class="bgcolor1">
+		<td>
+			<input type="text" name="keywords" size="40" maxlength="30" value="<?=$keywords?>">
+			<br />
+			<br />
+			<input type="checkbox" name="cludedesc" value="1" <?=$checked_cludedesc?>><?=$lang_search['indesc']?>
+		</td>
+		<td>
+			<select name="classes_id" style="width: 200px">
+				<option value=""><?=$lang_search['classall']?></option>
+				<?=$classesselect_search?>
+			</select>
+			<br />
+			<br />
+			<input type="checkbox" name="cludesub" value="1" <?=$checked_cludesub?>><?=$lang_search['insubclass']?>
+		</td>
+	</tr>
+	<tr class="header">
+		<td><?=$lang_search['manufacturer']?></td>
+		<td><?=$lang_search['pricearea']?></td>
+	</tr>
+	<tr class="bgcolor1">
+		<td><input type="text" name="manufacturer" size="40" maxlength="40" value="<?=$manufacturer?>"></td>
+		<td><?=$lang_search['pricefrom']?>&nbsp;<input type="text"	name="pfrom" size="15" value="<?=$pfrom?>">&nbsp;<?=$lang_search['priceto']?><input type="text"	name="pto" size="15" value="<?=$pto?>"></td>
+	</tr>
+	</table>
+	
+</div>
+
+<div class="main">
+    <div align="center"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></div>
+    <br />
+	<br />
+
+</div>
+
+<? include template("footer");?>

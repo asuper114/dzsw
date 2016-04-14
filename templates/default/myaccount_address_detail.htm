@@ -1,0 +1,102 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+
+<script language="JavaScript" src="./js/province.js" type="text/javascript"></script>
+<script language="JavaScript" src="./js/loadprovince.js" type=text/javascript></script>
+<script language="javascript">
+<!--
+function checkform(thisForm) {
+	if (thisForm.name.value =='') {
+		alert("<?=$lang_myaccount_address['msg_name_empty']?>");
+		return false;
+	}
+	if (thisForm.street_address.value =='') {
+		alert("<?=$lang_myaccount_address['msg_street_empty']?>");
+		return false;
+	}
+	if (thisForm.postcode.value=='') {
+		alert("<?=$lang_myaccount_address['msg_postcode_empty']?>");
+		return false;
+	}
+	if (thisForm.tel_regular.value=='' && thisForm.tel_mobile.value=='') {
+		alert("<?=$lang_myaccount_address['msg_tel_empty']?>");
+		return false;
+	}
+	return true;  
+}
+//-->
+</script>
+
+<?php include template("navbar");?>
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<tr class="bgcolor1">
+		<td valign="top">
+			<?include template("myaccount_left");?>
+		</td>
+		<td width="76%" valign="top">
+			<div>
+				<h1><?php echo $lang_myaccount_address['detail_description'];?></h2>
+			</div>
+
+			<form name="form" action="myaccount.php" method="post" onsubmit="return checkform(this)">
+			<input type="hidden" name="type" value="address">
+			<input type="hidden" name="action" value="edit">
+			<input type="hidden" name="abid" value="<?=$abid?>">
+			<table border="0" cellspacing="1" cellpadding="4" width="100%">
+			<tr>
+				<td <?=$styles['imagedir']?> align="right"><?=$lang_myaccount_address['name:']?></td>
+				<td><input type="text" name="name" value="<?=$name?>">&nbsp;<?=$entry_firstname_text?></td>
+			</tr>
+			<?if($show_country){?>
+			<tr>
+				<td align="right"><?=$lang_common['country:']?></td>
+				<td><select name="country" id="country" onChange="goprovince('','','');"> </select>&nbsp;<?=$entry_country_text?></td>
+			</tr> 
+			<?}?>
+			<tr>
+				<td align="right"><?=$lang_common['province:']?></td>
+				<td><select id="province" name="province" onChange="gocity('','');"></select> &nbsp;<?=$entry_state_text?></td>
+			</tr> 
+			<tr>
+				<td  align="right"><?=$lang_common['city:']?></td>
+				<td><select id="city" name="city"></select> &nbsp;<?=$entry_city_text?></td>
+			</tr>
+			<tr>
+				<td  align="right" width="30%"><?=$lang_myaccount_address['street:']?></td>
+				<td><input type="text" name="street_address" value="<?=$street_address?>" size="40">&nbsp;<?=$entry_street_address_text?></td>
+			</tr>
+			<tr>
+				<td  align="right"><?=$lang_myaccount_address['postcode:']?></td>
+				<td><input type="text" name="postcode" value="<?=$postcode?>" size="10">&nbsp;<?=$entry_post_code_text?></td>
+			</tr>
+			<tr>
+				<td  valign="top" align="right"><?=$lang_myaccount_address['telphone:']?></td>
+				<td><?=$lang_myaccount_address['regular:']?><input type="text" name="tel_regular" value="<?=$tel_regular?>">&nbsp;<?=$entry_tel_regular_text?>
+				<br><?=$lang_myaccount_address['mobile:']?><input type="text" name="tel_mobile" value="<?=$tel_mobile?>">&nbsp;
+				<br><font style="color:red;font-weight:bold;"><?=$lang_myaccount_address['telnotice']?></font></td>
+			</tr> 
+			</table>
+			<br />
+			<center>
+				<input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">
+			</center>
+			</form>
+
+		</td>
+	</tr></table>
+</div>
+<script language="JavaScript" type="text/javascript">
+	<?php if($show_country){?>
+	gocountry("country");
+	SelectList("country","<?php echo $country_default;?>");
+	goprovince("country","province","city");
+	<?}else{?>
+	goprovince(<?=$country_default?>,"province","city");
+	<?}?>
+	SelectList("province","<?php echo $province;?>");
+	gocity("province","city");
+	SelectList("city","<?php echo $city;?>");
+</script>
+
+<?php include template("footer");?>

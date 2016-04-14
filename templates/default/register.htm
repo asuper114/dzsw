@@ -1,0 +1,88 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+
+<?php include template("navbar");?>
+
+<div class="main">
+
+	<?if(is_array($message_all) && $message_all['0']){?>
+	<br />
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<?foreach($message_all as $key=>$value){?>
+	<tr class="bgcolor2" style="color:red">
+		<td><img src="./images/icons/error.gif" border="0">&nbsp;&nbsp;&nbsp;<?=$value?></td>
+	</tr>
+	<?}?>
+	</table>
+	<br />
+	<?}else{?>
+
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%">
+	<tr>
+		<td><img src="<?=$styles['imagedir']?>/title_register.gif" border="0"></td>
+	</tr>
+	</table>
+	<?}?>
+
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<form name="register" action="register.php" method="post" >
+	<input type="hidden" name="action" value="process">
+	<input type="hidden" name="direct_referer" value="<?=$direct_referer?>">
+		<tr class="header"><td colspan="3"><?=$lang_register['header_title']?></td></tr>
+		<tr class="bgcolor1">
+			<td align="right" width="30%"><?=$lang_register['email_']?></td>
+			<td><input type="text" name="email" value="<?=$email?>" size="20"></td>
+			<td><?php echo $lang_register['email_desc'];?></td>
+		</tr>
+		<tr class="bgcolor1">
+			<td align="right"><?=$lang_register['password_']?></td>
+			<td><input type="password" name="password" value="" size="20"></td>
+			</td><td>
+		</tr>
+		<tr class="bgcolor1">
+			<td align="right"><?=$lang_register['password2_']?></td>
+			<td><input type="password" name="password2" value="" size="20"></td>
+			</td><td>
+		</tr>
+		<?if($settings['user_checknum_inheader'] == 'true'){?>
+		<tr class="bgcolor1">
+			<td align="right"><?=$lang_register['checknum_']?></td>
+			<td><input type="text" name="imgnum" value="" size="8">&nbsp;&nbsp;<img src="imgcheck.php" align="top"></td>
+			</td><td>
+		</tr>
+		<?}?>
+
+		<?if($settings['show_qq'] == 'true' || $settings['show_msn'] == 'true'){?>
+		<tr class="header"><td colspan="3"><?=$lang_register['addition_info']?></td></tr>
+
+		<?if($settings['show_qq'] == 'true'){?>
+		<tr class="bgcolor1">
+			<td align="right"><?=$lang_register['qq_']?></td>
+			<td><input type="text" name="qq" value="<?=$qq?>"></td>
+			</td><td>
+		</tr>
+		<?}?>
+
+		<?if($settings['show_msn'] == 'true'){?>
+		<tr class="bgcolor1">
+			<td align="right"><?=$lang_register['msn_']?></td>
+			<td><input type="text" name="msn" value="<?=$msn?>"></td>
+			</td><td>
+		</tr>
+		<?}?>
+		<?}?>
+
+	</table>
+
+	<br /> 
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor" align="center">
+	<tr>
+		<td align="center"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">
+		</td>
+	</tr>
+	</table>
+	</form>
+	<br />
+	<br /> 
+
+</div>
+<?include template("footer")?>

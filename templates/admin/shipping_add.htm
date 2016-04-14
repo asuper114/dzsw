@@ -1,0 +1,25 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<table  border="0" cellspacing="0" cellpadding="0" width="95%" align="center">
+<tr><td><?include ADMIN_TPL.'message_all.htm'?></td></tr></table>
+
+<br>
+<table  border="0" cellspacing="<?=BORDERWIDTH?>" cellpadding="<?=TABLESPACE?>" width="95%" class="tableout" align="center" style="table-layout: fixed; word-wrap: break-word">
+	<tr bgcolor="<?=ALTBG1?>">
+		<td align="center"  width="40%"><?=LANG_A_SHIPPING_TITLE?></td>
+		<td align="left"><input name="title" type="text" value="<?=$name?>"></td>
+    </tr>
+</table>
+<br>
+<table  border="0" cellspacing="<?=BORDERWIDTH?>" cellpadding="<?=TABLESPACE?>" width="95%" class="tableout" align="center" style="table-layout: fixed; word-wrap: break-word">
+	<tr bgcolor="<?=ALTBG1?>">
+		<td>
+		<div class="field" id="fileFields">	
+		<div class="formHelp"><?=LANG_A_PRODUCT_ADD_IMAGE_UPLOAD_DESC?></div>  
+		<input type="file" id="resourceFile_1" name="image[]" /> <?=LANG_A_PRODUCT_ADD_IMAGE_TITLE?> <input type="text" name="image_title[]" /> <?=LANG_A_PRODUCT_ADD_IMAGE_SETDEFAULTIMAGE?><input type="radio" name="setdefaultimage" value="0"><br>
+		<div id="marker" style="clear:none;"></div>
+		<a href="javascript:addElementToForm('fileFields')"><?=LANG_A_PRODUCT_ADD_IMAGE_UPLOAD_URL?></a>
+		</td>
+	</tr>
+</table>
+<?include(ADMIN_TPL.'footer.htm')?>

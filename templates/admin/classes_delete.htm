@@ -1,0 +1,45 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="6" width="100%" class="tableout" align="center">
+<tr class="header" >
+	<td colspan="2"><?=$lang_common['system_notice_']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td width="30%"><li><?=$lang_a_classes['class_name_']?></td>
+	<td><b><?=$class_data['title']?></b></td>
+</tr>
+<?if($childs_num){?>
+<tr class="bgcolor1">
+	<td colspan="2" style="color:red"><li><?=sprintf($lang_a_classes['delete_warning_childs'], $childs_num)?></td>
+</tr>
+<?}?>
+<?if($products_num){?>
+<tr class="bgcolor1">
+	<td colspan="2" style="color:red"><li><?=sprintf($lang_a_classes['delete_warning_products'],$products_num)?></td>
+</tr>
+<?}?>
+<?if(!$products_num && !$childs_num){?>
+<tr class="bgcolor1">
+	<td colspan="2" style="color:red"><li><?=$lang_a_classes['delete_warning_safe']?></td>
+</tr>
+<?}?>
+</table>
+<br />
+<form method="post" name="classes" action="admin.php">
+<input type="hidden" name="classes_id" value="<?=$class_data['classes_id']?>">
+<input type="hidden" name="act" value="classes">
+<input type="hidden" name="action" value="delete">
+<br />
+
+<center>
+<input type="submit" name="submit" value="   <?=$lang_common['makesure']?>   " class="bginput">
+<input type="button" name="button" value="   <?=$lang_common['back']?>   " onClick="javascript:history.go(-1)" class="bginput">
+</center>
+</form>
+<br />
+<br />
+
+<?include(ADMIN_TPL.'footer.htm')?>

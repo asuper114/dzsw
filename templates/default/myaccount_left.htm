@@ -1,0 +1,49 @@
+<?if(!defined('IN_dzsw')) exit('Forbidden');?>
+
+<table border="0" cellspacing="1" cellpadding="4" width="100%">
+    <tr>
+		<td><h2><?=$lang_myaccount_left['myaccount']?></h2></td>
+	</tr>
+    <tr>
+		<td><img src="<?=$styles['imagedir']?>/arrow_green.gif" border="0" alt="" width="12" height="10"><a href="myaccount.php?type=email"><?=$lang_myaccount_left['myaccount_c_email']?></a></td>
+	</tr>
+    <tr>
+		<td><img src="<?=$styles['imagedir']?>/arrow_green.gif" border="0" alt="" width="12" height="10"><a href="myaccount.php?type=password"><?=$lang_myaccount_left['myaccount_c_password']?></a></td>
+	</tr>
+    <tr>
+		<td><img src="<?=$styles['imagedir']?>/arrow_green.gif" border="0" alt="" width="12" height="10"><a href="myaccount.php?type=address"><?=$lang_myaccount_left['myaccount_c_addressbook']?></a></td>
+	</tr>
+
+	<?if($settings['show_qq'] == 'true' || $settings['show_msn'] == 'true'){?>
+    <tr>
+		<td><img src="<?=$styles['imagedir']?>/arrow_green.gif" border="0" alt="" width="12" height="10"><a href="myaccount.php?type=qqmsn"><?=$lang_myaccount_left['myaccount_c_qqmsn']?></a></td>
+	</tr>
+	<?}?>
+	<?if($settings['user_leavepay'] == 'true'){?>
+    <tr>
+		<td><img src="<?=$styles['imagedir']?>/arrow_green.gif" border="0" alt="" width="12" height="10"><a href="myaccount.php?type=leavemoney"><?=$lang_myaccount_left['myaccount_leavemoney']?></a></td>
+	</tr>
+	<?}?>
+
+    <tr>
+		<td><h2><?=$lang_myaccount_left['myaccount_orders']?></h2></td>
+	</tr>
+    <tr>
+		<td><img src="<?=$styles['imagedir']?>/arrow_green.gif" border="0" alt="" width="12" height="10"><a href="myaccount.php?type=order&act=all"><?=$lang_myaccount_left['myaccount_orders_all']?></a></td>
+	</tr>
+    <tr>
+		<td><img src="<?=$styles['imagedir']?>/arrow_green.gif" border="0" alt="" width="12" height="10"><a href="myaccount.php?type=order&pam=cancel"><?=$lang_myaccount_left['myaccount_orders_cancel']?></a></td>
+	</tr>
+    <tr>
+		<td><img src="<?=$styles['imagedir']?>/arrow_green.gif" border="0" alt="" width="12" height="10"><a href="myaccount.php?type=payback_method"><?=$lang_myaccount_left['payback_method']?></a></td>
+	</tr>
+
+    <tr>
+		<td height="5"></td>
+	</tr>
+
+	<tr>
+		<td><a href="dzsw.php?act=logoff"><h2><?=$lang_myaccount_left['myaccount_logout']?></h2></a></td>
+	</tr>
+    
+</table>

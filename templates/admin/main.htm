@@ -1,0 +1,112 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<table cellspacing="0" cellpadding="0" width="100%">
+<tr>
+	<td><b style="font-size:20"><?=$lang_a_main['header_1']?> <a href="http://www.dzsw.com" target="_blank">dzsw</a> <?=$lang_a_main['header_2']?></b></td>
+</tr>
+<tr>
+	<td align="right"><?=$lang_a_main['copyright_']?>&copy; <a href="http://www.dzsw.com" target="_blank">dzsw Studio</a>, 2005-2006.</td>
+</tr>
+</table>
+
+<br />
+<br />
+<table cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header">
+	<td colspan="6"><?=$lang_a_main['systeminfo']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td width="20%"><?=$lang_a_main['php_os_']?></td>
+	<td width="29%"><?=PHP_OS?></td>
+	<td class="header">&nbsp;</td>
+	<td width="20%"><?=$lang_a_main['serverfoft_']?></td>
+	<td width="29%"><?=$sysos?></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_main['phpversion_']?></td>
+	<td><?=PHP_VERSION?></td>
+	<td class="header">&nbsp;</td>
+	<td><?=$lang_a_main['mysqlversion_']?></td>
+	<td><?=$dbversion?></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_main['prococol_']?></td>
+	<td><?=$protocol?></td>
+	<td class="header">&nbsp;</td>
+	<td><?=$lang_a_main['mail_method_']?></td>
+	<td><?=$system_mail?></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_main['allowgdlibrary_']?></td>
+	<td><?=$allowgdlibrary?></td>
+	<td class="header">&nbsp;</td>
+	<td><?=$lang_a_main['register_global_']?></td>
+	<td><?=$register_globals?></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_main['shopversion_']?></td>
+	<td><?=$settings['store_version']?></td>
+	<td class="header"></td>
+	<td><?=$lang_a_main['uploadfile_']?></td>
+	<td><?=$fileupload?></td>
+</tr>
+</table>
+
+<br />
+<br />
+
+<table cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header">
+	<td colspan="6"><?=$lang_a_main['datacount']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td width="22%"><?=$lang_a_main['class_count_']?></td>
+	<td width="27%"><?=$classesnum?></td>
+	<td class="header">&nbsp;</td>
+	<td width="22%"><?=$lang_a_main['product_count_']?></td>
+	<td width="27%"><?=$productsnum?></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_main['cutomer_count_']?></td>
+	<td><?=$customersnum?></td>
+	<td class="header">&nbsp;</td>
+	<td><?=$lang_a_main['order_count_']?></td>
+	<td><?=$ordersnum?></td>
+</tr>
+<tr class="bgcolor1">
+	<td colspan="5"><?=$lang_a_main['order_new_']?><?=$ordersaddnew?></td>
+</tr>
+</table>
+
+<br />
+<br />
+
+<table cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header">
+	<td colspan="2">dzsw <?=$lang_a_main['development_group']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td width="50%"><?=$lang_a_main['copyright_']?></td>
+	<td><a href="http://www.dzsw.com" target="_blank">dzsw Studio</a></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_main['script_develop_design_']?></td>
+	<td><a href="http://forum.dzsw.com/viewpro.php?username=dzsw" target="_blank">dzsw</a></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_main['face_design_']?></td>
+	<td><a href="http://forum.dzsw.com/viewpro.php?username=dzsw" target="_blank">dzsw</a></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_main['face_art_']?></td>
+	<td><a href="http://forum.dzsw.com/viewpro.php?username=Robbie" target="_blank">Robbie</a></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_main['community']?></td>
+	<td><a href="http://forum.dzsw.com" target="_blank">http://forum.dzsw.com</a></td>
+</tr>
+</table>
+
+<?include(ADMIN_TPL.'footer.htm');?>
+

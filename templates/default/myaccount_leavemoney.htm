@@ -1,0 +1,34 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+
+<?php include template("navbar");?>
+
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<tr class="bgcolor1">
+		<td valign="top">
+			<?include template("myaccount_left");?>
+		</td>
+		<td width="76%">
+
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center">
+			<tr class="bgcolor1">
+				<td><?php echo $customer_data['email'];?>&nbsp;&nbsp;&nbsp;<?=$lang_myaccount_leavemoney['hello']?></td>
+			</tr>
+			</table>
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center" class="tableout">
+			<tr class="bgcolor1">
+				<td><?=$lang_myaccount_leavemoney['leavemoney']?><?=$leavemoney?></td>
+			</tr>
+			</table>
+			<br />
+			<br />
+			<br />
+	
+		</td>
+		
+	</tr></table>
+</div>
+<? include template("footer");?>
+
+

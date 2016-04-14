@@ -1,0 +1,61 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+
+<?php include template("navbar");?>
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<tr class="bgcolor1">
+		<td valign="top">
+			<?include template("myaccount_left");?>
+		</td>
+		<td width="76%" valign="top">
+
+			<div>
+				<h1><?php echo $lang_myaccount_qqmsn['description'];?></h2>
+			</div>
+
+			<?php if(is_array($message_all) && $message_all['0']){?>
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+			<?php foreach($message_all as $key=>$value){?>
+			<tr class="bgcolor2" style="color:red">
+				<td><img src="./images/icons/error.gif" border="0">&nbsp;&nbsp;&nbsp;<?=$value?></td>
+			</tr>
+			<?php }?>
+			</table>
+			<br />
+			<?php }?>
+		
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+			<form name="form" action="myaccount.php" method="post" onSubmit="return checkform();">
+			<input type="hidden" name="type" value="qqmsn">
+			<input type="hidden" name="action" value="update">
+			<tr class="header" >
+				<td colspan="2"><?=$lang_myaccount_qqmsn['changeqqmsn']?></td>
+			</tr>
+			<?php if($settings['show_qq'] == 'true'){?>
+			<tr class="bgcolor1" >
+				<td align="right" width="40%"><?=$lang_myaccount_qqmsn['qq_']?></td>
+				<td><input type="text" name="qq" value="<?=$customer_data['qq']?>"></td>
+			</tr>
+			<?php }?>
+
+			<?php if($settings['show_msn'] == 'true'){?>
+			<tr class="bgcolor1" >
+				<td align="right"><?=$lang_myaccount_qqmsn['msn_']?></td>
+				<td><input type="text" name="msn" value="<?=$customer_data['msn']?>"></td>
+			</tr>
+			<?php }?>
+			<tr  class="bgcolor2">
+				<td align="center" colspan="2"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+			</tr>
+			</form>
+			</table>
+			<br />
+			<br />
+
+		</td>
+		
+	</tr></table>
+</div>
+
+<? include template("footer");?>

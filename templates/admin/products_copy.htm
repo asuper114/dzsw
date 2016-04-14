@@ -1,0 +1,47 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?if($message_all['0']){?>
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<?foreach($message_all as $key=>$value){?>
+<tr class="bgcolor1">
+	<td width="5%"><img src="images/icons/error.gif" border="0"></td>
+	<td class="messagetxt"><?=$value?></td>
+</tr>
+<?}?>
+</table>
+<?}?>
+
+<form method="get" name="form" action="admin.php">
+<input type="hidden" name="act" value="products">
+<input type="hidden" name="h_action" value="copy">
+<input type="hidden" name="products_id" value="<?=$products_id?>">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="header">
+	<td colspan="2"><?=$lang_a_product['copy_product']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_product['name_']?></td>
+	<td><b><a href="product_detail.php?products_id=<?=$product_data['products_id']?>" target="_blank"><?=$product_data['pname']?></b></td>
+</tr>
+
+<tr class="bgcolor1">
+	<td><?=$lang_a_product['chose_aim_class_']?></td>
+	<td><select name="classes_id"> 
+       <?=$classes_select?>
+       </select>
+	</td>
+</tr>
+</table>
+
+<br />
+<center>
+<input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">&nbsp;
+<input type="button" value="  <?=$lang_common['back']?>  " onClick="javascript:history.back(-1)" class="bginput">
+</center>
+</form>
+<br />
+<br />
+
+<?include(ADMIN_TPL.'footer.htm')?>

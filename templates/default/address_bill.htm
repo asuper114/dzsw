@@ -1,0 +1,126 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+<script language=JavaScript src="./js/province.js" type="text/javascript"></script>
+<script language=JavaScript src="./js/loadprovince.js" type="text/javascript"></script>
+
+<?php include template("navbar");?>
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor">
+	<tr>
+		<td>
+			<?php echo $lang_confirm_step['confirm_step_'];?>
+			<?php echo $confirm_step;?>
+		</td>
+	</tr>
+	</table> 
+</div>   
+
+<?php if($address_data['0']){?>
+<div class="main">
+	<h2><?=$lang_address_bill['description']?></h2>
+</div>
+
+<div class="main">
+	<form name="research" action="address_bill.php" method="post">
+	<input type="hidden" name="action" value="submit">
+	<input type="hidden" name="type_" value="old">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+	<tr class="header">
+		<td><?=$lang_address_bill['street']?></td>
+		<td width="20%"><?=$lang_address_bill['name']?></td>
+		<td width="10%"><?=$lang_address_bill['postcode']?></td>
+	</tr>
+	<?php foreach($address_data as $val){?>
+	<tr class="bgcolor1">
+		<td>
+			<input type="radio" name="abid" value="<?=$val['abid']?>" <?=$val['checked']?>><?=$val['street_address']?>
+		</td>
+		<td width="20%"><?=$val['name']?></td>
+		<td width="10%"><?=$val['postcode']?></td>
+	</tr>
+	<?}?>
+	<tr class="bgcolor1">
+		<td align="center" colspan="3"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+	</tr>
+	</form>
+	</table>
+</div>
+<div class="main">
+	<table  border="0" cellspacing="0" cellpadding="0" width="100%" align="center">
+	<tr>
+		<td><a href="myaccount.php?type=address"><b><?=$lang_address_bill['admin_addressbook']?></b></a></td>
+	</tr>
+	</table>
+</div>
+<?}?>
+		
+<?if(is_array($message_all2) && $message_all2['0']){?>
+<div class="main">	
+	<br />
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+	<?foreach($message_all2 as $key=>$value){?>
+	<tr class="messagetxt">
+		<td class="bgcolor1"><img src="./images/icons/error.gif" border="0">&nbsp;&nbsp;&nbsp;<?=$value?></td>
+	</tr>
+	<?}?>
+	</table>
+</div>
+<?}?>
+
+<div class="main">
+	<br />
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+	<form name="research" action="address_bill.php" method="post">
+	<input type="hidden" name="action" value="submit">
+	<input type="hidden" name="type_" value="new">
+	<tr class="header">
+		<td><?=$lang_address_bill['new_address']?></td>
+	</tr>
+	<tr class="bgcolor1">
+		<td align="left">
+			<?php if($show_country){?>
+			<?=$lang_common['country:']?><select id="country" name="country" onChange="goprovince('','','');"> </select>
+			<?}?>
+			<?=$lang_common['province:']?><select id="province" name="province" onChange="gocity('','');"></select>
+			<?=$lang_common['city:']?><select id="city" name="city"></select>
+		</td>
+	</tr>
+	<tr class="bgcolor1">
+		<td align="left">
+			<?=$lang_address_bill['street:']?><input type="text" name="street_address" value="<?=$street_address?>" size="50">&nbsp;&nbsp;&nbsp;<?=$lang_address_bill['name:']?><input type="text" name="name" value="<?=$name?>" size="10">&nbsp;&nbsp;&nbsp;<?=$lang_address_bill['postcode:']?><input type="text" name="postcode" value="<?=$postcode?>" size="6">
+		</td>
+	</tr>
+	<tr class="bgcolor1">
+		<td>
+			<?=$lang_address_bill['regular:']?><input type="text" name="tel_regular" value="<?=$tel_regular?>">
+			<?=$lang_address_bill['mobile:']?><input type="text" name="tel_mobile" value="<?=$tel_mobile?>">	
+		</td>
+	</tr>
+	<tr class="bgcolor1">
+		<td align="center"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+	</tr>
+	</form>
+	</table>
+	<br />
+	<br />
+</div>			
+
+<script language="JavaScript" type="text/javascript">
+	<?php if($show_country){?>
+	gocountry("country");
+	SelectList("country","<?php echo $country_default;?>");
+	goprovince("country","province","city");
+	<?}else{?>
+	goprovince(<?=$country_default?>,"province","city");
+	<?}?>
+	<?php if($province != ""){?>
+	SelectList("province","<?php echo $province;?>");
+	<?php }?>
+	<?php if($city != ""){?>
+	gocity("province","city");
+	SelectList("city","<?php echo $city;?>");
+	<?php }?>
+</script>
+
+
+<? include template("footer");?>

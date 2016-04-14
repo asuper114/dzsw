@@ -1,0 +1,43 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<html>
+<head>
+<title>dzsw <?=$settings['store_version']?> <?=$lang_a_common['boared_system_set']?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=<?=$styles['charset']?>">
+</head>
+<body leftmargin="0" topmargin="0" style="background: threedface; color: windowtext;">
+<table height="100%" cellSpacing=0 cellPadding=0 border=0 valign="middle">
+<tr>
+    <td style="CURSOR: hand" onclick="HideList()">
+		<img src="./images/admin/left.gif" border=0 name=arrow id=arrow alt="<?php echo $lang_a_common['click_to_close']?>" title="<?php echo $lang_a_common['click_to_close']?>">
+	</td>
+</tr>
+</table>
+<script language=javascript>
+	var liststatus = 1;	
+	
+	var obj_Arrow = document.getElementById('arrow');
+	var obj_Frame = window.top.document.getElementById('shop');
+
+	function HideList()
+	{
+		if (liststatus == 1)
+		{
+			obj_Arrow.src="./images/admin/right.gif";
+			obj_Arrow.title="<?=$lang_a_common['click_to_open']?>";
+			obj_Frame.cols="0,20,*";
+			liststatus = 0;	
+		}
+		else
+		{
+			obj_Arrow.src="./images/admin/left.gif";
+			obj_Arrow.title="<?=$lang_a_common['click_to_close']?>";
+			obj_Frame.cols="160,20,*";
+			liststatus = 1;	
+		}
+
+	}
+</script>
+
+</body>
+</html>
+

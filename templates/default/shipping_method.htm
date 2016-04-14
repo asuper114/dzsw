@@ -1,0 +1,81 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+
+<?php include template("navbar");?>
+
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center" class="tablebordercolor">
+	<tr>
+		<td>
+			<?php echo $lang_confirm_step['confirm_step_'];?>
+			<?php echo $confirm_step;?>
+		</td>
+	</tr>
+	</table>
+</div>
+
+
+<?php if(is_array($message_all) && $message_all['0']){?>
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="80%" class="tablebordercolor" align="center">
+	<?php foreach($message_all as $key=>$value){?>
+	<tr>
+		<td>
+			<img src="./images/icons/error.gif" border="0">&nbsp;&nbsp;&nbsp;<?=$value?>
+		</td>
+	</tr>
+	<?}?>
+	</table>
+</div>			
+<?}?>
+
+
+<?if(is_array($shipping_list_data)) {?>
+
+<div class="main">
+	<h2><?=$lang_shipping_method['description']?></h2>
+</div>
+<div class="main">			
+	<form name="checkout" action="shipping_method.php" method="post">
+					
+	<table border="0" cellspacing="1" cellpadding="4" width="100%"  align="center" class="tableout">
+	<tr class="header">
+		<td colspan="2"><?=$lang_shipping_method['shipping_method']?></td>
+		<td><?=$lang_shipping_method['shipping_fee']?></td>
+	</tr>
+	<?foreach($shipping_list_data as $key=>$val){if($val['status']){?>
+	
+	<tr class="bgcolor1">
+		<td width="5%" valign="top">
+			<input type="radio" name="shippingid" value="<?=$val['shippingid']?>" <?if($val['shippingid'] == $customer_data['shipping_method']){?>checked<?}?>>
+		</td>
+		<td><b><?=$val['title']?></b><br><?=$val['description']?></td>
+		<td width="25%"><?=$val['money_text']?></td>
+	</tr>
+	<?}}?>
+	</table>
+	<br />
+</div>
+<div class="main">
+	<div align="center">
+		<input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">
+	</div>
+	</form>
+</div>
+
+<?}else{?>
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%"  align="center" class="tableout">
+	<tr class="bgcolor1">
+		<td><?=$lang_shipping_method['method_empty']?>
+		<br />
+		<br />
+		<br />
+		<a href="address_ship.php"><?=$lang_shipping_method['change_address_ship']?></a></td>
+	</tr>
+	</table>
+	<br />
+</div>
+
+<?}?>
+
+<? include template("footer");?>

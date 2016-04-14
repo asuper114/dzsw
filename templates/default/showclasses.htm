@@ -1,0 +1,37 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header");?>
+
+<?php include template("navbar_table");?>
+
+<div class="main">
+</div>
+
+<!-- The classes of products used for the page top start -->
+<div class="main">
+	<a href="index.php" target=_self><?=$lang_header['index']?></a>
+	<?if(is_array($showinheaderlist)){ foreach($showinheaderlist as $value){ ?>
+		<img src="<?=$styles['imagedir']?>/bull_sm_r.gif">
+		<a href="classes.php?classes_id=<?=$value['classes_id']?>" target=_self><?=$value['title']?></a>
+	<?}}?> 
+		
+</div>
+<!-- The classes of products used for the page top end -->
+
+<?php foreach($classes_box as $val){?>
+<div class="main">
+	<table cellSpacing=1 cellPadding=4 width="100%" border="0" class="tableout">
+	<tr class="header">
+		<td>
+			<?php echo $val['strings'];?>
+		</td>
+	</tr>
+	<?php if($classes_box_sun_[$val['classes_id']]){?>
+	<tr class="bgcolor1">
+		<td>
+			&nbsp;<?php echo $classes_box_sun_[$val['classes_id']];?>
+		</td>
+	</tr>
+	<?php }?>
+	</table>
+</div>
+<?php }?>
+<? include template("footer")?>				

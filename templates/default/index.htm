@@ -1,0 +1,139 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header");?>
+
+<!-- The classes of products used for the page top start -->
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="6" width="100%" class="tablebordercolor">
+	<tr>
+		<td>
+			<img src="<?=$styles['imagedir']?>/bull_sm_r.gif">
+			<a href="index.php" target=_self><?=$lang_header['index']?></a>
+			<?if(is_array($showinheaderlist)){ foreach($showinheaderlist as $key=>$value){ ?>
+				<img src="<?=$styles['imagedir']?>/bull_sm_r.gif">
+				<a href="classes.php?classes_id=<?=$value['classes_id']?>" target=_self><?=$value['title']?></a>
+			<?}}?> 
+		</td>
+	</tr>
+	</table>
+</div>
+<!-- The classes of products used for the page top end -->
+
+<!-- Store news start -->
+<div class="main">
+	<table cellSpacing=0 cellPadding=0 width="100%" border=0 background="<?=$styles['imagedir']?>/title_bg.gif">
+	<tr>
+		<td><img src="<?=$styles['imagedir']?>/title_right.gif" align="middle">&nbsp;<?=$lang_index['store_news']?></td>
+		<td width="10%"><a href="newslist.php" target=_blank>More</a></td>
+	</tr>
+	</table>
+</div>
+<div class="main">
+	<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tablebordercolor">
+	<tr>
+		<td align="center">
+		<?php if($store_news){?>
+			<marquee direction="left" scrollamount="3" onMouseOver="this.stop();" onMouseOut="this.start();">
+				<?php echo $store_news;?>
+			</marquee>
+		<?php }else{?>
+			<?php echo $lang_index['store_news_empty'];?>
+		<?php }?>
+		</td>
+	</tr>
+	</table>
+</div>
+<!-- Store news end -->
+
+<!-- Specials product start -->
+<?if($show_specials){?>
+<div class="main">		
+	<table cellSpacing=0 cellPadding=0 width="100%" border=0 background="<?=$styles['imagedir']?>/title_bg.gif">
+	<tr>
+		<td><img src="<?=$styles['imagedir']?>/title_right.gif" align="middle">&nbsp;<?=$lang_index['product_s']?></td>
+		<td width="10%"><a href="specials.php" target=_blank>More</a></td>
+	</tr>
+	</table>
+</div>
+<?foreach($s_products_list as $key=>$value){?>
+<div class="main">		
+	<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tableout" style="table-layout: fixed; word-wrap: break-word;">
+	<tr class="bgcolor1">
+		 <?for($i=0;$i<$num_a_row;$i++){?>
+			  <td align="center" valign="top"><?php echo $value[$i];?></td>
+		 <?}?>
+	</tr>
+	</table>
+</div>			
+<?}?> 
+<?}?>
+<!-- Specials product end -->
+
+
+<!-- New product start -->
+<?if($show_new){?>
+<div class="main">
+	<table cellSpacing=0 cellPadding=0 width="100%" border=0 background="<?=$styles['imagedir']?>/title_bg.gif">
+	<tr>
+		<td>&nbsp;<img src="<?=$styles['imagedir']?>/title_right.gif" align="middle">&nbsp;<?=$lang_index['product_new']?></td>
+		<td width="10%"><a href="newproducts.php" target=_blank>More</a></td>
+	</tr>
+	</table>
+</div>
+<?foreach($new_products_list as $key=>$value){?>
+<div class="main">
+	<table cellSpacing=1 cellPadding=4 width="100%" border="0" class="tableout" style="table-layout: fixed; word-wrap: break-word;">
+	<tr class="bgcolor1" align="center" valign="top">
+		<?for($i=0;$i<$num_a_row;$i++){?>
+			<td><?php echo $value[$i];?></td>
+		<?}?>
+	</tr>
+	</table>
+</div>	
+<?}?>	 
+<?}?>
+<!-- New product end -->
+
+
+<!-- Faq in bottom start -->
+<div class="main">
+	<br />
+	<br />
+	<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tableout" style="table-layout: fixed; word-wrap: break-word;">
+	<tr class="header">
+		<?if(is_array($faq_title)){foreach($faq_title as $key=>$value){?>
+		<td><?=$value['title']?></td>
+		<?}}?>
+	</tr>
+	<tr class="bgcolor1">
+		<?if(is_array($faq_title)){ reset($faq_title);foreach($faq_title as $key=>$value){?>
+		<td valign="top">
+		<?if(is_array($value['subject'])){foreach($value['subject'] as $key2=>$value2){?>
+			 <a href="faq.php?faq_page=<?=$key?>#<?=$key2?>"><?=$value2?><br>
+		<?}}?>
+		</td>
+		<?}}?>
+	</tr>
+	</table>
+</div>
+<!-- Faq in bottom end -->
+
+<!-- Links in bottom start -->
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<tr class="header">
+		<td><?=$lang_index['links']?></td>
+	</tr>
+	<?if($cache_links['a']){?>
+	<tr class="bgcolor1">
+		<td><?=$cache_links['a']?></td>
+	</tr>
+	<?}?>
+	<?if($cache_links['b']){?>
+	<tr class="bgcolor1">
+		<td><?=$cache_links['b']?></td>
+	</tr>
+	<?}?>
+	</table>
+</div>
+<!-- Links in bottom end -->
+
+<?include template("footer");?>

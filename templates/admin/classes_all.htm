@@ -1,0 +1,25 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<form method="post" name="classes" action="admin.php">
+<input type="hidden" name="act" value="classes">
+<input type="hidden" name="action" value="savesort">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center" style="word-break:break-all;">
+<tr class="header">
+	<td><?=$lang_a_classes['class_all']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$calsses_all?></td>
+</tr>
+</table>
+
+<br />
+<br />
+<center>
+	<input type="submit" name="submit" value="   <?=$lang_common['submit']?>   " class="bginput">
+</center>
+</form>
+
+<?include(ADMIN_TPL.'footer.htm')?>

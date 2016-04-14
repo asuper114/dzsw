@@ -1,0 +1,28 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>  
+  
+<?include ADMIN_TPL.'message_all.htm';?>  
+<br>	
+<table border="0" width="95%" cellspacing="<?=BORDERWIDTH?>" cellpadding="<?=TABLESPACE?>" class="tableout" style="table-layout: fixed; word-wrap: break-word;" align="center">
+<form method="post" name="form" action="<?=soobic_link('admin.php')?>">
+<input type="hidden" name="act" value="gbook">
+<input type="hidden" name="action" value="<?=$type?>">
+<input type="hidden" name="gid" value="<?=$gid?>">
+<input type="hidden" name="page" value="<?=$page?>">
+<tr bgcolor="<?=ALTBG1?>">
+	<td valign="top" width="16%"><?=LANG_A_GBOOK_TEXT?></td>
+	<td><?=$text?></td>
+</tr>
+<tr bgcolor="<?=ALTBG1?>">
+	<td valign="top"><?=LANG_A_GBOOK_REPLY?></td>
+	<td><textarea rows="10" cols="85" name="text"><?=$text?></textarea></td>
+</tr>
+</table><br>
+<table  border="0" cellspacing="<?=BORDERWIDTH?>" cellpadding="<?=TABLESPACE?>" width="95%" class="tableout" align="center">
+<tr bgcolor="<?=ALTBG2?>">
+	<td align="center"><input type="submit" name="submit" value="  <?=LANG_SUBMIT?>  "></td>
+</tr>
+</form></table> 
+  
+<?include(ADMIN_TPL.'footer.htm')?>
+	 

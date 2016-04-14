@@ -1,0 +1,24 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="bgcolor1">
+	<td><?php echo $lang_a_product['name_'];?><a href="product_detail.php?products_id=<?php echo $product_data['products_id'];?>" target="_blank"><?php echo $product_data['pname'];?></a></td>
+</tr>
+</table>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="bgcolor1">
+	<td <?php if($type=='detail_common'){?>class="bold bgcolor2"<?php }?> align="center"><a href="admin.php?act=products&type=detail_common&products_id=<?php echo $products_id;?>"><?php echo $lang_a_product['detail_common'];?></a></td>
+
+	<td <?php if($type=='detail_desc'){?>class="bold bgcolor2"<?php }?> align="center"><a href="admin.php?act=products&type=detail_desc&products_id=<?php echo $products_id;?>"><?php echo $lang_a_product['detail_desc'];?></a></td>
+
+	<td <?php if($type=='detail_image'){?>class="bold bgcolor2"<?php }?> align="center"><a href="admin.php?act=products&type=detail_image&products_id=<?php echo $products_id;?>"><?php echo $lang_a_product['detail_image'];?></a></td>
+
+	<td <?php if($type=='detail_classes'){?>class="bold bgcolor2"<?php }?> align="center"><a href="admin.php?act=products&type=detail_classes&products_id=<?php echo $products_id;?>"><?php echo $lang_a_product['detail_classes'];?></a></td>
+
+	<td <?php if($type=='detail_price'){?>class="bold bgcolor2"<?php }?> align="center"><a href="admin.php?act=products&type=detail_price&products_id=<?php echo $products_id;?>"><?php echo $lang_a_product['detail_price'];?></a></td>
+
+</tr>
+</table>

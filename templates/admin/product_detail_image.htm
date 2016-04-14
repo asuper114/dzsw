@@ -1,0 +1,122 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'product_detail_top.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<?php if($image_data['0']){foreach($image_data as $key=>$val){?>
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="bgcolor2">
+	<?if($val['name']['0']){foreach($val['name'] as $val_name){?>
+	<td>
+		<?=$val_name?>
+	</td>
+	<?}}?>
+</tr>
+<tr class="bgcolor1">
+	<?php if($val['imagesrc']['0']){foreach($val['imagesrc'] as $val_src){?>
+	<td valign="top">
+		<?php if($val_src){?>
+		<img src="<?=$val_src?>" width="<?=$settings['smallimage_width']?>">
+		<?}?>
+	</td>
+	<?}}?>
+</tr>
+<tr class="bgcolor1">
+	<?php if($val['imageid']['0']){foreach($val['imageid'] as $val_id){?>
+	<td>
+		<?php if($val_id != $product_data['image'] && $val_id){?>
+		<a href="admin.php?act=products&h_action=image_default&pid=<?=$products_id?>&id=<?=$val_id?>"><?=$lang_a_product['image_setdefault']?></a>&nbsp;&nbsp;&nbsp;<a href="admin.php?act=products&h_action=image_delete&pid=<?=$products_id?>&id=<?=$val_id?>"><?=$lang_common['delete']?></a>
+		<?}elseif($val_id){?>
+		<b><?=$lang_a_product['image_default']?></b>
+		&nbsp;&nbsp;&nbsp;<a href="admin.php?act=products&h_action=image_delete&pid=<?=$products_id?>&id=<?=$val_id?>"><?=$lang_common['delete']?></a>
+		<?}?>
+
+	</td>
+	<?php }}?>
+</tr>
+</table>
+<?php }}?>
+
+
+<br />
+<form method="post" name="form" action="admin.php" enctype="multipart/form-data">
+<input type="hidden" name="act" value="products">
+<input type="hidden" name="h_action" value="image_add">
+<input type="hidden" name="products_id" value="<?=$products_id?>">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header">
+	<td><?=$lang_a_product['addimage_']?><a href="javascript:void 0" onclick="addimage('fileFields');"><?=$lang_a_product['addmoreimage_']?></a></td>
+</tr>
+<tr class="bgcolor2">
+    <td>
+		<div class="field" id="fileFields">	
+		<div><?=$lang_a_product['upload_image_desc']?></div> 
+		<div id="marker" style="clear:none;"></div>
+		</div>
+	</td>
+</tr>
+</table>
+
+<script>
+<!--
+	addimage('fileFields');
+
+	function browserDetect(){
+		var sUA = navigator.userAgent.toLowerCase();
+		var sIE = sUA.indexOf("msie");
+		var dzswera = sUA.indexOf("opera");
+		var sMoz = sUA.indexOf("gecko");
+		if (dzswera != -1) return "opera";
+		if (sIE != -1){
+			return "ie";
+		}
+		if (sMoz != -1)	return "moz";
+		return "other";
+	}
+
+	function addimage(containerName){
+		var separator = document.getElementById('marker');
+		var container = document.getElementById(containerName);
+		var BROWSER = browserDetect();
+
+		if (BROWSER == 'ie'){//isie
+			var objinput1 = document.createElement('<input type="file" name="image[]" value="">'); 
+			var objinput2 = document.createElement('<input type="text" name="image_title[]" value="">');
+
+		}else {
+			var objinput1 = document.createElement('INPUT');
+			var objinput2 = document.createElement('INPUT');
+
+			objinput1.type = "file";
+			objinput1.name = "image[]";
+			objinput2.type = "text";
+			objinput2.name = "image_title[]";	
+
+		}
+		var imagedesc = document.createTextNode(" <?=$lang_a_product[image_desc_]?>"); 
+		var newLine = document.createElement('BR');
+
+		container.insertBefore(objinput1,separator);
+		container.insertBefore(imagedesc,separator);
+		container.insertBefore(objinput2,separator);
+		container.insertBefore(newLine,separator);
+
+	}
+
+-->
+</script>
+
+
+<br />
+<center>
+<input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">&nbsp;
+<input type="button" value="  <?=$lang_common['back']?>  " onClick="javascript:history.back(-1)" class="bginput">
+</center>
+</form>
+<br />
+<br />
+
+<?include(ADMIN_TPL.'footer.htm')?>

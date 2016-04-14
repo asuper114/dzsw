@@ -1,0 +1,93 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+
+<?php include template("navbar");?>
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<tr class="bgcolor1">
+		<td valign="top">
+			<?include template("myaccount_left");?>
+		</td>
+		<td width="76%" valign="top">
+			
+			<div>
+				<h1><?php echo $lang_myaccount_payback['header_1'];?></h2>
+			</div>
+			
+			<form name="form" action="myaccount.php" method="post">
+			<input type="hidden" name="type" value="payback_method">
+			<input type="hidden" name="action" value="update">
+			<?php if($settings['user_leavepay'] == 'true'){?>
+			<table cellSpacing="1" cellPadding="4" width="100%" border="0" class="tablebordercolor">
+			<tr>
+				<td><input type="radio" name="payreturn" value="myaccount" <?php if($payback_data['payreturn'] == 'myaccount'){?>checked="checked"<?php }?>  /><?php echo $lang_myaccount_payback['payreturn_1'];?>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="radio" name="payreturn" value="choose" <?php if($payback_data['payreturn'] == 'choose'){?>checked="checked"<?php }?> /><?php echo $lang_myaccount_payback['payreturn_2'];?>
+				</td>
+			</tr>
+			<tr>
+				<td><input type="radio" name="payreturn" value="all" <?php if($payback_data['payreturn'] == 'all'){?>checked="checked"<?php }?> /><?php echo $lang_myaccount_payback['payreturn_3'];?></td>
+			</tr>
+			</table>
+			<br />
+			<div>
+				<h1><?php echo $lang_myaccount_payback['header_2'];?></h2>
+			</div>
+			<?php }?>
+			<table cellSpacing="1" cellPadding="4" width="100%" border="0" class="tableout">
+			<tr class="bgcolor1">
+				<td>
+					<input  type="radio" name="payback" value="post" <?php if($payback_data['payback'] == 'post'){?>checked="checked"<?php }?> /><?php echo $lang_myaccount_payback['payback_1'];?>
+				</td>
+			</tr>
+			<tr class="bgcolor1">
+				<td>
+					<div style="clear:both;width:100%;">
+						<input type="radio" name="payback" value="bank" <?php if($payback_data['payback'] == 'bank'){?>checked="checked"<?php }?> /><?php echo $lang_myaccount_payback['payback_2'];?>
+					</div>
+					<div style="margin-left:15px;width:50%;float:left;clear:right;">
+						<table width="100%" align="left" border="0">
+						<tr>
+							<td width="30%">
+								<div align="right"><?php echo $lang_myaccount_payback['payback_2_name'];?></div>
+							</td>
+							<td width="70%">
+								<input name="name" id="name" type="text" maxlength="25" value="<?php echo $payback_data['name'];?>" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div align="right"><?php echo $lang_myaccount_payback['payback_2_cartnum'];?></div>
+							</td>
+							<td>
+								<input name="cartnum" id="cartnum" type="text" maxlength="50" value="<?php echo $payback_data['cartnum'];?>" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div align="right"><?php echo $lang_myaccount_payback['payback_2_bankname'];?></div>
+							</td>
+							<td>
+								<input name="bankname" id="bankname" type="text" maxlength="50" value="<?php echo $payback_data['bankname'];?>" />
+							</td>
+						</tr>
+						</table>
+					</div>
+					<div style="margin-left:15px;float:right;clear:right;">
+						<?php echo $lang_myaccount_payback['payback_2_desc'];?>
+					</div>
+			</tr>
+			</table>
+			<br />
+
+			<div align="center">
+				<input type="submit" name="submit" value="  <?php echo $lang_common['submit'];?>  " class="bginput" />
+			</div>
+		</td>
+	</tr>
+	</table>
+</div>
+<?php include template("footer");?>

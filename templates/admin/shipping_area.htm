@@ -1,0 +1,47 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+<SCRIPT language=JavaScript src="./js/province.js" type=text/javascript></SCRIPT>
+<SCRIPT language=JavaScript src="./js/loadprovince.js" type=text/javascript></SCRIPT>
+
+<table class="tableout" border="0" cellspacing="1" cellpadding="4" width="95%" align="center">
+<form name="research" action="admin.php" method="post">
+<input type="hidden" name="act" value="shipping">
+<input type="hidden" name="action" value="shipping_addarea">
+<input type="hidden" name="sfid" value="<?=$afid?>">
+<tr class="bgcolor1">
+	<td>
+
+	<?if($show_country){?>
+	<select name="country" id="country" <?if($show_province){?>onChange="goprovince('','','');"<?}?>></select>
+	<?}?>
+
+	<?if($show_province){?>
+	<select name="province" id="province" <?if($show_city){?>onChange="gocity('','');"<?}?>></select>
+	<?}?>
+
+	<?if($show_city){?>
+	<select name="city" id="city" ></select>
+	<?}?>
+
+	<input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"> <input type="button" name="back" value="  <?=$lang_common['back']?>  " onclick="window.location='admin.php?act=shipping&action=edit&id=<?=$shipping_data['shippingid']?>'" class="bginput">
+	</td>
+</tr>
+</form>
+</table>
+<script language=JavaScript type=text/javascript>
+	<?if($show_country){?>
+	gocountry("country");
+	SelectList("country","<?=$country_default?>");
+	<?if($show_province){?>	
+		goprovince("country","province","city");
+	<?}?>
+	<?}else{?>
+	<?if($show_province){?>	
+		goprovince(<?=$country_default?>,"province","city");
+	<?}?>
+	<?}?>
+
+	<?if($show_city){?>
+	gocity("","");
+	<?}?>
+</script>
+<?include(ADMIN_TPL.'footer.htm')?>

@@ -1,0 +1,74 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+
+<?php include template("navbar");?>
+
+<div class="main">
+  
+
+
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+	<tr class="header">
+		<td width="45%"><?=$lang_login['login']?></td>
+		<td><?=$lang_login['register']?></td>
+	</tr>
+	<tr class="bgcolor1">
+		<td>
+			<?=$lang_login['login_desc']?>
+			
+			<?if($cart_contents) {?>
+			<br />
+			<?=$lang_login['putintocart']?>
+			<?}?>			
+
+			<?if(is_array($message_all) && $message_all['0']){?>
+			<br />
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+			<?foreach($message_all as $key=>$value){?>
+			<tr class="messagetxt">
+				<td  class="bgcolor1"><img src="./images/icons/error.gif" border="0">&nbsp;&nbsp;&nbsp;<?=$value?></td>
+			</tr>
+			<?}?>
+			</table>
+			<?}?>
+
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center">
+			<form action="login.php" method="post">
+			<input type="hidden" name="action" value="login">
+			<input type="hidden" name="direct_referer" value="<?=$direct_referer?>">
+			<tr>
+				<td align="right"><b><?=$lang_login['email:']?></b></td>
+				<td><input type="text" name="email" value="<?=$email?>"></td>
+			</tr>
+			<tr>
+				<td align="right"><b><?=$lang_login['password:']?></b></td>
+				<td><input type="password" name="password" maxlength="40"></td>
+			</tr>
+			<?if($settings['user_checknum_inheader'] == 'true'){?>
+			<tr>
+				<td align="right"><b><?=$lang_login['checknum:']?></b></td>
+				<td><input type="text" name="checknum" maxlength="40" size="8">&nbsp;&nbsp;<img id="chk_img" src="imgcheck.php" align="absmiddle"></td>
+			</tr>  
+			<?}?>
+			<tr>
+				<td colspan="2" align="center"><a href="get_password.php"><?=$lang_login['forget_password:']?></a></td>
+			</tr> 		
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" name="submit" value="  <?=$lang_box['login_login']?>  ">
+				</td>
+			</tr> 
+			</form>
+			</table>
+		</td>
+		<td valign="top">
+			<font><?=$lang_login['register_desc']?></font>
+			<h2><?=$lang_login['register_href']?></h2>
+		</td>
+	</tr></table>
+
+	<br />
+	<br />
+	
+</div>
+<? include template("footer");?>
+

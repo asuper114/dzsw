@@ -1,0 +1,42 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); ?>
+
+<?include template('header_simple'); ?>
+
+<div class="main">    
+	<br />
+	<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tableout" style="table-layout: fixed; word-wrap: break-word;">
+	<tr class="header">
+	<?if(is_array($faq_title)){foreach($faq_title as $key=>$value){?>
+		<td width="17%"><?=$value['title']?></td>
+	<?}}?>
+	</tr>
+	<tr class="bgcolor1">
+	<?if(is_array($faq_title)){ reset($faq_title);foreach($faq_title as $key=>$value){?>
+		<td valign="top">
+		<?if(is_array($value['subject'])){foreach($value['subject'] as $key2=>$value2){?>
+			<a href="faq.php?faq_page=<?=$key?>#<?=$key2?>"><?=$value2?><br>
+		<?}}?>
+		</td>
+	<?}}?>
+	</tr>
+	</table>
+
+</div>
+
+<?if (is_array($faq_message[$faq_page])){?>
+<?foreach($faq_message[$faq_page] as $key=>$value){?>
+<div class="main">
+	<a name=#<?=$key?>>
+	<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tableout" style="table-layout: fixed; word-wrap: break-word;">
+	<tr class="header">
+		<td><?=$faq_title[$faq_page]['subject'][$key]?></td>
+	</tr>
+	<tr class="bgcolor1">
+		<td><br /><span class="text"><?=$value?></span><br /></td>
+	</tr>
+	</table>
+</div>
+<?}?>
+<?}?>
+
+<?include template("footer")?>

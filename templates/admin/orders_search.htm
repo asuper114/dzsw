@@ -1,0 +1,78 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<form method="get" name="form" action="admin.php">
+<input type="hidden" name="act" value="orders">
+<table border="0" align="center" cellspacing="1" cellpadding="4" width="100%" class="tableout"> 
+<tr class="header">
+	<td colspan="2"><?=$lang_a_order['search_from_id']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td width="20%"><?=$lang_a_order['search_id']?></td>
+	<td><input type="text" name="orders_id_s" size="40">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"><br><?=$lang_a_order['search_id_desc']?></td>
+</tr>
+</table>
+</form>
+
+<br />
+<form method="get" name="form" action="admin.php">
+<input type="hidden" name="act" value="orders">
+<table border="0" align="center" cellspacing="1" cellpadding="4" width="100%" class="tableout"> 
+<tr>
+	<td class="header" colspan="2"><?=$lang_a_order['search_order']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td width="20%"><?=$lang_a_order['emailinclude']?></td>
+	<td><input type="text" name="customers_email" size="40"></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_order['orderstatus_']?></td>
+	<td>
+		<select name="orders_status_insert">
+		<option value=""><?=$lang_a_order['allorder']?></option>
+		<?if(is_array($orders_status_array)){ foreach($orders_status_array as $key=>$val){?>
+		<option value="<?=$key?>"><?=$val['title']?></option>
+		<?}}?>
+		</select>
+	</td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_order['cnameinclude_']?></td>
+	<td><input type="text" name="dorb_name" size="40"></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_order['pnameinclude_']?></td>
+	<td><input type="text" name="products_name" size="40"></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_order['ordertotal_']?></td>
+	<td><?=$lang_a_order['moneybig_']?><input type="text" name="order_total_s" size="20"><?=$lang_a_order['moneysmall_']?><input type="text" name="order_total_b" size="20"></td>
+</tr>
+<tr  class="bgcolor1">
+	<td><?=$lang_a_order['datepurchased_']?></td>
+	<td>
+		<select name="datefrom">
+		<option value=""><?=$lang_a_order['alltime']?></option>
+		<option value="86400"><?=$lang_a_order['oneday']?></option>
+		<option value="172800"><?=$lang_a_order['twoday']?></option>
+		<option value="432000"><?=$lang_a_order['oneweek']?></option>
+		<option value="1296000"><?=$lang_a_order['onemonth']?></option>
+		<option value="5184000"><?=$lang_a_order['threemonth']?></option>
+		<option value="8640000"><?=$lang_a_order['sixmonth']?></option>
+		<option value="31536000"><?=$lang_a_order['oneyear']?></option>
+		</select><input type="radio" name="before" value="" checked> <?=$lang_a_order['before']?>
+	   <input type="radio" name="before" value="1"><?=$lang_a_order['after']?>
+   </td>
+</tr>
+<tr class="bgcolor1">
+	<td colspan="2" align="center"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+<br />
+<br />
+
+<?include(ADMIN_TPL.'footer.htm')?>

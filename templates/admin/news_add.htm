@@ -1,0 +1,59 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<script language="Javascript1.2">
+<!-- // load htmlarea
+_editor_url = "./htmlarea/";                     // URL to htmlarea files
+var win_ie_ver = parseFloat(navigator.appVersion.split("MSIE")[1]);
+if (navigator.userAgent.indexOf('Mac')        >= 0) { win_ie_ver = 0; }
+if (navigator.userAgent.indexOf('Windows CE') >= 0) { win_ie_ver = 0; }
+if (navigator.userAgent.indexOf('Opera')      >= 0) { win_ie_ver = 0; }
+if (win_ie_ver >= 5.5) {
+  document.write('<scr' + 'ipt src="' +_editor_url+ 'editor.js"');
+  document.write(' language="Javascript1.2"></scr' + 'ipt>');  
+} else { 
+	browserNotice();
+	document.write('<scr'+'ipt>function editor_generate() { return false; }</scr'+'ipt>'); 
+	
+}
+// -->
+</script>
+
+<form method="post" name="form" action="admin.php">
+<input type="hidden" name="act" value="news" />
+<input type="hidden" name="action" value="save" />
+<input type="hidden" name="id" value="<?=$id?>" />
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header">
+	<td colspan="2">
+	<?if($type == 'add'){?>
+	<?=$lang_a_news['add:']?>
+	<?}else{?>
+	<?=$lang_a_news['edit:']?>
+	<?}?>
+	</td>
+</tr>
+<tr class="bgcolor1">
+	<td width="15%" align="right"><?=$lang_a_news['title_']?></td>
+	<td><input type="text" size="50" name="subject" value="<?=$news_data['subject']?>" /></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="right"><?=$lang_a_news['body:']?></td>
+	<td>
+	<textarea name="text" id="text" cols=85 rows=25><?=$news_data['text']?></textarea>
+	</td>
+</tr>
+<script language="javascript1.2">
+var config = new Object();    // create new config object
+config.width = "100%";
+editor_generate('text',config);
+
+</script>
+<tr align="center"  class="bgcolor2">
+	<td colspan="2"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+
+<?include(ADMIN_TPL.'footer.htm')?>

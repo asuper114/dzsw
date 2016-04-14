@@ -1,0 +1,48 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<form method="get" name="classes" action="admin.php">
+<input type="hidden" name="act" value="classes">
+<input type="hidden" name="action" value="saveedit">
+<input type="hidden" name="classes_id" value="<?=$classes_id?>">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="header">
+	<td colspan="7"><?=$lang_a_classes['class_edit']?></td>
+</tr>
+
+<?if($details['classes']>1){?>
+<tr align="center" class="bgcolor1">
+	<td width="40%" align="right"><?=$lang_a_classes['class_top_']?></td>
+	<td align="left">
+		<select name="parent_classes_id">
+		<?=$classes_select?>
+		</select>
+	</td>
+</tr>
+<?}?>
+<tr align="center" class="bgcolor1">
+	<td width="40%" align="right" valign="top"><?=$lang_a_classes['show_inheader_']?></td>
+	<td align="left">
+		<?=$lang_common['yes']?>
+		<input type="radio" name="showinheader" 
+		<?if($details['showinheader'] > 0){?>value="<?=$details['showinheader']?>" checked<?}else{?>value="1"<?}?> />
+		<?=$lang_common['no']?>
+		<input type="radio" name="showinheader" value="0" <?if($details['showinheader'] == 0){?>checked<?}?> />
+	</td>
+</tr>
+<tr align="center" class="bgcolor1">
+	<td width="40%" align="right"><?=$lang_a_classes['class_name_']?></td>
+	<td align="left"><input type="text" size="30" name="title" value="<?=$details['title']?>" /></td>
+</tr>
+</table>
+
+<br />
+<center>
+	<input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">&nbsp;
+	<input type="button" value="  <?=$lang_common['back']?>  " onClick="javascript:history.go(-1)" class="bginput">
+</center>
+</form>
+
+<?include(ADMIN_TPL.'footer.htm')?>

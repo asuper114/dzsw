@@ -1,0 +1,85 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<script language="Javascript1.2">
+<!-- // load htmlarea
+	_editor_url = "./htmlarea/";                     // URL to htmlarea files
+	var win_ie_ver = parseFloat(navigator.appVersion.split("MSIE")[1]);
+	if (navigator.userAgent.indexOf('Mac')        >= 0) { win_ie_ver = 0; }
+	if (navigator.userAgent.indexOf('Windows CE') >= 0) { win_ie_ver = 0; }
+	if (navigator.userAgent.indexOf('Opera')      >= 0) { win_ie_ver = 0; }
+	if (win_ie_ver >= 5.5) {
+		document.write('<scr' + 'ipt src="' +_editor_url+ 'editor.js"');
+		document.write(' language="Javascript1.2"></scr' + 'ipt>');  
+	} else { 
+		browserNotice();
+		document.write('<scr'+'ipt>function editor_generate() { return false; }</scr'+'ipt>'); 
+	}
+-->
+</script>
+
+<?php include(ADMIN_TPL.'product_detail_top.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<form method="post" name="form" action="admin.php" enctype="multipart/form-data">
+<input type="hidden" name="act" value="products">
+<input type="hidden" name="h_action" value="update_desc">
+<input type="hidden" name="products_id" value="<?=$products_id?>">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header">
+	<td><?=$lang_a_product['base_info_']?></td>
+</tr>
+<tr class="bgcolor2">
+    <td><textarea cols="60" rows="5" id="base_info" name="base_info" style="width:100%"><?php echo $product_data['base_info'];?></textarea></td>
+</tr>
+</table>
+<script language="javascript1.2">
+<!--
+	var config = new Object();    // create new config object
+	config.width = "100%";
+// NOTE:  You can remove any of these blocks and use the default config!
+	config.toolbar = [
+		['bold','italic','underline','separator'],
+		['justifyleft','justifycenter','justifyright','separator'],
+		['OrderedList','UnOrderedList','Outdent','Indent','separator'],
+		['forecolor','backcolor','separator'],
+		['HorizontalRule','htmlmode','separator'],
+	];
+
+	editor_generate('base_info',config); 
+-->
+</script>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header">
+	<td><?=$lang_a_product['description_']?></td>
+</tr>
+<tr class="bgcolor2">
+    <td>
+		<textarea id="description" name="description" cols="60" rows="20" style="width:100%"><?php echo $product_data['description'];?></textarea>
+	</td>
+</tr>
+</table>
+
+<br />
+<center>
+	<input type="submit" name="submit" value="   <?=$lang_common['submit']?>   " class="bginput">&nbsp;
+	<?if($type == 'edit'){?>
+	   <input type="button" value="   <?=$lang_common['back']?>   " onClick="window.location='admin.php?act=products&type=showproducts&classes_id=<?=$classes_id?>';" class="bginput">
+	<?}else{?>
+	   <input type="button" value="   <?=$lang_common['back']?>   " onClick="window.location='javascript:history.back(-1)';" class="bginput">	
+	<?}?>
+</center>
+</form>
+
+<script language="javascript1.2">
+<!--
+	var config = new Object();    // create new config object
+	config.width = "100%";
+	editor_generate('description',config);
+-->
+</script>
+
+<?php include(ADMIN_TPL.'footer.htm')?>

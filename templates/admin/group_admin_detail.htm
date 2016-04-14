@@ -1,0 +1,136 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="header" >
+	<td colspan="2"><?=$lang_common['system_notice_']?></td>
+</tr>
+<tr class="bgcolor1">
+   <td><?=$lang_a_group_admin['notice_detail']?></td>
+</tr>
+</table>
+
+<br />
+<form method="post" action="admin.php">
+<input type="hidden" name="act" value="group_admin">
+<input type="hidden" name="action" value="detail">
+<input type="hidden" name="id" value="<?=$id?>">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" style="table-layout: fixed; word-wrap: break-word">
+
+<tr class="header"><td colspan="2"><?=$group[grouptitle]?></td></tr>
+<tr class="bgcolor1">
+	<td width="50%">
+		<b><?=$lang_a_group_admin['product_classes_']?></b>
+		<br />
+		<i><?=$lang_a_group_admin['product_classes_desc']?></i>
+	</td>
+	<td>
+		<?=$lang_a_common['see']?><input type="checkbox" name="allow_class_seenew" value="1" <?if($group[allow_class_see]=='1'){?>checked<?}?>> &nbsp; 
+		<?=$lang_a_common['edit']?><input type="checkbox" name="allow_class_editnew" value="1" <?if($group[allow_class_edit]=='1'){?>checked<?}?>> &nbsp; 
+		<?=$lang_a_common['add']?><input type="checkbox" name="allow_class_addnew" value="1" <?if($group[allow_class_add]=='1'){?>checked<?}?>> &nbsp; 
+		<?=$lang_a_common['delete']?><input type="checkbox" name="allow_class_deletenew" value="1" <?if($group[allow_class_delete]=='1'){?>checked<?}?>> &nbsp; 
+	</td>
+</tr>
+<tr class="bgcolor1">
+	<td>
+		<b><?=$lang_a_group_admin['product_']?></b>
+		<br />
+		<i><?=$lang_a_group_admin['product_desc']?></i>	
+	</td>
+	<td>
+		<?=$lang_a_common['see']?><input type="checkbox" name="allow_product_seenew" value="1" <?if($group[allow_product_see]=='1'){?>checked<?}?>> &nbsp; 
+		<?=$lang_a_common['edit']?><input type="checkbox" name="allow_product_editnew" value="1" <?if($group[allow_product_edit]=='1'){?>checked<?}?>> &nbsp; 
+		<?=$lang_a_common['add']?><input type="checkbox" name="allow_product_addnew" value="1" <?if($group[allow_product_add]=='1'){?>checked<?}?>> &nbsp; 
+		<?=$lang_a_common['delete']?><input type="checkbox" name="allow_product_deletenew" value="1" <?if($group[allow_product_delete]=='1'){?>checked<?}?>> &nbsp; 
+	</td>
+</tr>
+<tr class="bgcolor1">
+	<td>
+		<b><?=$lang_a_group_admin['customer_']?></b>
+		<br />
+		<i><?=$lang_a_group_admin['customer_desc']?></i>	
+	</td>
+	<td>
+		<?=$lang_a_common['see']?><input type="checkbox" name="allow_customer_seenew" value="1" <?if($group[allow_customer_see]=='1'){?>checked<?}?>> &nbsp; 
+		<?=$lang_a_common['edit']?><input type="checkbox" name="allow_customer_editnew" value="1" <?if($group[allow_customer_edit]=='1'){?>checked<?}?>> &nbsp; 
+		<?=$lang_a_common['add']?><input type="checkbox" name="allow_customer_addnew" value="1" <?if($group[allow_customer_add]=='1'){?>checked<?}?>> &nbsp; 
+		<?=$lang_a_common['delete']?><input type="checkbox" name="allow_customer_deletenew" value="1" <?if($group[allow_customer_delete]=='1'){?>checked<?}?>> &nbsp; 
+	</td>
+</tr>
+<tr class="bgcolor1">
+  <td><b><?=$lang_a_group_admin['news_']?></b></td>
+  <td>
+    <?=$lang_a_common['edit']?><input type="checkbox" name="allow_news_editnew" value="1" <?if($group[allow_news_edit]=='1'){?>checked<?}?>> &nbsp; 
+    <?=$lang_a_common['add']?><input type="checkbox" name="allow_news_addnew" value="1" <?if($group[allow_news_add]=='1'){?>checked<?}?>> &nbsp; 
+    <?=$lang_a_common['delete']?><input type="checkbox" name="allow_news_deletenew" value="1" <?if($group[allow_news_delete]=='1'){?>checked<?}?>> &nbsp; 
+  </td>
+</tr>
+<tr class="bgcolor1">
+	<td><b><?=$lang_a_group_admin['gbook_']?></b></td>
+	<td>
+		<?=$lang_a_common['edit']?><input type="checkbox" name="allow_gbook_editnew" value="1" <?if($group[allow_gbook_edit]=='1'){?>checked<?}?>> &nbsp; 
+		<?=$lang_a_common['delete']?><input type="checkbox" name="allow_gbook_deletenew" value="1" <?if($group[allow_gbook_delete]=='1'){?>checked<?}?>> &nbsp; 
+		<?=$lang_a_group_admin['reply']?><input type="checkbox" name="allow_gbook_replynew" value="1" <?if($group[allow_gbook_reply]=='1'){?>checked<?}?>> &nbsp; 
+	</td>
+</tr>
+<tr class="bgcolor1">
+  <td><b><?=$lang_a_group_admin['links_']?></b></td>
+  <td>
+    <?=$lang_a_common['edit']?><input type="checkbox" name="allow_links_editnew" value="1" <?if($group[allow_links_edit]=='1'){?>checked<?}?>> &nbsp; 
+    <?=$lang_a_common['add']?><input type="checkbox" name="allow_links_addnew" value="1" <?if($group[allow_links_add]=='1'){?>checked<?}?>> &nbsp; 
+    <?=$lang_a_common['delete']?><input type="checkbox" name="allow_links_deletenew" value="1" <?if($group[allow_links_delete]=='1'){?>checked<?}?>> &nbsp; 
+  </td>
+</tr>
+<tr class="bgcolor1">
+	<td>
+		<b><?=$lang_a_group_admin['sendmail_']?></b>
+		<br />
+		<i><?=$lang_a_group_admin['sendmail_desc']?></i>	
+	</td>
+	<td>
+		<input type="radio" name="allow_sendmailnew" value="1" <?if($group[allow_sendmail]=='1'){?>checked<?}?>> <?=$lang_a_common['yes']?> &nbsp; 
+		<input type="radio" name="allow_sendmailnew" value="0" <?if(!$group[allow_sendmail]){?>checked<?}?>> <?=$lang_a_common['no']?>
+	</td>
+</tr>
+<tr class="bgcolor1">
+	<td>
+		<b><?=$lang_a_group_admin['order_']?></b> 
+		<br />
+		<i><?=$lang_a_group_admin['order_desc']?></i>
+	</td>
+  <td>
+	<?=$lang_a_common['see']?><input type="checkbox" name="allow_order_seenew" value="1" <?if($group[allow_order_see]=='1'){?>checked<?}?>> &nbsp;
+  </td>
+</tr>
+<tr class="bgcolor1">
+	<td>
+		<b><?=$lang_a_group_admin['allow_orderstatus_']?></b>
+		<br />
+		<i><?=$lang_a_group_admin['allow_orderstatus_desc']?></i>
+	</td>
+	<td>
+		<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+		<tr class="bgcolor2"><td><?=$lang_a_group_admin['order_mustpay']?></td><td><?=$lang_a_group_admin['order_goodsarrivepay']?></td></tr>
+		<tr class="bgcolor1">
+			<td valign="top">
+			<?php if(is_array($orderstatus_array)){foreach($orderstatus_array as $val){?>
+				<input type="checkbox" name="orderstatus_[]" value="<?php echo $val['k'];?>" <?php echo $val['checked'];?>> <?php echo $val['title'];?><br />
+			<?php }}?>
+			</td>
+			<td valign="top">
+			<?php if(is_array($orderstatus_g_array)){foreach($orderstatus_g_array as $val){?>
+				<input type="checkbox" name="orderstatus_g[]" value="<?php echo $val['k'];?>" <?php echo $val['checked'];?>> <?php echo $val['title'];?><br />
+			<?php }}?>
+			</td>
+		</tr>
+		</table>
+  </td>
+</tr>
+<tr align="center" class="bgcolor1">
+	<td colspan="2"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">&nbsp;&nbsp;&nbsp;<input type="button" name="back" value="  <?=$lang_common['back']?>  " class="bginput" onclick="javascript:history.back(-1)"></td>
+</tr>
+</table>
+</form>
+
+<?include(ADMIN_TPL.'footer.htm')?>

@@ -1,0 +1,43 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<form method="post" action="admin.php" name="form">
+<input type="hidden" name="act" value="group_admin">
+<input type="hidden" name="action" value="update_adminer">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr align="center" class="header">
+	<td><input type="checkbox" name="chkall" onclick="checkall(this.form, 'delete')"><?=$lang_common['delete_small']?></td>
+	<td><?=$lang_a_group_admin['group_name']?></td>
+	<td></td>
+	<td></td>
+</tr>
+
+<?if(is_array($admins_array)){foreach($admins_array as $val){?>
+<tr align="center" class="bgcolor1"> 
+	<td><input type="checkbox" name="delete[]" value="<?=$val[adminid]?>"></td>
+	<td>
+		<select name="agid[<?=$val['adminid']?>]">
+		<?if(is_array($admingroup_array)){foreach($admingroup_array as $value){?>
+		<option value="<?=$value['admingroupsid']?>" <?if($val['admingroupsid'] == $value['admingroupsid']){?>selected<?}?>><?=$value['grouptitle']?></option>
+		<?}}?>
+		</select>
+	 </td>
+	<td><?=$val['email']?></td>
+	<td><a href="admin.php?act=admin&type=detail&adminid_=<?=$val[adminid]?>">[<?=$lang_common['detail']?>]</a></td>
+</tr>
+<?}}?>
+
+</table>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr align="center" class="bgcolor1">
+	<td><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">&nbsp;&nbsp;<input type="button" name="button" value="  <?=$lang_common['back']?>  " onclick="javascrpt:history.go(-1)" class="bginput">
+	</td>
+</tr>
+</table>
+</form>
+
+<?include(ADMIN_TPL.'footer.htm')?>

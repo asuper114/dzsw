@@ -1,0 +1,41 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?=$multipage?>
+
+
+<?if(is_array($gbooks)){foreach($gbooks as $key=>$value){?>
+	<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tableout" style="table-layout: fixed; word-wrap: break-word;">
+	<tr class="bgcolor1">
+		<td width="20%" valign="top">
+			#<?=$value['gid']?><br />
+			CID:#<?=$value['cid']?><br />
+			<?=$value['date_add']?>
+			<?=$value['adminoption_1']?>
+		</td>
+		<td valign="top"><span class="text"><?=$value['textmain']?></span></td>
+	</tr>
+	<?if($value['textreply'] != ''){?>
+	<tr class="bgcolor2">
+		<td align="right" valign="top">
+			<div>
+			<img src="<?=$styles['imagedir']?>/reply.gif">
+			<br />
+			<?php echo $lang_gbook['reply'];?>
+			</div>
+			<div align="left">
+			<?php echo $value['adminoption_2'];?>
+			</div>
+		</td>
+		<td valign="top"><span class="text"><?=$value['textreply']?></span></td>
+	</tr>	
+	<?}?>
+	</table>
+	<br />
+<?}}?>
+
+	
+<?=$multipage?>
+
+<?include(ADMIN_TPL.'footer.htm')?>	 
+

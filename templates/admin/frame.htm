@@ -1,0 +1,16 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?><html>
+<head>
+<title>dzsw <?=$settings['store_version']?> <?=$lang_a_common['boared_system_set']?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+</head>
+<frameset rows="30,*" border=0 frameborder="YES" name="top_frame"> 
+  <frame src="admin.php?act=top" noresize frameborder="NO" name="ads" scrolling="NO"  marginwidth="0" marginheight="0">
+  <frameset rows="1000" cols="160,20,*" border=0 name="shop" id="shop">
+      <frame src="admin.php?act=menu" noresize name="list" marginwidth="0" marginheight="0">
+      <frame src="admin.php?act=user_hidelist" >
+      <frame src="admin.php?<?=$stringlink?>" name="main" id="main" marginwidth="0" marginheight="0">
+  </frameset>
+</frameset>
+<noframes></noframes>
+</html>
+<?output()?>

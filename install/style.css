@@ -1,0 +1,125 @@
+body{ 
+	font-size: 12px;
+	margin: 6px;
+}
+table{ 
+	font-family: Tahoma, Verdana; 
+	font-size: 12px 
+}
+textarea{ 
+	font-family: Tahoma, Verdana; 
+	font-size: 12px;  
+	color: #000000; 
+	font-weight: normal; 
+	background-color: #F8F9FC;
+}
+p{
+	color:#000000;
+	font-size:12px;
+	text-align:justify;
+	text-indent:2em;
+	line-height:14pt;
+}
+a:link,a:active,a:visited { 
+	text-decoration: none; color : #006699; 
+}
+a:hover{ 
+	text-decoration: underline; color : #DD6900; 
+}
+
+form {
+	margin: 0px;
+	padding: 0px;
+}
+.bold{ 
+	font-weight: BOLD; 
+}
+.tableout{ 
+	background: #7CA5DE;
+}
+.text{ 
+	font-family: Tahoma, Verdana; 
+	font-size: 12px;
+	line-height: 150%;
+}
+.bginput{
+	font-family: Tahoma, Verdana; 
+	font-size: 12px;
+	font-weight: bold;
+}
+.bgcolor1{
+	background-color : #FFFFFF;
+}
+.bgcolor2{
+	background-color : #F1F1F1;
+}
+.mainhead
+{
+	width:730px;
+	margin:0  auto;
+	padding: 0.25em 0.25em 0.25em 0.25em;
+	border-top: 6px solid #7CA5DE;
+	border-left: 6px solid #7CA5DE;
+	border-right: 6px solid #7CA5DE;
+	background-color : #FFFFFF;
+}
+.main
+{
+	width:730px;
+	margin:0  auto;
+	padding: 0.25em 0.25em 0.25em 0.25em;
+	border-left: 6px solid #7CA5DE;
+	border-right: 6px solid #7CA5DE;
+	background-color : #FFFFFF;
+}
+.mainfoot
+{
+	width:730px;
+	margin:0  auto;
+	padding: 0.25em 0.25em 0.25em 0.25em;
+	border-bottom: 6px solid #7CA5DE;
+	border-left: 6px solid #7CA5DE;
+	border-right: 6px solid #7CA5DE;
+	background-color : #FFFFFF;
+}
+#header
+{
+	width:98%;
+	margin:0  auto;
+	padding: 0.25em 0.25em 0.25em 0.25em;
+	font-size:20px;
+	color:#FF0000;
+	font-weight: BOLD; 
+	border-bottom: 1px dashed #7CA5DE;
+}
+#welcome
+{
+	width:98%;
+	margin:0  auto;
+	padding: 0.6em 0em 0.6em 0.6em;
+	border-bottom: 1px dashed #7CA5DE;
+}
+#navbar
+{
+	width:98%;
+	margin:0  auto;
+	padding: 0.6em 0em 0.6em 0.6em;
+	font-weight: bold;
+	border-bottom: 1px dashed #7CA5DE;
+}
+
+#createinfo
+{
+	width:86%;
+	height:100%;
+	margin:0  auto;
+	padding: 0.25em 0.25em 0.25em 0.25em;
+}
+#list
+{
+	width:90%;
+	height:100%;
+	margin:0  auto;
+	padding: 0.25em 0.25em 0.25em 0.25em;
+	font-weight: bold;
+}

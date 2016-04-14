@@ -1,0 +1,42 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<form method="post" action="admin.php">
+<input type="hidden" name="act" value="admin">
+<input type="hidden" name="action" value="add">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="header">
+	<td colspan="2"><?=$lang_a_admin['add_adminer']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="right"><?=$lang_a_admin['account_']?></td>
+	<td><input type="text" name="email" value="<?=$email?>"></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="right"><?=$lang_a_admin['groupof_']?></td>
+	<td>
+		<select name="agid">
+		<?if(is_array($admingroup_array)){foreach($admingroup_array as $value){?>
+		<option value="<?=$value['admingroupsid']?>" <?if($groupidnew[$val['adminid']]==$value['admingroupsid']){?>selected<?}?>><?=$value['grouptitle']?></option>
+		<?}}?>
+		</select>
+	 </td>
+</tr>
+<tr class="bgcolor1">
+	<td align="right"><?=$lang_a_admin['password_']?></td>
+	<td><input type="password" name="password"></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="right"><?=$lang_a_admin['password2_']?></td>
+	<td><input type="password" name="password2"></td>
+</tr>
+
+<tr align="center" class="bgcolor1">
+	<td colspan="2"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+
+<?include(ADMIN_TPL.'footer.htm')?>

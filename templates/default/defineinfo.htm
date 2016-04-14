@@ -1,0 +1,27 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+
+<div class="main">
+	<br />
+	<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tableout">
+	<tr class="bgcolor1">
+		<td>
+			<?php if(is_array($defineinfo)){foreach($defineinfo as $k=>$v){?>
+			<a href="defineinfo.php?type=<?=$k?>"><span class="bold"><?=$v['title']?></span></a>&nbsp;&nbsp;&nbsp;
+			<?php }}?>
+		</td>
+	</tr>
+	</table>
+</div> 
+
+<div class="main">
+	<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tableout" style="table-layout: fixed; word-wrap: break-word;">
+	<tr class="header">
+		<td><?=$defineinfo[$type]['title']?></td>
+	</tr>
+	<tr class="bgcolor1">
+		<td><span class="text"><?=$defineinfo[$type]['main']?></span></td>
+	</tr>
+	</table>
+</div>
+
+<?include template("footer")?>

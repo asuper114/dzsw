@@ -1,0 +1,21 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+
+<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header">
+	<td><?=$lang_box['product_browse']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td> 
+		<?php if($hassee_products){?>
+			<span class="text"><?php echo $hassee_products;?></span>
+		<?php }else{?>
+			<i><?php echo $lang_box ['product_browse_empty'];?></i>
+		<?php }?>
+	</td>
+</tr>
+<tr class="bgcolor1">
+	<td align="right"> 
+		<a href="dzsw.php?act=clearcookie_browse"><?=$lang_box['product_browse_clear']?></a>
+	</td>
+</tr>
+</table>

@@ -1,0 +1,50 @@
+<?include template('email_header'); ?>
+<table bgcolor="#FFFFFF" bordercolor="#FFFFFF" width="600" cellpadding="1" cellspacing="3" border="0" align="center">
+<tr><td>	
+
+	<table width="90%" cellpadding="0" cellspacing="0" border="0" align="center">
+	<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $lang_email[order_create_header];?></td></tr>
+	</table>
+
+	<br />
+	<table width="90%" cellpadding="3" cellspacing="1" border="0" align="center" class="tableout">
+	<tr class="header">
+		<td><?=$lang_email[product_name]?></td>
+		<td><?=$lang_email[product_price]?></td>
+		<td><?=$lang_email[product_quantity]?></td>
+		<td><?=$lang_email[product_total]?></td>
+	</tr>
+	$products_list
+	<tr class="bgcolor1">
+		<td colspan="4">
+			<table border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tr>
+				<td width="50%">
+					<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tr>
+						<td align="right"><?=$lang_email[order_id_]?></td>
+						<td> $orders_id </td>
+					</tr>
+					<tr>
+						<td align="right"><?=$lang_email[order_date_]?></td>
+						<td> $create_date </td>
+					</tr>
+					<tr>
+						<td align="right"><?=$lang_email[order_payment_]?></td>
+						<td> $payment_title </td>
+					</tr>
+					</table>
+				</td>
+				<td>
+					<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					$order_total_list
+					</table>
+				</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+	</table>
+
+</td></tr></table>
+<?include template('email_footer'); ?>

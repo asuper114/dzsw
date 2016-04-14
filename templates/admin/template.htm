@@ -1,0 +1,46 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<form method="post" action="admin.php">
+<input type="hidden" name="act" value="template">
+<input type="hidden" name="action" value="edit">
+
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="header" align="center">
+	<td width="10%"><input type="checkbox" name="chkall" class="header" onclick="checkall(this.form)"><?=$lang_common['delete_small']?></td>
+	<td><?=$lang_a_template['template_name']?></td>
+	<td><?=$lang_a_template['template_directory']?></td>
+</tr>
+<?if(is_array($template_array)){foreach($template_array as $key=>$val){?>    
+<tr align="center" class="bgcolor1">
+	<td>
+		<?if($val[tid] != '1'){?>
+		<input type="checkbox" name="delete[]" value="<?=$val[tid]?>" <?=$val['checked']?>>
+		<?}?>
+	</td>
+	<td><input type="text" name="titlenew[<?=$val[tid]?>]" value="<?=$val[title]?>"></td>
+	<td>
+		<?if($val[tid] != '1'){?>
+		<input type="text" name="directorynew[<?=$val[tid]?>]" value="<?=$val[directory]?>">
+		<?}else{?>
+		<?=$val[directory]?>
+		<?}?>
+	</td>
+</tr>
+<?}}?> 
+
+<tr class="bgcolor1"><td height="1" colspan="76"></td></tr>
+<tr align="center"  class="bgcolor1">
+	<td><?=$lang_common['add:']?></td>
+	<td><input type="text" name="title_new" value="<?=$title_new?>"></td>
+	<td><input type="text" name="directory_new" value="<?=$directory_new?>"></td>
+</tr>
+<tr align="center"  class="bgcolor1">
+	<td colspan="4"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+<?include(ADMIN_TPL.'footer.htm')?>

@@ -1,0 +1,76 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+<script language="javascript"><!--
+function checkform() {
+	if (form.password.value =='') {
+		alert("<?=$lang_myaccount_email_msg['password']?>");
+		return false;
+	}
+	var pattern = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+([a-zA-Z]{2}|net|NET|com|COM|gov|GOV|mil|MIL|org|ORG|edu|EDU|int|INT|cn|CN|tw|TW|hk|HK|kg|KG|jp|JP)+/; 
+	if(!pattern.test(form.newemail.value)) { 
+		alert("<?=$lang_myaccount_email_msg['emailnewerror']?>"); 
+		return false; 	  
+	}
+	if (form.newemail.value!=form.newemail2.value) {
+		alert("<?=$lang_myaccount_email_msg['emailnotsame']?>");
+		return false;
+	}
+	return true;  
+}
+//--></script>
+
+<?php include template("navbar");?>
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<tr class="bgcolor1">
+		<td valign="top">
+			<?include template("myaccount_left");?>
+		</td>
+		<td width="76%" valign="top">
+
+			<div><h2><?=$lang_myaccount_email['description']?><h2></div>
+			
+			<?if(is_array($message_all) && $message_all['0']){?>
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+			<?foreach($message_all as $key=>$value){?>
+			<tr class="bgcolor2" style="color:red">
+				<td><img src="./images/icons/error.gif" border="0">&nbsp;&nbsp;&nbsp;<?=$value?></td>
+			</tr>
+			<?}?>
+			</table>
+			<br />
+			<?}?>
+			
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+			<form name="form" action="myaccount.php" method="post" onSubmit="return checkform();">
+			<input type="hidden" name="type" value="email">
+			<input type="hidden" name="action" value="update">
+			<tr class="bgcolor1" >
+				<td align="right" width="40%"><?=$lang_myaccount_email['oldemail:']?></td>
+				<td><?=$email?><?=$entry_password_current_text?></td>
+			</tr>
+			<tr class="bgcolor1" >
+				<td align="right"><?=$lang_myaccount_email['youpassword:']?></td>
+				<td><?=$message_password_new?><input type="password" name="password" size="20">&nbsp;<?=$entry_password_new_text?></td>
+			</tr>
+			<tr class="bgcolor1" >
+				<td align="right"><?=$lang_myaccount_email['newemail:']?></td>
+				<td><?=$message_password_confirmation?><input type="text" name="newemail" size="20" value="<?=$newemail?>">&nbsp;<?=$entry_password_confirmation_text?></td>
+			</tr>
+			<tr class="bgcolor1" >
+				<td align="right"><?=$lang_myaccount_email['newemail2:']?></td>
+				<td><?=$message_password_confirmation?><input type="text" name="newemail2" size="20" value="<?=$newemail2?>">&nbsp;<?=$entry_password_confirmation_text?></td>
+			</tr>
+			<tr  class="bgcolor2">
+				<td align="center" colspan="2"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+			</tr>
+			</form>
+			</table>
+			<br />
+			<br />
+
+		</td>
+		
+	</tr></table>
+</div>
+<? include template("footer");?>

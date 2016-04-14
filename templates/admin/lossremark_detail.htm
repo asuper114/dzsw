@@ -1,0 +1,31 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="95%" class="tableout" >
+<tr class="header">
+	<td colspan="2">
+		<?php if($lossremark_data['email']){?>
+			<?php echo $lossremark_data['email'];?> <a href="admin.php?act=mail&c_email=<?php echo $lossremark_data['email'];?>"><?=$lang_a_lossremark['sendmail_']?></a>
+		<?php }else{?>
+			<?php echo $lang_a_lossremark['email_empty'];?>
+		<?php }?>
+	</td>
+</tr>
+<tr class="bgcolor1">
+	<td align="right" width="30%"><?=$lang_a_lossremark['pname_']?></td>
+	<td><?=$lossremark_data['product_name']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="right"><?=$lang_a_lossremark['description_']?></td>
+	<td><?=$lossremark_data['description']?></td>
+</tr>
+</table>
+
+<br />
+<center>
+	<input type="button" name="button" value="  <?=$lang_common['back']?>  " onclick="javascrpt:history.go(-1)" class="bginput">
+</center>
+
+
+<?include(ADMIN_TPL.'footer.htm')?>

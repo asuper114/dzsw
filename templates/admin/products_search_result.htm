@@ -1,0 +1,77 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?if($message_all['0']){?>
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<?foreach($message_all as $key=>$value){?>
+<tr class="bgcolor1">
+	<td width="5%"><img src="images/icons/error.gif" border="0"></td>
+	<td class="messagetxt"><?=$value?></td>
+</tr>
+<?}?>
+</table>
+<?}?>
+
+<br />
+<?=$products_array['multipage']?>
+
+<br />
+<br />
+<form name="form" method="get" name="products" action="admin.php">
+<input type="hidden" name="act" value="products">
+<input type="hidden" name="h_action" value="delete">
+<?if($classes_id){?><input type="hidden" name="classes_id" value="<?=$classes_id?>"><?}?>
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center" style="word-break:break-all;">
+<tr class="header">
+	<td width="6%"><input type="checkbox" name="chkall" onclick="checkall(this.form, 'products')"><?=$lang_common['delete_small']?></td>
+	<td><?=$lang_a_product['name']?></td>
+	<td width="12%"><?=$lang_a_product['price']?></td>
+	<td width="12%"><?=$lang_a_product['s_price']?></td>
+	<td width="5%"><?=$lang_a_product['quantity']?></td>
+	<td width="5%"><?=$lang_common['status']?></td>
+	<td width="12%">&nbsp;</td>
+</tr>
+<?php if(is_array($products_array['detail'])){foreach($products_array['detail'] as $key=>$val){?>
+<tr class="bgcolor1">
+	<td>
+		<input type="checkbox" name="products[]" value="<?=$val['products_id']?>">
+	</td>
+	<td>
+		<a href="product_detail.php?products_id=<?=(int)$val['products_id']?>" target=_blank><b><?=$val['name']?></b>
+	</td>
+	<td>
+		<?=$val['price']['one']['price']?>
+	</td>
+	<td>
+		<?php echo $val['specials']['text'];?>
+	</td>
+	<td><?=$val['quantity']?></td>
+	<td align="center">
+	<?if($val['status']=='1'){?>
+		<a href="admin.php?act=products&products_id=<?=$val['products_id']?>&h_action=operatestatus&flag=0"><img src="images/admin/status_green.gif" border="0" alt="<?=$lang_a_common['click_to_close']?>"></a>
+	<?}else{?>
+		<a href="admin.php?act=products&products_id=<?=$val['products_id']?>&h_action=operatestatus&flag=1"><img src="images/admin/status_red.gif" border="0" alt="<?=$lang_a_common['click_to_open']?>"></a>
+	<?}?>
+	</td>
+	<td align="center">
+		<a href="admin.php?act=products&products_id=<?=$val['products_id']?>&type=detail_common"><?=$lang_common['edit']?></a>&nbsp;
+		<a href="admin.php?act=products&products_id=<?=$val['products_id']?>&type=copy"><?=$lang_common['copy']?></a><br>
+	</td>
+</tr>
+<?}}?>
+</table>
+
+<br />
+<?=$products_array['multipage']?>
+<br />
+<br />
+
+<center>
+	<input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">
+</center>
+</form>
+
+<br />
+
+<?php include(ADMIN_TPL.'footer.htm')?>

@@ -1,0 +1,68 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<form method="post" action="admin.php">
+<input type="hidden" name="act" value="customers">
+<input type="hidden" name="action" value="editdetail">
+<input type="hidden" name="customers_id" value="<?=$customers_id?>">
+
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr><td class="header" colspan="2"><?=$lang_a_customer['detail']?></td></tr>
+
+<tr class="bgcolor1">
+	<td><?=$lang_a_customer['account_']?></td>
+	<td><input type="text" name="email" size="40" value="<?=$customer['email']?>"></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_customer['group_']?></td>
+	<td>
+		<select name="groupidnew">
+		<?if(is_array($usergroup_array)){foreach($usergroup_array as $value){?>
+		<?if($value['show']){?>
+			<option value="<?=$value['groupid']?>" <?if($customer['groupid']==$value['groupid']){?>selected<?}?>><?=$value['grouptitle']?></option>
+		<?}?>
+		<?}}?>
+		</select>
+	</td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_customer['regdate_']?></td>
+	<td><input type="text" name="regdate" size="40" value="<?=$customer['regdate']?>"></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_customer['lastvisit_']?></td>
+	<td><input type="text" name="lastvisit" size="40" value="<?=$customer['lastvisit']?>"></td>
+</tr>
+
+<?if($settings['show_qq'] == 'true'){?>
+<tr class="bgcolor1">
+	<td><?=$lang_a_customer['qq_']?></td>
+	<td><input type="text" name="qq" size="40" value="<?=$customer['qq']?>"></td>
+</tr>
+<?}?>
+<?if($settings['show_msn'] == 'true'){?>
+<tr class="bgcolor1">
+	<td><?=$lang_a_customer['msn_']?></td>
+	<td><input type="text" name="msn" size="40" value="<?=$customer['msn']?>"></td>
+</tr>
+<?}?>
+
+<tr class="bgcolor1">
+	<td><?=$lang_a_customer['credit_']?></td>
+	<td><?=$customer['credit']?></td>
+</tr>
+
+<?if($settings['user_leavepay'] == 'true'){?>
+<tr class="bgcolor1">
+	<td><?=$lang_a_customer['leavemoney_']?></td>
+	<td><?=$customer['money']?></td>
+</tr>
+<?}?>
+</table><br>
+
+<center><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">&nbsp;&nbsp;<input type="button" name="button" value="  <?=$lang_common['back']?>  " onclick="javascrpt:history.go(-1)" class="bginput">
+</center></form>
+
+<?include(ADMIN_TPL.'footer.htm')?>

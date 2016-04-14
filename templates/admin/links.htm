@@ -1,0 +1,40 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+  
+		
+<br />
+<form method="post" name="form" action="admin.php">
+<input type="hidden" name="act" value="links">
+<input type="hidden" name="action" value="edit">
+<table cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header">
+	<td width="8%"><?=$lang_common['delete_small']?></td>
+	<td width="8%"><?=$lang_common['sort']?></td>
+	<td align="center"><?=$lang_a_links['sitename']?></td>
+	<td align="center"　width="28%"><?=$lang_a_links['link_result']?></td>
+	<td width="10%"></td>
+</tr>
+<?if(is_array($links)){foreach($links as $link){?>
+<tr class="bgcolor1">
+	<td><input type="checkbox" name="delete[]" value="<?=$link[id]?>"></td>
+	<td><input type="text" size="3" name="ordernum[<?=$link[id]?>]" value="<?=$link[ordernum]?>"></td>
+	<td><a href="<?=$link[url]?>" target="_blank"><?=$link[name]?></a></td>
+	<td><a href="<?=$link[url]?>" target="_blank">
+	<?if($link[logo]){?>
+		<img src="<?=$link[logo]?>" alt="<?=$link[name]?>" border="0">
+	<?}else{?>
+		<?=$link[url]?>
+	<?}?>
+	</a></td>
+	<td align="center"><a href="admin.php?act=links&type=detail&lid=<?=$link[id]?>"><?=$lang_common['edit']?></a></td>
+</tr>
+<?}}?>
+<tr class="bgcolor1">
+	<td align="center" colspan="5"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+<br />
+<br />
+<?include(ADMIN_TPL.'footer.htm')?>	 
+

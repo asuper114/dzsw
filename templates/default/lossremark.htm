@@ -1,0 +1,62 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header");?>
+
+<div class="navbar">
+	<img src="<?=$styles['imagedir']?>/nav_bullet.gif" border="0" align="absmiddle">&nbsp;<b><?=$lang_common['you_position_now_']?></b><a href="index.php"><?=$settings['store_name']?></a> -&gt; <?=$page_position?>
+</div>
+
+<div class="main">
+ 
+
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor" align="center">
+	<tr>
+		<td width="50%">
+			
+			<?if(is_array($message_all) && $message_all['0']){?>
+			<br />
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+			<?foreach($message_all as $key=>$value){?>
+			<tr class="messagetxt">
+				<td  class="bgcolor1"><img src="./images/icons/error.gif" border="0">&nbsp;&nbsp;&nbsp;<?=$value?></td>
+			</tr>
+			<?}?>
+			</table>
+			<?}?>			
+			
+			<br />
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center">
+			<form name="nostore" action="lossremark.php" method="post">
+			<input type="hidden" name="action" value="insert">
+			<tr>
+				<td align="right"><span class="bold"><?=$lang_lossremark['email_']?></span></td>
+				<td><input type="text" name="email" value="<?=$email?>"></td>
+			</tr>
+			<tr>
+				<td align="right"><span class="bold"><?=$lang_lossremark['product_name_']?></span></td>
+				<td><input type="text" size="50" name="product_name" maxlength="40"></td>
+			</tr> 		
+			<tr>
+				<td align="right" valign="top"><span class="bold"><?=$lang_lossremark['description_']?></span></td>
+				<td><textarea rows="5" cols="50" name="description"></textarea></td>
+			</tr> 	
+			<tr>
+				<td colspan="2" align="center">
+					<input name="submit" type="submit" value="  <?php echo $lang_common['submit'];?>  ">
+				</td>
+			</tr> 
+			</form>
+			</table>
+		</td>
+		<td valign="top">
+			<br />
+			<?=$lang_lossremark['email_desc']?>
+		</td>
+
+	</tr>
+	</table>
+
+	<br />
+	<br />
+	
+</div>
+<? include template("footer");?>
+

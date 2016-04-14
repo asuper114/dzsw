@@ -1,0 +1,74 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header");?>
+
+<?php include template("navbar_table");?>
+
+<div class="main">
+	<?=$multipage?>
+</div>
+
+<?if(is_array($gbooks)){foreach($gbooks as $key=>$value){?>
+<div class="main">
+	<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tableout" style="table-layout: fixed; word-wrap: break-word;">
+	<tr class="bgcolor1">
+		<td width="20%" valign="top">
+			#<?=$value['gid']?><br />
+			<?=$value['date_add']?>
+			<?=$value['adminoption_1']?>
+		</td>
+		<td valign="top"><span class="text"><?=$value['textmain']?></span></td>
+	</tr>
+	<?if($value['textreply']){?>
+	<tr class="bgcolor2">
+		<td align="right" valign="top">
+			<div>
+			<img src="<?=$styles['imagedir']?>/reply.gif">
+			<br />
+			<?php echo $lang_gbook['reply'];?>
+			</div>
+			<div align="left">
+			<?php echo $value['adminoption_2'];?>
+			</div>
+		</td>
+		<td valign="top"><span class="text"><?=$value['textreply']?></span></td>
+	</tr>	
+	<?}?>
+	</table>
+</div>
+<?}}?>
+
+<div class="main">
+	<?=$multipage?>
+</div>
+
+<?if(is_array($message_all)){?>
+<div class="main">
+	<br />
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+    <?foreach($message_all as $key=>$value){?>
+	<tr class="messagetxt">
+		<td class="bgcolor1"><img src="./images/icons/error.gif" border="0">&nbsp;&nbsp;&nbsp;<?=$value?></td>
+	</tr>
+    <?}?>
+    </table>
+</div>
+<?}?>
+
+<div class="main">
+	<form method="post" name="form" action="gbook.php">
+	<input type="hidden" name="action" value="dowrite">
+	<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tableout">
+	<tr class="header">
+		<td colspan="2"><?=$lang_gbook['write']?></td>
+	</tr>
+	<tr class="bgcolor1">
+		<td valign="top" width="40%"><?=$lang_gbook['description']?></td>
+		<td><textarea rows="10" cols="85" name="text"><?=$text?></textarea></td>
+	</tr>
+	</table>
+
+	<br>
+	<center><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  "></center> 
+</div>
+
+
+<? include template("footer");?>

@@ -1,0 +1,102 @@
+
+<div class="main">
+	<div id="navbar">褰撳墠浣嶇疆 --> 妫€娴嬪畨瑁呯幆澧?/div>
+</div>
+<div class="main">
+	<div id="list">
+		<font color="#FF0000">&gt;</font> 鏈嶅姟鍣ㄧ幆澧冩鏌?/b>
+	</div>
+</div>
+<div class="main">
+	<?php if(is_array($server_message)){?>
+	<table cellSpacing=1 cellPadding=6 width="80%" border=0 class="tableout" style="margin-top:6px;table-layout: fixed; word-wrap: break-word;" align="center">
+	<?php foreach($server_message as $val){?>
+	<tr bgcolor="#ffffff">
+		<td width="40%" >
+			<span style="font-weight:bold;"><?php echo $val['0'];?></span>
+		</td>
+		<td>
+			<?php if($val['2']){?>
+				<font style="color:red;font-weight:bold;"><?php echo $val['1'];?></font>
+				<br />
+				<font color="#666666"><i><?php echo $val['2'];?><i></font>
+			<?php }else{?>
+				<?php echo $val['1'];?>
+			<?php }?>
+		</td>
+	</tr>
+	<?php }?>
+	</table>
+	<?php }?>
+
+</div>
+
+<div class="main"></div>
+<div class="main">
+	<div id="list">
+		<font color="#FF0000">&gt;</font> dzsw 鐩綍鍙啓妫€鏌?/b>
+	</div>
+</div>
+<div class="main">
+	<?php if(is_array($dir_canwritemessage)){?>
+	<table cellSpacing=1 cellPadding=6 width="80%" border=0 class="tableout" style="margin-top:6px;table-layout: fixed; word-wrap: break-word;" align="center">
+	<?php foreach($dir_canwritemessage as $val){?>
+	<tr bgcolor="#ffffff">
+		<td width="40%" >
+			<span style="font-weight:bold;"><?php echo $val['0'];?></span>
+		</td>
+		<td>
+			<?php if($val['1']==1){?>
+				鍙啓
+			<?php }else{?>
+				<font style="color:red;font-weight:bold;">涓嶅彲鍐?/font>
+				<br />
+				<font color="#666666"><i><?php echo $val['2'];?><i></font>
+			<?php }?>
+		</td>
+	</tr>
+	<?php }?>
+	</table>
+	<?php }?>
+</div>
+
+<div class="main"></div>
+<div class="main">
+	<div id="list">
+		<font color="#FF0000">&gt;</font> dzsw 瀹夎绯荤粺鎻愮ず锛?/b>
+	</div>
+</div>
+<?php if($continue_do == true){?>
+<div class="main">
+		<table cellSpacing=0 cellPadding=0 width="80%" border=0 style="margin-top:6px;table-layout: fixed; word-wrap: break-word;" align="center">
+		<tr>
+			<td>鏈嶅姟鍣ㄧ幆澧冩娴嬮€氳繃锛屾偍鍙互瀹夎 dzsw銆?/td>
+		</tr>
+		</table>
+</div>
+<div class="main"></div>
+<div class="main">
+	<center>
+		<input type="submit" name="submit" value="缁х画瀹夎" onclick="window:location='install.php?type=info_adminer'" class="bginput">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="閫€鍑哄畨瑁? onclick="javascript:window.close()" class="bginput"><br /><br />
+	</center> 
+</div>
+	
+<?php }else{?>
+<div class="main">
+	<table cellSpacing=0 cellPadding=0 width="80%" border=0 style="margin-top:6px;table-layout: fixed; word-wrap: break-word;" align="center">
+	<tr>
+		<td>
+			鎮ㄧ殑鏈嶅姟鍣ㄧ幆澧冩棤娉曞畨瑁卍zsw锛屽師鍥狅細
+			<br />
+			<ul>
+				<?php foreach($exit_message as $val){?>
+					<li style="color:red;"><?php echo $val;?></li>
+				<?php }?>
+			</ul>
+			璇锋寜鐓х郴缁熸彁绀烘鏌ユ湇鍔″櫒鐜鍚庡湪璇曘€?
+		</td>
+	</tr>
+	</table>
+</div>
+
+<?php }?>

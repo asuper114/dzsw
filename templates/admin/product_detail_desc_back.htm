@@ -1,0 +1,54 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'product_detail_top.htm')?>
+
+<?if($message_all['0']){?>
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="95%" class="tablebordercolor">
+<?foreach($message_all as $key=>$value){?>
+<tr>
+	<td><img src="images/icons/error.gif" border="0"><?=$value?></td>
+</tr>
+<?}?>
+</table>
+<?}?>
+
+<br />
+<form method="post" name="form" action="admin.php" enctype="multipart/form-data">
+<input type="hidden" name="act" value="products">
+<input type="hidden" name="h_action" value="update_desc">
+<input type="hidden" name="products_id" value="<?=$products_id?>">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr  class="bgcolor2">
+    <td valign="top" align="right"><?=$lang_a_product['base_info_']?></td>
+    <td><textarea cols="90" rows="6" name="base_info" ><?php echo $product_data['base_info'];?></textarea></td>
+</tr>
+<tr  class="bgcolor2">
+    <td align="right" valign="top"><?=$lang_a_product['description_']?></td>
+    <td><?include ADMIN_TPL.'editor_body.htm'?>
+	<textarea name="description" id="description" cols=90 rows=25 style="overflow:auto;display:none"><?php echo $product_data['description'];?></textarea>
+	</td>
+</tr>
+<script language="JavaScript" src="js/editor.js"></script>
+<script language="JavaScript">
+<!--
+   var Format = "Normal";
+   initEditor('description');
+-->
+</script>
+
+</table>
+<br />
+<center>
+<input type="submit" name="submit" value="   <?=$lang_common['submit']?>   " class="bginput">&nbsp;
+<?if($type == 'edit'){?>
+   <input type="button" value="   <?=$lang_common['back']?>   " onClick="window.location='admin.php?act=products&type=showproducts&classes_id=<?=$classes_id?>';">
+<?}else{?>
+   <input type="button" value="   <?=$lang_common['back']?>   " onClick="window.location='javascript:history.back(-1)';">	
+<?}?>
+</center>
+</form>
+<br />
+<br />
+
+<?php include(ADMIN_TPL.'footer.htm')?>

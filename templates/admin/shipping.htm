@@ -1,0 +1,72 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<?if($message_all['0']){?>
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<?foreach($message_all as $key=>$value){?>
+<tr class="bgcolor1">
+	<td width="5%"><img src="images/icons/error.gif" border="0"><?=$value?></td>
+</tr>
+<?}?>
+</table>
+<?}?>
+
+<br />
+<form name="form" action="admin.php" method="post">
+<input type="hidden" name="act" value="shipping">
+<input type="hidden" name="action" value="editsort">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header">
+	<td align="center"><?=$lang_a_common['delete_small']?></td>
+	<td width="10%"><?=$lang_common['sort']?></td>
+	<td align="center" width="10%"><b>#id</b></td>
+	<td align="center"  width="60%"><?=$lang_a_shipping['shipping_title']?></td>
+	<td align="center"><?=$lang_common['status']?></td>
+</tr>
+<?foreach($shipping_data as $key=>$val){?>
+<tr class="bgcolor1">
+	<td align="center">
+	<?if($val['type'] == 'define'){?>
+	<input type="checkbox" name="delete[]" value="<?=$val['id']?>">
+	<?}?>
+	</td>
+	<td align="center"><input name="sort[<?=$val['id']?>]" size="2" value="<?=$val['sortorder']?>"></td>
+	<td align="center">#<?=$val['id']?></td>
+	<td align="right" width="25%"><a href="admin.php?act=shipping&action=edit&id=<?=$val['id']?>"><?=$val['title']?></a></td>
+	<td align="center">
+		<?if($val['status']=='1'){?>
+		<a href="admin.php?act=shipping&id=<?=$val['id']?>&action=operatestatus&flag=0" target=""><img src="images/admin/status_green.gif" border="0" alt="<?=$lang_common['click_to_close']?>" title="<?=$lang_common['click_to_close']?>"></a>
+		<?}else{?>
+		<a href="admin.php?act=shipping&id=<?=$val['id']?>&action=operatestatus&flag=1"  target=""><img src="images/admin/status_red.gif" border="0" alt="<?=$lang_common['click_to_open']?>" title="<?=$lang_common['click_to_open']?>"></a>
+		<?}?>
+	</td>
+</tr>
+<?}?>
+<tr align="center"  class="bgcolor1">
+	<td colspan="5"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+
+<br />
+<form name="form" action="admin.php" method="post">
+<input type="hidden" name="act" value="shipping">
+<input type="hidden" name="action" value="add_shipping">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center" style="table-layout: fixed; word-wrap: break-word">
+<tr class="header">
+	<td colspan="2"><?=$lang_a_shipping['add_new_shipping']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="left"><font class="bold" ><?=$lang_a_shipping['shipping_title_']?></font></td>
+	<td align="left" width="25%"><input name="title" value=""></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="left"><font class="bold" ><?=$lang_a_shipping['shipping_filename']?></font><br><?=$lang_a_shipping['shipping_filename_desc']?></td>
+	<td align="left" width="25%"><input name="filename" value=""></td>
+</tr>
+<tr align="center"  class="bgcolor1">
+	<td colspan="2"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+<?include(ADMIN_TPL.'footer.htm')?>

@@ -1,0 +1,63 @@
+<div class="main">
+	<div id="navbar">褰撳墠浣嶇疆 --> 鍒涘缓绯荤粺绠＄悊鍛?/div>
+</div>
+<div class="main">
+	<div id="list">
+		<font color="#FF0000">&gt;</font> 鍒涘缓绯荤粺绠＄悊鍛樿处鍙峰拰瀵嗙爜
+	</div>
+</div>
+<div class="main">
+	<table cellSpacing=0 cellPadding=0 width="80%" border=0 style="margin-top:6px;table-layout: fixed; word-wrap: break-word;" align="center">
+	<tr bgcolor="#ffffff">
+		<td>璇峰湪涓嬮潰濉啓 dzsw 绯荤粺绠＄悊鍛樼殑璐﹀彿鍜屽瘑鐮併€?/td>
+	</tr>
+	</table>
+</div>
+
+<?php if(is_array($message_all) && $message_all['0']){?>
+<div class="main">
+	<table cellSpacing=1 cellPadding=6 width="80%" border=0 class="tableout" style="table-layout: fixed; word-wrap: break-word;" align="center">
+	<?php foreach($message_all as $val){?>
+	<tr bgcolor="#ffffff"><td style="color:red"><?=$val?></td></tr>
+	<?php }?>
+	</table>
+</div>
+<?php }?>  
+
+<div class="main">
+	<?php if($submitreturn){?> 
+	<table cellSpacing=0 cellPadding=0 width="80%" border=0 align="center">
+	<tr>
+		<td>
+			<span class="bold"><?php echo $message_dzswexist;?></span>
+		</td>
+	</tr>
+	</table>
+	<?php }?>
+</div>
+
+<div class="main">
+	<form method="post" action="install.php" <?php if($submitreturn){?> onSubmit="return confirm('缁х画瀹夎浼氭竻绌哄叏閮ㄥ師鏈夋暟鎹紝鎮ㄧ‘瀹氳缁х画鍚?');"<?php }?>>
+	<input type="hidden" name="type" value="create_db">
+	<table cellSpacing=1 cellPadding=6 width="80%" border=0 class="tableout" align="center">
+	<tr class="bgcolor1">
+		<td width="40%">&nbsp;绠＄悊鍛樿处鍙凤細</td>
+		<td width="60%"><input type="text" name="email" value="<?php if($email){?><?php echo $email;?><?php }else{?>dzsw<?php }?>" size="30"></td>
+	</tr>
+	<tr class="bgcolor1">
+		<td width="40%">&nbsp;绠＄悊鍛樺瘑鐮?</td>
+		<td width="60%"><input type="password" name="password" size="30"></td>
+	</tr>
+	<tr class="bgcolor1">
+		<td width="40%">&nbsp;瀵嗙爜纭锛?/td>
+		<td width="60%"><input type="password" name="password2" size="30"></td>
+	</tr>
+	</table>
+	<br />
+	<center>
+
+		<input type="submit" name="submit" value="銆€鎻愪氦銆€" style="height: 25"  class="bginput">&nbsp;
+		<input type="button" name="exit" value="閫€鍑哄畨瑁? style="height: 25" onclick="javascript: window.close();" class="bginput">
+	</center>
+	</form>
+</div>

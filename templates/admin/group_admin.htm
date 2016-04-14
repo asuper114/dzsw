@@ -1,0 +1,60 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header" >
+	<td colspan="2"><?=$lang_common['system_notice_']?></td>
+</tr>
+<tr class="bgcolor1">
+   <td><?=$lang_a_group_admin['notice']?></td>
+</tr>
+</table>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<form method="post" action="admin.php" name="form">
+<input type="hidden" name="act" value="group_admin">
+<input type="hidden" name="action" value="edit">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header" align="center">
+	<td><input type="checkbox" name="chkall" onclick="checkall(this.form, 'delete')"><?=$lang_common['delete_small']?></td>
+	<td><?=$lang_a_group_admin['group_name']?></td>
+	<td><?=$lang_a_group_admin['purview']?></td>
+</tr>
+
+<?if(is_array($admingroup)){foreach($admingroup as $group){?>
+
+<?if($group['classes']=='admin'){?>
+<tr align="center" class="bgcolor1">
+    <td>&nbsp;</td>
+	<td><input type="text" size="24" name="group_title[<?=$group[admingroupsid]?>]" value="<?=$group[grouptitle]?>"></td>
+	<td><?=$lang_a_group_admin['allpurview']?></td>
+</tr>
+<?}else{?>
+<tr align="center" class="bgcolor1">
+    <td><input type="checkbox" name="delete[]" value="<?=$group[admingroupsid]?>"></td>
+	  <td><input type="text" size="24" name="group_title[<?=$group[admingroupsid]?>]" value="<?=$group[grouptitle]?>"></td>
+	  <td><a href="admin.php?act=group_admin&type=detail&id=<?=$group[admingroupsid]?>">[<?=$lang_common['detail']?>]</a></td>
+</tr>
+<?}?>
+
+<?}}?>
+
+<tr align="center" class="bgcolor1">
+    <td></td>
+	<td></td>
+	<td></td>
+</tr>
+<tr align="center" class="bgcolor1">
+	<td><?=$lang_common['add:']?></td>
+	<td><input type="text" size="24" name="group_title_new"></td>
+	<td></td>
+</tr>
+<tr align="center" class="bgcolor1">
+	<td colspan="3"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+
+<?include(ADMIN_TPL.'footer.htm')?>

@@ -1,0 +1,51 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<table border="0" align="center" cellspacing="0" cellpadding="0" width="100%" style="table-layout: fixed; word-wrap: break-word"> 
+<tr>
+	<td><?=$multipage?></td><td width="20%" align="right"></td>
+</tr>
+</table>
+
+<br />
+<table border="0" align="center" cellspacing="1" cellpadding="4" width="100%" class="tableout" style="table-layout: fixed; word-wrap: break-word"> 
+	<tr class="header" align="center">
+		<td width="8%">ID</td>
+		<td><?=$lang_a_order['list_customer']?></td>
+		<td><?=$lang_a_order['list_total_price']?></td>
+		<td width="14%"><?=$lang_a_order['list_dateadd']?></td>
+		<td width="15%"><?=$lang_a_order['list_status']?></td>
+		<td width="10%"></td>
+	</tr>
+	<?if(is_array($orders)){foreach($orders as $key=>$val){?>
+	<tr class="bgcolor1">
+		<td><?=$val['orders_id']?></td>
+		<td><a href="admin.php?act=customers&customers_id=<?= $val['cid']?>&type=detail"><?=$val['email']?></a></td>
+		<td><?=$val['order_total']?></td>
+		<td><?=$val['date_purchased']?></td>
+		<td><?=$val['orders_status']?></td>
+		<td align="center">
+			<a href="admin.php?act=orders&orders_id=<?= $val['orders_id']?>&type=detail"><?=$lang_common['detail']?></a>
+		</td>
+	</tr>
+	<?}}?>
+</table>
+
+<br />
+<table border="0" align="center" cellspacing="0" cellpadding="0" width="100%" style="table-layout: fixed; word-wrap: break-word"> 
+<tr>
+	<td><?=$multipage?></td>
+</tr>
+</table>
+<br />
+<table border="0" align="center" cellspacing="0" cellpadding="0" width="100%"> 
+<tr>
+	<td align="center"><input type="button" value="   <?=$lang_common['back']?>   " onclick="javascript:history.back(-1)" class="bginput"></td>
+</tr>
+</table>
+
+
+<?include(ADMIN_TPL.'footer.htm')?>

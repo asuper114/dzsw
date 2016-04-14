@@ -1,0 +1,10 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); ?>
+
+<a href="index.php" target=_self><?=$lang_header['index']?></a>  
+<?php if($settings['user_lossremark'] == 'true'){?>
+| <a href="lossremark.php"><?=$lang_header['lossremark']?></a> 
+<?php }?>
+| <a href="gbook.php"><?=$lang_header['gbook']?></a> 
+| <a href="myaccount.php"><?=$lang_header['myaccount']?></a> 
+| <a href="cart.php"><?=$lang_header['cart']?></a>
+

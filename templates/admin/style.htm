@@ -1,0 +1,50 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<form method="post" action="admin.php">
+<input type="hidden" name="act" value="style">
+<input type="hidden" name="action" value="edit">
+<table  border="0" cellspacing="1" cellpadding="3" width="100%" class="tableout">
+<tr class="header" align="center">
+	<td width="10%"><input type="checkbox" name="chkall" class="header" onclick="checkall(this.form)"><?=$lang_common['delete_small']?></td>
+	<td><?=$lang_a_style['style_name']?></td>
+	<td><?=$lang_a_style['style_template']?></td>
+	<td><?=$lang_common['edit']?></td>
+	<td><?=$lang_a_style['style_file']?></td>
+</tr>
+<?if(is_array($stylearray)){foreach($stylearray as $key=>$styledetail){?>
+<tr align="center" class="bgcolor1">
+	<td><input type="checkbox" name="delete_array[]" value="<?=$styledetail[styleid]?>" <?=$styledetail[checked]?>></td>
+	<td><input type="text" name="titlenew[<?=$styledetail[styleid]?>]" value="<?=$styledetail[title]?>" size="18"></td>
+	<td><?=$styledetail[templatename]?></td>
+	<td><a href="admin.php?act=style&type=detail&styleid=<?=$styledetail[styleid]?>">[<?=$lang_common['detail']?>]</a></td>
+	<td><a href="admin.php?act=style&type=editfile&styleid=<?=$styledetail[styleid]?>">[<?=$lang_common['edit']?>]</a></td>
+</tr>
+<?}}?>
+<tr align="center" class="bgcolor1">
+	<td colspan="7"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+
+<br />
+<form method="post" action="admin.php" enctype="multipart/form-data">
+<input type="hidden" name="act" value="style">
+<input type="hidden" name="action" value="import">
+<table  border="0" cellspacing="1" cellpadding="3" width="100%" class="tableout" align="center">
+<tr class="header">
+	<td><?=$lang_a_style['import_cssfile:']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="center"><input type="file" name="stylefile" /></td>
+</tr>
+<tr align="center" class="bgcolor1">
+	<td><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+
+<?include(ADMIN_TPL.'footer.htm')?>

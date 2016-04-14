@@ -1,0 +1,150 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+
+<?php include template("navbar");?>
+
+<div class="main">
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center" class="tablebordercolor">
+	<tr>
+		<td>
+			<?php echo $lang_confirm_step['confirm_step_'];?>
+			<?php echo $confirm_step;?>
+		</td>
+	</tr>
+	</table>
+</div>
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor">
+	<tr>
+		<td valign="top">
+
+			<?if($allow_ctolook){?>
+			<br />
+			<table border="0" cellspacing="0" cellpadding="0" width="80%" align="center">
+			<tr>
+				<td align="left"><h2><?=$lang_show_payment_info['payment_showinfo']?></h2></td>
+			</tr>
+			</table>
+
+			<br />
+			<table border="0" cellspacing="0" cellpadding="0" width="80%"  align="center">
+			<tr>
+				<td width="30%">
+					<?=$lang_show_payment_info['orders_id']?> <font style="color:red"><?php echo $pay_detail['orders_id'];?></font> 
+				</td>
+				<td>
+					<?=$lang_show_payment_info['orders_mustpay']?> <font style="color:red"><?php echo $pay_detail['pay_total_text'];?></font> 
+				</td>
+			</tr>
+			</table>
+
+			<br />
+			<table border="0" cellspacing="0" cellpadding="0" width="80%"  align="center">
+			<tr>
+				<td>
+					<h1><?php echo $lang_show_payment_info['payment_method_'];?><?php echo $pay_detail['payment_title'];?></h1> 
+				</td>
+			</tr>
+			</table>
+
+			<?if($pay_detail['payment_type'] != ''){?>
+			<table border="0" cellspacing="1" cellpadding="4" width="80%"  align="center" class="tablebordercolor">
+			<tr><td>
+
+				<?if($pay_detail['payment_type'] == 'goodsarrivepay'){?>
+				<div><?=$lang_show_payment_info['goodsarrive_title']?></div>
+				<?}?>
+
+				<?if($pay_detail['payment_type'] == 'postpay'){?>
+				<br />
+				<div><?=$lang_show_payment_info['postremit_title']?></div>
+
+				<br />
+				<table border="0" cellspacing="1" cellpadding="4" width="90%"  align="center" class="tableout">
+				<tr class="bgcolor1">
+					<td width="10%"><?=$pay_detail['address']['title']?></td>
+					<td width="40%"><?=$pay_detail['address']['value']?></td>
+				</tr>
+				<tr class="bgcolor1">
+					<td><?=$pay_detail['manname']['title']?></td>
+					<td><?=$pay_detail['manname']['value']?></td>
+				</tr>
+				<tr class="bgcolor1">
+					<td><?=$pay_detail['postcode']['title']?></td>
+					<td><?=$pay_detail['postcode']['value']?></td>
+				</tr>
+				</table>
+				
+				<br />
+				<div><?=$lang_show_payment_info['postremit_notice']?></div>
+				<?}?>
+
+				<?if($pay_detail['payment_type'] == 'banktransfer'){?>
+				<br />
+				<div><?=$lang_show_payment_info['banktransfer_title']?></div>
+				<?if(is_array($pay_detail)){?>
+				<br />
+				<table border="0" cellspacing="0" cellpadding="0" width="90%"  align="left">
+				<tr>
+					<td width="20%"><?=$pay_detail['bankname']?></td>
+					<td width="50%"><?=$pay_detail['cartnum']['title']?><?=$pay_detail['cartnum']['value']?></td>
+					<td width="30%"><?=$pay_detail['manname']['title']?><?=$pay_detail['manname']['value']?></td>
+				</tr>
+				</table>
+				<br />
+				<br />
+				<?}?>
+				<?}?>
+
+				<?if($pay_detail['payment_type'] == 'online'){?>
+				<br />
+				<div align="center">
+					<form name="online" action="<?=$pay_detail['form_action']?>" method="post">
+						<?=$pay_detail['hidden']?>
+						<?=$lang_show_payment_info['online_payment_showinfo']?>
+						<br />
+						<br />
+						<input type="submit" name="submit" value="   <?=$pay_detail['submit_name']?>   ">
+						<br />
+						<br />
+					</form>
+				</div>
+				<?}?>
+
+			</td></tr></table>
+			<?}?>
+
+			<br />
+			<table border="0" cellspacing="0" cellpadding="0" width="80%" align="center">
+			<tr>
+				<td>
+					<?=$lang_show_payment_info['orders_lookoredit']?>
+					<a href="myaccount.php?type=order&act=detail&orders_id=<?php echo $pay_detail['orders_id'];?>" target="_blank"><?=$lang_show_payment_info['orders_clicktolook']?></a>
+				</td>
+			</tr>
+			</table>    
+			<table border="0" cellspacing="0" cellpadding="0" width="80%"  align="center">
+			<tr>
+				<td><h1><?=$lang_show_payment_info['orders_what_can_do']?></h1></td>
+			</tr>
+			</table>    
+					
+			<?}else{?>   
+			<br>
+			<table border="0" cellspacing="1" cellpadding="4" width="60%"  align="center" class="tableout">
+			<tr class="header">
+				<td><?=$lang_common['system_notice:']?></td>
+			</tr>
+			<tr class="bgcolor1">
+				<td height="150" align="center"><?=$lang_show_payment_info['orders_nofont']?></td>
+			</tr></table>
+			<?}?>
+
+		<br />
+		<br />
+      
+		</td>
+	</tr>
+	</table>
+</div>
+<?include template("footer");?>

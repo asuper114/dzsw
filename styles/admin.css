@@ -1,0 +1,97 @@
+body{ 
+	font-size: 12px; 
+	margin: 5px;
+}
+table{ 
+	font-family: Tahoma, Verdana; 
+	font-size: 12px 
+}
+font{ 
+	font-family: Tahoma, Verdana; 
+	font-size: 12px;
+	line-height: 150%;
+}
+textarea,select{ 
+	font-family: Tahoma, Verdana; 
+	font-size: 12px;  
+	color: #000000; 
+	font-weight: normal; 
+	background-color: #F8F9FC;
+}
+
+a:link,a:active,a:visited { 
+	text-decoration: none; color : #006699; 
+}
+a:hover{ 
+	text-decoration: underline; color : #DD6900; 
+}
+h3 {
+    font: 15px normal Arial, Helvetica, sans-serif; 
+    margin: 0px; 
+	line-height: 150%;
+}
+h2 {
+    font: 14px normal Arial, Helvetica, sans-serif; 
+    margin: 0px;  
+	line-height: 150%;
+}
+h1 {
+    font: 13px normal Arial, Helvetica, sans-serif; 
+    margin: 0px; 
+	line-height: 150%;
+}
+form {
+	margin: 0px;
+	padding: 0px;
+}
+.header{ 
+	font-family: Tahoma, Verdana; 
+	font-size: 12px;  
+	background-color: #F1F1F1 
+}
+.header a		{ 
+	color: #006699 
+}
+.bold{ 
+	font-weight: BOLD; 
+}
+.muli{ 
+	font-family: Tahoma, Verdana; 
+	font-size: 15px; 
+	font:  Helvetica, sans-serif; 
+	line-height: 150%;
+}
+.tableout{ 
+	background: #7CA5DE;
+}
+.tablebordercolor{ 
+	border: 1px solid #7CA5DE;
+}
+.dobor{
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;	
+	border-bottom-color: #7CA5DE;
+}
+.text{ 
+	font-family: Tahoma, Verdana; 
+	font-size: 12px;
+	line-height: 150%;
+}
+.bginput{
+	font-family: Tahoma, Verdana; 
+	font-size: 12px;
+	font-weight: bold;
+}
+.bgcolor1{
+	background-color : #FFFFFF;
+}
+.bgcolor2{
+	background-color : #F1F1F1;
+}
+.main
+{
+	width:100%;
+	margin:0  auto;
+	padding: 0.25em 0.25em 0.25em 0.25em;
+	background-color : #FFFFFF;
+}

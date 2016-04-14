@@ -1,0 +1,47 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+
+<?php include template("navbar");?>
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<tr class="bgcolor1">
+		<td valign="top">
+			<?include template("myaccount_left");?>
+		</td>
+		<td width="76%">
+		   
+			<?if(is_array($message_all) && $message_all['0']){?>
+			<table  border="0" cellspacing="1" cellpadding="4" width="95%" class="tableout" align="center">
+			<?foreach($message_all as $key=>$value){?>
+			<tr class="bgcolor2" style="color:red">
+				<td><img src="./images/icons/error.gif" border="0">&nbsp;&nbsp;&nbsp;<?=$value?></td>
+			</tr>
+			<?}?>
+			</table>
+			<br />
+			<?}?>
+
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center">
+			<tr>
+				<td width="30%"><?=$cust['email']?> <?=$lang_myaccount_index['welcome']?></td>
+			</tr>
+			</table>
+
+			<?if($settings['customer_mark'] == 'true'){?>
+			<br>
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center">
+			<tr>
+				<td><table border="0" width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="40%"><?=$lang_myaccount_index['customer_classes:']?><?=$grouptitle?></td>
+					<td width="30%" align="center"><?=$lang_myaccount_index['customer_credit:']?><?=$cust['credit']?></td>
+					<td align="right" width="30%"><?=$lang_myaccount_index['customer_discount_1:']?><?=$groupdiscount?><?=$lang_myaccount_index['customer_discount_2:']?></td>
+				</tr></table></td>
+			</tr></table>
+			<?}?>
+
+		</td>
+	</tr>
+	</table>
+</div>
+<? include template("footer");?>

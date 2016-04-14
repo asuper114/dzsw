@@ -1,0 +1,68 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>  
+
+<script language="Javascript1.2">
+<!-- // load htmlarea
+_editor_url = "./htmlarea/";                     // URL to htmlarea files
+var win_ie_ver = parseFloat(navigator.appVersion.split("MSIE")[1]);
+if (navigator.userAgent.indexOf('Mac')        >= 0) { win_ie_ver = 0; }
+if (navigator.userAgent.indexOf('Windows CE') >= 0) { win_ie_ver = 0; }
+if (navigator.userAgent.indexOf('Opera')      >= 0) { win_ie_ver = 0; }
+if (win_ie_ver >= 5.5) {
+  document.write('<scr' + 'ipt src="' +_editor_url+ 'editor.js"');
+  document.write(' language="Javascript1.2"></scr' + 'ipt>');  
+} else { 
+	browserNotice();
+	document.write('<scr'+'ipt>function editor_generate() { return false; }</scr'+'ipt>'); }
+// -->
+</script>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tableout">
+<tr class="header">
+	<td><?=$lang_a_gbook['replymain_']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$main_data['textmain']?></td>
+</tr>
+</table>
+
+<br />
+<form method="post" name="form" action="admin.php">
+<input type="hidden" name="act" value="gbook">
+<input type="hidden" name="action" value="editreply">
+<input type="hidden" name="grid" value="<?=$grid?>">
+<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tableout">
+<tr class="header">
+	<td><?=$lang_a_gbook['editreply_']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td><textarea rows="10" cols="85" name="textreply" style="width:100%"><?=$reply_data['textreply']?></textarea></td>
+</tr>
+<tr class="bgcolor2">
+	<td align="center"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  ">  <input type="button" name="button" value="  <?=$lang_common['back']?>  " onclick="javascript:history.back();"></td>
+</tr>
+</table>
+</form> 
+
+<script language="javascript1.2">
+var config = new Object();    // create new config object
+config.width = "100%";
+// NOTE:  You can remove any of these blocks and use the default config!
+config.toolbar = [
+    ['bold','italic','underline','separator'],
+    ['justifyleft','justifycenter','justifyright','separator'],
+    ['OrderedList','UnOrderedList','Outdent','Indent','separator'],
+    ['forecolor','backcolor','separator'],
+    ['HorizontalRule','separator'],
+];
+
+editor_generate('textreply',config);
+</script>
+
+
+
+<?include(ADMIN_TPL.'footer.htm')?>
+	 

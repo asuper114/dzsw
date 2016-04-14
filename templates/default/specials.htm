@@ -1,0 +1,77 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header");?>
+
+<?php include template("navbar_table");?>
+
+<div class="main">
+	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td valign="top">
+			<?php include template("box_hassee");?>
+			<br />
+			<?php include template("box_search_history");?>
+			<br />
+			<?php include template("box_cart");?>
+			<br />
+			
+		</td>
+		<td width="6px"></td>
+		<td width="76%" valign="top">
+			
+			<?=$products_array['multipage']?>
+
+			<?php if(is_array($products_array['detail'])) {?>
+			<br />
+			<table style="margin-top:5px" border="0" width="100%" cellspacing="1" cellpadding="4" align="center">
+			<?php foreach($products_array['detail'] as $key=>$val){?>
+			<tr>
+				<td valign="top" width="<?php echo $image_width;?>">
+					<a href="product_detail.php?products_id=<?=$val['products_id']?>" target="_blank">
+					<img src="<?=$val['imagesrc']?>" alt="" title="" border="0" width="<?=$settings['smallimage_width2']?>"></a>
+				</td>
+				<td valign="top">
+					<font>
+						<?=$lang_specials['product_name_']?><a href="product_detail.php?products_id=<?=$val['products_id']?>" target="_blank"><span class="bold"><?=$val['name']?></span></a>
+						<br />
+								
+						<?if($val['model']){?>
+							<?=$lang_specials['product_module_']?><?=$val['model']?>
+							<br />
+						<?}?>
+						<?=$val['price']['one']['text']?><?=$val['price']['one']['price']?>
+						<br />
+						<?if($val['price']['two']['type'] != 'one'){?>
+							<span style="color:red">
+								<?=$val['price']['two']['text']?><?=$val['price']['two']['price']?></span>
+							<br />
+						<?}?>
+						<?=$val['base_info']?>
+						<br />
+
+						<h2><a href="cart.php?action=add&products_id=<?=$val['products_id']?>"><?=$lang_common['cartinput']?></a>&nbsp;&nbsp;&nbsp; <a href="product_detail.php?products_id=<?=$val['products_id']?>" target="_blank"><?=$lang_common['detail']?></a></h2>	
+					</font>	
+				</td>
+			</tr>
+			<?}?>
+			</table>
+
+			<?}else{?>
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" style="table-layout: fixed; word-wrap: break-word">
+			<tr class="header">
+				<td><?=$lang_common['system_notice:']?></td></tr>
+			<tr class="bgcolor1">
+				<td align="center" height="150"><?=$lang_specials['product_nofont']?></td>
+			</tr>
+			</table>
+			<br />
+
+			<?}?>
+			<br />
+			<?=$products_array['multipage']?>
+
+		</td>
+
+	</tr>
+	</table>
+</div>
+
+<? include template("footer");?>

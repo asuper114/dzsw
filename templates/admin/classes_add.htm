@@ -1,0 +1,57 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<form method="post" name="classes" action="admin.php">
+<input type="hidden" name="act" value="classes">
+<input type="hidden" name="action" value="add">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="header">
+	<td colspan="4"><?=$lang_a_classes['class_one']?></td>
+</tr>
+<tr class="bgcolor1" align="center">
+	<td align="right" width="15%"><?=$lang_a_classes['class_name_']?></td><td width="20%" align="left" colspan="3"><input type="" name="classes_array_1" size="30"></td>
+</tr>
+</table>
+
+<?if($option_1){?>
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="header">
+	<td colspan="4"><?=$lang_a_classes['class_two']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="center" width="15%"><?=$lang_a_classes['class_name_']?></td><td width="20%" align="right"><input type="" name="classes_array_2" size="30"></td><td align="center" width="20%"><?=$lang_a_classes['class_top_']?></td><td align="left"><select name="classes_parent_id_1" style="width:100%"><?=$option_1?></select></td>
+</tr>
+</table>
+
+<?}?>
+<?if($option_2){?>
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="header">
+	<td colspan="4"><?=$lang_a_classes['class_three']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="center" width="15%"><?=$lang_a_classes['class_name_']?></td><td width="20%" align="right"><input type="" name="classes_array_3" size="30"></td><td align="center" width="20%"><?=$lang_a_classes['class_top_']?></td><td align="left"><select name="classes_parent_id_2" style="width:100%"><?=$option_2?></select></td>
+</tr></table>
+<?}?>
+<?if($option_3){?>
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="header">
+	<td colspan="4"><?=$lang_a_classes['class_four']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="center" width="15%"><?=$lang_a_classes['class_name_']?></td><td width="20%" align="right"><input type="" name="classes_array_4" size="30"></td><td align="center" width="20%"><?=$lang_a_classes['class_top_']?></td><td align="left"><select name="classes_parent_id_3" style="width:100%"><?=$option_3?></select></td>
+</tr></table>
+<?}?>
+<br><br>
+<center>
+	<input type="submit" name="editsubmit" value="   <?=$lang_common['submit']?>   " class="bginput">
+</center>
+</form>
+
+        
+<?include(ADMIN_TPL.'footer.htm')?>			

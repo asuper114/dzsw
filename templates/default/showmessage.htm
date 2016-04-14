@@ -1,0 +1,66 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?=$charset?>">
+<meta name="robots" content="index,follow">
+<meta name="keywords" content="Soobic!,dzsw,oscommerce,dzsw Studio,PHP,MySQL,commerce">
+<meta name="generator" content="Dev-PHP 2.0.6">
+<meta name="description" content="<?=$settings['store_name']?> - Powered by dzsw webshop <?=$settings['store_version']?>">
+<meta name="MSSmartTagsPreventParsing" content="TRUE">
+<meta http-equiv="MSThemeCompatible" content="Yes">
+<?=$header_redirect?>
+<title><?=$settings['store_name']?> - powered by dzsw</title>
+<link rel="stylesheet" href="styles/<?=$styles['cssfilename']?>" type="text/css">
+
+</head>
+<body leftmargin="0" topmargin="0">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" height="100%" class="main">
+<tr>
+	<td>
+
+		<table border="0" cellspacing="1" cellpadding="4" width="400px" class="tablebordercolor" align="center">
+		<tr>
+			<td height="100">
+				<table border="0" cellspacing="1" cellpadding="4" width="100%" align="center">
+				<tr>
+					<td align="center"><?=$message?>
+					</td>
+				</tr>
+				<?if($pageredirect == 'javascript'){?> 
+				<tr>
+					<td align="center"">
+					<a href="javascript:history.go(-1)"><?php echo $lang_message['goback'];?></a>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+					<a href="index.php"><?php echo $lang_message['gobacktoindex'];?></a>
+					</td>
+				</tr>
+				<?}else{?> 
+				<tr>
+					<td align="center">
+					<a href="<?=$pageredirect?>"><?php echo $lang_message['redirect'];?></a>
+					</td>
+				</tr>
+				<?}?> 
+				</table>
+			</td>
+		</tr>
+		</table>
+		<br />
+
+		<center>
+			Powered by <a href="http://www.dzsw.com" target="_blank"> dzsw <?=$settings['store_version']?></a>
+			&copy; 2005-2006, <a href="http://www.dzsw.com" target="_blank">dzsw</a>
+			<?s_debuginfo();?>
+		</center>
+
+
+	</td>
+</tr>
+</table>
+
+</body>
+</html>
+<?output();?>

@@ -1,0 +1,36 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>  
+  
+<?if($message_all['0']){?>
+
+	<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+	<?foreach($message_all as $key=>$value){?>
+	<tr class="bgcolor1">
+		<td width="5%"><img src="images/icons/error.gif" border="0"></td>
+		<td class="messagetxt"><?=$value?></td>
+	</tr>
+	<?}?>
+	</table>
+
+<?}?>
+
+	<table border="0" width="100%" cellspacing="1" cellpadding="4" class="tableout" align="center">
+	<form method="post" name="form" action="admin.php">
+	<input type="hidden" name="act" value="gbook">
+	<input type="hidden" name="action" value="edit">
+	<input type="hidden" name="gid" value="<?=$gid?>">
+	<tr class="header">
+		<td><?=$lang_a_gbook['editmain_']?></td>
+	</tr>
+	<tr class="bgcolor1">
+		<td align="center"><textarea rows="10" cols="85" name="textmain"><?=$main_data['textmain']?></textarea></td>
+	</tr>
+	<tr class="bgcolor2">
+		<td align="center"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  ">  <input type="button" name="button" value="  <?=$lang_common['back']?>  " onclick="javascript:history.back();"></td>
+	</tr>
+	</table>
+	</form> 
+
+
+<?include(ADMIN_TPL.'footer.htm')?>
+	 

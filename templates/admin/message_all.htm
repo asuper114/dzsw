@@ -1,0 +1,12 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+
+<?php if($message_all['0']){?>
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<?php foreach($message_all as $key=>$value){?>
+<tr class="bgcolor1">
+	<td><img src="images/icons/error.gif" border="0"><?=$value?></td>
+</tr>
+<?}?>
+</table>
+<?}?>

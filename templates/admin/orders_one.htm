@@ -1,0 +1,204 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<table border="0" align="center" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor"> 
+<tr>
+	<td align="center"><span class="bold"><?=$lang_a_order['customer_']?></span><?=$order_detail['c_email']?>&nbsp;&nbsp;&nbsp;<a href="admin.php?act=mail&customers_id=<?=$order_detail['cid']?>"><?=$lang_a_order['sendmail']?></a>&nbsp;&nbsp;&nbsp;<a href="admin.php?act=customers&type=detail&customers_id=<?=$order_detail['cid']?>"><?=$lang_a_order['account_detail']?></a>&nbsp;&nbsp;&nbsp;<a href="admin.php?act=orders&type=print&orders_id=<?=$order_detail['orders_id']?>" target="_blank"><?=$lang_a_order['print']?></a></td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="1" cellpadding="4" width="100%">
+	<tr><td><span class="bold"><?=$lang_a_order['dillingaddress_']?></span></td></tr>
+</table>
+
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor">
+<tr>
+	<td width="65%"><li><?=$order_detail['d_country']?>&nbsp;&nbsp;&nbsp;<?=$order_detail['d_province']?>&nbsp;&nbsp;&nbsp;<?=$order_detail['d_city']?></li></td>
+	<td align="left"><li><?=$lang_a_order['tel_regular_']?><?=$order_detail['d_tel_regular']?></li></td>
+</tr>
+<tr>
+	<td><li><?=$lang_a_order['customer_name_']?><?=$order_detail['d_name']?></li></td>
+	<td><li><?=$lang_a_order['tel_mobile_']?><?=$order_detail['d_tel_mobile']?></li></td>
+</tr>
+<tr>						
+	<td><li><?=$lang_a_order['address_detail_']?><?=$order_detail['d_street_address']?></li></td>
+	<td><li><?=$lang_a_order['postcode_']?><?=$order_detail['d_postcode']?></li></td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center">
+	<tr>
+		<td><span class="bold"><?=$lang_a_order['dellingaddress_']?></span></td>
+	</tr>
+</table>
+
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor" align="center" style="table-layout: fixed; word-wrap: break-word">
+<?if($order_detail['deli_s_bill']=='1'){?>
+	<tr><td><?=$lang_a_order['dell_s_bill']?></td></tr>
+<?}else{?>
+	<tr>
+		<td width="65%"><li><?=$order_detail['b_country']?>&nbsp;&nbsp;&nbsp;<?=$order_detail['b_province']?>&nbsp;&nbsp;&nbsp;<?=$order_detail['b_city']?></li></td>
+		<td align="left"><li><?=$lang_a_order['tel_regular_']?><?=$order_detail['b_tel_regular']?></li></td>
+	</tr>
+	<tr>
+		<td><li><?=$lang_a_order['customer_name_']?><?=$order_detail['b_name']?></li></td>
+		<td><li><?=$lang_a_order['tel_mobile_']?><?=$order_detail['b_tel_mobile']?></li></td>
+	</tr>
+	<tr>
+		<td><li><?=$lang_a_order['address_detail_']?><?=$order_detail['b_street_address']?></li></td><td><li><?=$lang_a_order['postcode_']?><?=$order_detail['b_postcode']?></li></td>
+	</tr>
+<?}?>
+</table>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor">
+<?for ($i=0, $n=sizeof($order_products); $i<$n; $i++) {?>
+	<tr>
+		<td align="right" width="15%"><?=$order_products[$i]['quantity']?></td>
+		<td align="center" valign="top" width="5%">x</td>
+		<td><span class="bold"><a href="product_detail.php?products_id=<?=$order_products[$i]['products_id']?>" target="_blank"><?=$order_products[$i]['name']?></span> (<?=$order_products[$i]['model']?>)</td>
+		<td width="35%"><?=$order_products[$i]['final_price_text']?></td>
+    </tr>
+<?}?>
+</table>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor" align="center" style="table-layout: fixed; word-wrap: break-word">
+    <?if(is_array($order_totallist)){ foreach($order_totallist as $key=>$val){?>
+	<tr>
+		<td align="right" width="25%"><?=$val['title']?></td>
+		<td><?=$val['value_text']?></td>
+    </tr>
+	<?}}?>
+</table>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="bgcolor1">
+	<td><span class="bold"><?=$lang_a_order['shipping_method_']?></span><?=$order_detail['shipping_title']?></td>
+	<td><span class="bold"><?=$lang_a_order['payment_method_']?></span><?=$order_detail['payment_title']?></td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center">
+<tr>
+	<td><span class="bold"><?=$lang_a_order['order_history_']?></span></td>
+</tr>
+</table>
+<table  border="0" cellspacing="1" cellpadding="4" width="95%" class="tableout" style="table-layout: fixed; word-wrap: break-word">
+<tr class="bgcolor2">
+	<td><?=$lang_a_order['order_status_']?></td>
+	<td><?=$lang_a_order['date_status_']?></td>
+	<td><?=$lang_a_order['add_money_']?></td>
+	<td><?=$lang_a_order['pay_platform_']?></td>
+	<td><?=$lang_a_order['operator_']?></td>
+</tr>
+<?if(is_array($order_history)){ foreach($order_history as $key=>$val){?>
+<tr class="bgcolor1">
+	<td><?=$val['orders_status']?></td>
+	<td><?=$val['date_added']?></td>
+	<td>
+		<?if($val['paidnum']){?>
+			<?=$val['paidnum']?>
+		<?}else{?>
+			<?php echo $lang_common['no_fit'];?>
+		<?php }?>
+	</td>
+	<td>
+		<?if($val['payment_title']){?>
+			<?=$val['payment_title']?>
+		<?}else{?>
+			<?php echo $lang_common['no_fit'];?>
+		<?php }?>
+	</td>
+	<td>
+		<?if($val['operator']){?>
+			<?=$val['operator']?>
+		<?}else{?>
+			<?php echo $lang_common['no_fit'];?>
+		<?php }?>
+	</td>
+</tr>
+<?}}?>
+</table>
+
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center">
+	<tr>
+		<td>
+			<span class="bold"><?=$lang_a_order['order_admin']?></span>
+		</td>
+	</tr>
+</table>
+<?php if($payback_message){?>
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" align="center">
+<tr>
+	<td><?php echo $payback_message;?></td>
+</tr>
+</table>
+<?}?>
+
+<?php if($show_operate){?>
+<script language="JavaScript">
+function tocancel(){
+	var obj_status			= document.getElementById("orders_status_insert");
+	var obj_orders_id		= document.getElementById("orders_id");
+	if(obj_status.selectedIndex < 0){
+		return false;
+	}
+	if(obj_status.options[obj_status.selectedIndex].value == 'cancel') {
+		window.location=('admin.php?act=orders&type=cancel&orders_id='+obj_orders_id.value) 
+	}	
+}
+</script>
+
+<form name="operate" method="post" action="admin.php">
+<input type="hidden" name="act" value="orders">
+<input type="hidden" name="action" value="update_status">
+<input type="hidden" name="orders_id" id="orders_id" value="<?=$orders_id?>">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor">
+<tr>
+	<td>
+		<?=$lang_a_order['orderstatus_']?>
+		<select name="orders_status_insert" id="orders_status_insert"  onchange="tocancel();">
+		<?if(is_array($operate_status)){?>
+		<?foreach($operate_status as $val){?>
+		<option value="<?php echo $val['statuskey'];?>" <?php echo $val['selected'];?>> <?php echo $val['title'];?> </option>
+		<?}?>
+		<?}?>
+		</select>
+	</td>	
+	<td align="center" width="20%"><?=$lang_a_order['sendmail_']?><input type="checkbox" name="sendmail" value="1"></td>
+	<td align="center" width="20%"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput" /></td>
+</tr>
+</table>
+</form>
+<br />
+<?php }?>
+
+<?php if($allow_addmoney == true){?>
+<form name="form" method="post" action="admin.php">
+<input type="hidden" name="act" value="orders">
+<input type="hidden" name="action" value="inset_paid">
+<input type="hidden" name="orders_id" value="<?=$orders_id?>">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor">
+<tr>
+	<td><?=$lang_a_order['customer_pay_']?><input type="text" name="inset_paid"></td>
+	<td align="center" width="20%"><?=$lang_a_order['sendmail_']?><input type="checkbox" name="sendmail" value="1"></td>
+	<td align="center" width="20%"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+<br />
+<?php }?>
+
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor">
+<tr>
+	<td align="center">
+		<input type="button" name="button" value="  <?=$lang_common['back']?>  " onclick="javascrpt:history.go(-1)" class="bginput">
+	</td>
+</tr>
+</table>
+
+<?include(ADMIN_TPL.'footer.htm')?>

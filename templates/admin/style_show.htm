@@ -1,0 +1,39 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<form method="post" action="admin.php">
+<input type="hidden" name="act" value="style">
+<input type="hidden" name="action" value="edit_all">
+<input type="hidden" name="styleid" value="<?=$styleid?>">
+<table  border="0" cellspacing="1" cellpadding="5" width="100%" class="tableout">
+<tr class="header">
+	<td colspan="3"><?=$lang_a_style['edit_style']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td width="60%"><b><?=$lang_a_style['style_name']?></b><br><?=$lang_a_style['style_name_desc']?></td>
+	<td ><input type="text" size="30" value="<?=$style_data['title']?>" name="newtitle"></td>
+</tr>
+<tr class="bgcolor1">
+	<td><b><?=$lang_a_style['template_']?></b><br><?=$lang_a_style['template_desc']?></td>
+	<td ><?=$template_array?></td>
+</tr>
+<tr class="bgcolor1">
+	<td><b><?=$lang_a_style['imagedir_']?></b><br><?=$lang_a_style['imagedir_desc']?></td>
+	<td><input type="text" size="30" value="<?=$style_data['imagedir']?>" name="imagedirnew"></td>
+</tr>
+<tr class="bgcolor1">
+	<td><b><?=$lang_a_style['css_file_name:']?></b><br><?=$lang_a_style['css_file_name_desc']?></td>
+	<td><?=$stylefile_array?></td>
+</tr>
+</table>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="5" width="100%" class="tableout" align="center">
+<tr align="center"class="bgcolor1">
+	<td><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">&nbsp;&nbsp;<input type="button" name="button" value="  <?=$lang_common['back']?>  " onclick="window:location='admin.php?act=style'" class="bginput"></td>
+</tr>
+</table>
+
+</form>
+<?include(ADMIN_TPL.'footer.htm')?>

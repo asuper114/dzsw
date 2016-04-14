@@ -1,0 +1,30 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<br />
+<form method="post" action="admin.php">
+<input type="hidden" name="act" value="settings">
+<input type="hidden" name="action" value="save">
+<input type="hidden" name="group_id" value="<?=$group_id?>">
+<table cellspacing="1" cellpadding="4" width="100%" class="tableout">
+<tr class="header" align="center">
+	<td><?=$lang_a_settings['option']?></td><td><?=$lang_a_settings['value_1']?></td>
+</tr>
+<?if($settings_all){foreach($settings_all as $settings){?>
+<tr class="bgcolor1">
+    <td>
+		<span class="bold"><?=$lang_settings[$settings['settingsname']]?></span>
+		<br />
+		<?=$lang_settings[$settings['description']]?>
+	</td>
+    <td><?=$settings['value_field']?></td>
+</tr>
+<?}}?>
+
+<tr class="bgcolor1">
+	<td align="center" colspan="2"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+<br><br>
+
+<?include(ADMIN_TPL.'footer.htm')?>

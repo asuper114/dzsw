@@ -1,0 +1,103 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+<?php include template("navbar");?>
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<tr class="bgcolor1">
+		<td valign="top">
+			<?include template("myaccount_left");?>
+		</td>
+		<td width="76%" valign="top">
+
+			<form name="form" action="myaccount.php" method="post">
+			<input type="hidden" name="type" value="order">
+			<input type="hidden" name="action" value="cpayment">
+			<input type="hidden" name="orders_id" value="<?=$orders_id?>">
+
+			<?if(is_array($payment_data)){foreach($payment_data as $key=>$val){?>
+			<?if($key == 'goodsarrivepay'){?>
+			<br />
+			<table border="0" cellspacing="1" cellpadding="4" width="100%"  align="center" class="tableout">	
+			<tr class="bgcolor1">
+				<td>
+				<input type="radio" name="payment" value="<?=$val['id']?>" <?if($val['id'] == $order_data['payment_method']){?>checked<?}?>><?=$val['title']?>
+			</td></tr>
+			</table>
+
+			<?}elseif($key == 'postpay'){?>
+			<br>
+			<table border="0" cellspacing="1" cellpadding="4" width="100%"  align="center" class="tableout">	
+			<tr class="bgcolor1">
+				<td>
+				<input type="radio" name="payment" value="<?=$val['id']?>" <?if($val['id'] == $order_data['payment_method']){?>checked<?}?>><?=$val['title']?>
+			</td></tr>
+			<tr class="bgcolor1">
+				<td>
+					<?if(is_array($val['pa'])){foreach($val['pa'] as $key2=>$val2){?>
+			
+					<table>
+					<tr>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<?=$val2['title']?><?=$val2['value']?>
+						</td>
+					</tr>
+					</table>
+					<?}}?>
+				</td>
+			</tr>
+			</table>
+
+			<?}elseif($key == 'banktransfer'){?>
+			<br>
+			<table border="0" cellspacing="1" cellpadding="4" width="100%"  align="center" class="tableout">	
+			<tr class="bgcolor1">
+				<td><?=$val['title']?></td>
+			</tr>
+			<?if($val['child']['0']['id']){?>
+			<tr class="bgcolor1"><td><table border="0" cellspacing="1" cellpadding="4" width="95%" align="right" class="tableout">
+			<?foreach($val['child'] as $val2){?>
+				<tr class="bgcolor1">	
+					<td width="20%"><input type="radio" name="payment" value="<?=$val2['id']?>" <?if($val2['id'] == $order_data['payment_method']){?>checked<?}?>><?=$val2['title']?></td>	
+					<td width="30%"><?=$val2['pa']['manname']['title']?><?=$val2['pa']['manname']['value']?></td>
+					<td><?=$val2['pa']['cartnum']['title']?><?=$val2['pa']['cartnum']['value']?></td>
+				</tr>
+			<?}?>
+			</table></td></tr>
+			<?}?>
+			</table>
+
+			<?}elseif($key == 'online'){?>
+			<br>
+			<table border="0" cellspacing="1" cellpadding="4" width="100%"  align="center" class="tableout">	
+			<tr class="bgcolor1">
+				<td><?=$val['title']?></td>
+			</tr>
+			<tr class="bgcolor1"><td>
+			<table border="0" cellspacing="1" cellpadding="4" width="95%"  align="right" class="tableout">
+			<?if($val['child']['0']){foreach($val['child'] as $val2){?>
+				<tr class="bgcolor1">	
+					<td width="20%"><input type="radio" name="payment" value="<?=$val2['id']?>" <?if($val2['id'] == $order_data['payment_method']){?>checked<?}?>><?=$val2['title']?></td>
+					<td><?=$val2['description']?></td>
+				</tr>
+			<?}}?>
+			</table>
+			</td></tr>
+			</table>
+			<?}?>
+			<?}}?>
+
+			<br>  
+			<table align="center"  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+			<tr class="bgcolor1">
+				<td align="center"><input type="submit" name="submit" value="   <?=$lang_common['submit']?>   " class="bginput"></td>
+			</tr>
+			</form></table>
+
+			<br />
+			<br />
+			<br />
+		</td>
+	</tr>
+	</table>
+</div>
+<? include template("footer");?>

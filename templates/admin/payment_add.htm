@@ -1,0 +1,27 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+<SCRIPT language=JavaScript src="./js/province.js" type=text/javascript></SCRIPT>
+<SCRIPT language=JavaScript src="./js/loadprovince.js" type=text/javascript></SCRIPT>
+<script type="text/javascript">
+	window.onload = function(){
+		loadarea("","","");
+	}
+
+</script>
+<table class="tableout" border="0" cellspacing="<?=BORDERWIDTH?>" cellpadding="<?=TABLESPACE?>" width="95%" align="center">
+	<form name="form" action="admin.php" method="post">
+	<input type="hidden" name="act" value="payment">
+	<input type="hidden" name="action" value="doaddnewvalue">
+	<input type="hidden" name="pid" value="<?=$payment_data['id']?>">
+	<tr>
+		<td bgcolor="<?=ALTBG2?>" align="right"><?=LANG_A_PAYMENT_KEY?></td>
+		<td bgcolor="<?=ALTBG2?>"><input type="text" name="pkey"></td>
+	</tr>
+	<tr>
+		<td bgcolor="<?=ALTBG2?>" align="right"><?=LANG_A_PAYMENT_VALUE?></td>
+		<td bgcolor="<?=ALTBG2?>"><input type="text" name="pvalue"></td>
+	</tr>
+</table>
+<br>
+<center><input type="submit" name="submit" value="  <?=LANG_A_ADD?>  "></center>
+</form>
+<?include(ADMIN_TPL.'footer.htm')?>

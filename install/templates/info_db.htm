@@ -1,0 +1,108 @@
+
+<div class="main">
+	<div id="navbar"><span class="bold">褰撳墠浣嶇疆</span>--> 閰嶅埗鏁版嵁搴撲俊鎭?/div>
+</div>
+<div class="main">
+	<div id="list">
+		<font color="#FF0000">&gt;</font> 閰嶅埗鏂囦欢鐘舵€佹鏌ワ細</b>
+	</div>
+</div>
+<div class="main">
+	<table cellSpacing=1 cellPadding=6 width="80%" border=0 class="tableout" style="margin-top:6px;table-layout: fixed; word-wrap: break-word;" align="center">
+	<tr class="bgcolor1">
+		<td width="40%" >
+			<span style="font-weight:bold;">includes/config.php 瀛樺湪妫€鏌?/span>
+		</td>
+		<td>
+			<?php if($configfile_exists){?>
+				瀛樺湪
+			<?php }else{?>
+				<font style="color:red;font-weight:bold;">涓嶅瓨鍦?/font>
+			<?php }?>
+		</td>
+	</tr>
+	<tr class="bgcolor1">
+		<td width="40%" >
+			<span style="font-weight:bold;">includes/config.php 鍙啓妫€鏌?/span>
+		</td>
+		<td>
+			<?php if($configfile_writeable){?>
+				鍙啓
+				<i></font>
+			<?php }else{?>
+				<font style="color:red;font-weight:bold;">涓嶅彲鍐?/font>
+				<br />
+				<font color="#666666"><i>璇峰皢鈥渋ncludes/config.php鈥?灞炴€ц涓?777 鎴栨槸鍙啓锛岀劧鍚庡湪璇曘€?i></font>
+			<?php }?>
+		</td>
+	</tr>
+	</table>
+</div>
+
+<div class="main"></div>
+<div class="main">
+	<div id="list">
+		<font color="#FF0000">&gt;</font> 鏁版嵁搴撲俊鎭細</b>
+	</div>
+</div>
+<?php if(is_array($message_all) && $message_all['0']){?>
+<div class="main">
+	<table cellSpacing=1 cellPadding=6 width="80%" border=0 class="tableout" style="margin-top:6px;table-layout: fixed; word-wrap: break-word;" align="center">
+	<?php foreach($message_all as $val){?>
+	<tr bgcolor="#ffffff">
+		<td style="color:red"><?php echo $val;?></td>
+	</tr>
+	<?php }?>
+	</table>
+</div>
+<?php }?> 
+
+<form name="form" action="install.php" method="post">
+<input type="hidden" name="type" value="check">
+<div class="main">
+	<table cellSpacing=1 cellPadding=6 width="80%" border=0 class="tableout" style="margin-top:6px;table-layout: fixed; word-wrap: break-word;" align="center">
+	<tr class="bgcolor2">
+		<td width="22%">鏁版嵁搴撲富鏈猴細</td>
+		<td width="28%">
+			<input type="text" value="localhost" name="DB_SERVER">
+		</td>
+		<td>鏁版嵁搴撶殑涓绘満鍚嶇О鎴朓P鍦板潃(渚嬶細localhost)銆?/td>
+	</tr>
+	<tr class="bgcolor2">
+		<td>浣跨敤鑰呭悕绉帮細</td>
+		<td>
+			<input type="text" value="root" name="DB_SERVER_USERNAME">
+		</td>
+		<td>鏁版嵁搴撲娇鐢ㄨ€呭悕绉般€?/td>
+	</tr>
+	<tr class="bgcolor2">
+		<td>鎺堟潈瀵嗙爜锛?/td>
+		<td>
+			<input type="password" value="" name="DB_SERVER_PASSWORD">
+		</td>
+		<td>鏁版嵁搴撴巿鏉冨瘑鐮併€?/td>
+	</tr>
+	<tr class="bgcolor2">
+		<td>鏁版嵁搴撳悕绉帮細</td>
+		<td>
+			<input type="text" value="dzsw" name="DB_DATABASE">
+		</td>
+		<td>鏁版嵁搴撳悕绉?/td>
+	</tr>
+	<tr class="bgcolor2">
+		<td>鏁版嵁搴撹〃鍚嶅墠缂€锛?/td>
+		<td>
+			<input type="text" value="dzsw_" name="DB_DATABASE_PRE">
+		</td>
+		<td>濡傛灉鎮ㄧ殑鏁版嵁搴撲腑瀹夎浜嗗涓?dzsw 璇锋洿鏀规椤广€?/td>
+	</tr>
+	</table>
+</div>
+
+<div class="main">
+	<center>
+		<input type="submit" name="submit" value="   鎻愪氦   " class="bginput">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="閫€鍑哄畨瑁? onclick="javascript:window.close()" class="bginput"><br /><br />
+	</center> 
+</div>
+</form>
+	

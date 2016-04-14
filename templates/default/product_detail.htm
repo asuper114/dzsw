@@ -1,0 +1,136 @@
+<?if(!defined('DIR_dzsw')) exit('Access Denied'); include template("header");?>
+
+<?php include template("navbar_table");?>
+
+<div class="main">
+	<table border="0" cellspacing="0" cellpadding="0" width="100%" style="table-layout: fixed; word-wrap: break-word;">
+	<tr>
+		<td valign="top">
+			<?php include template("box_hassee");?>
+			<br />
+			<?php include template("box_search_history");?>
+			<br />
+			<?php include template("box_cart");?>
+			<br />
+			
+		</td>
+		<td width="6px"></td>
+		<td width="76%" valign="top">
+
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+			<tr valign="top" class="bgcolor1"> 
+
+				<td height="80" width="<?php echo $image_width;?>" valign="center">
+					<table width="100%" border="0" cellspacing="2" cellpadding="6">
+					<tr>
+						<td align="center"><a href="showimg.php?id=<?=$product_detail['image']?>" target="_blank"><img src="<?=$product_detail['imagesrc']?>" border="0" width="<?=$settings['smallimage_width2']?>" alt="<?=$product_detail['name']?>"></a>
+						<br />
+						<br />
+						<a href="showimg.php?id=<?=$product_detail['image']?>" target="_blank"><img src="<?=$styles['imagedir']?>/zoomin.gif" border="0" alt="<?=$lang_product['click_for_bigimage']?>" align="absmiddle"></a><a href="showimg.php?id=<?=$product_detail['image']?>" target="_blank"><?=$lang_product['click_for_bigimage']?></a>&nbsp;&nbsp;&nbsp;<a href="moreimage.php?pid=<?=$product_detail['products_id']?>" target="_blank"><?=$lang_product['more_image']?></div></a></td>
+					</tr>
+					<tr><td height="25" align="center"><?=$lang_product['serial_num:']?>#<?=$product_detail['products_id']?></td>
+					</tr></table>
+				</td>
+
+				<td>
+					<table width="98%" border="0" cellspacing="5" cellpadding="1" style="word-break:break-all;" >
+					<tr>
+						<td><?=$lang_product['product_name_']?><span class="bold"><?=$product_detail['pname']?></span> <?if($product_detail['model']){?><?=$product_detail['model']?><?}?></td>
+					</tr>
+
+					<?if($product_detail['manufacturer']){?>
+					<tr>
+						<td><?=$lang_product['manufacturer_']?><?=$product_detail['manufacturer']?></td>
+					</tr>
+					<?}?>
+
+					<tr>
+						<td><?=$product_detail['price']['one']['text']?><?=$product_detail['price']['one']['price']?></td>
+					</tr>
+					<?if($product_detail['price']['two']['price']){?>
+					<tr>
+						<td style="color:red"><?=$product_detail['price']['two']['text']?><?=$product_detail['price']['two']['price']?></td>
+					</tr>
+					<?}?>
+
+					<tr>
+						<td><h1><?=$product_detail['base_info']?></h1></td>
+					</tr>
+
+					<tr>
+						<td class="dobor"><a href="cart.php?action=add&products_id=<?=$product_detail['products_id']?>"><h2><?=$lang_common['cartinput']?></h2></a></td>
+					</tr>
+
+					<tr>
+						<td class="dobor">
+							<span class="text">
+							<?=$lang_product['product_class_']?><?php echo $product_classes;?>
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td><?php echo $product_detail['viewed_desc'];?></td>
+					</tr>
+
+					</table>
+				</td>
+			</tr>
+			</form>
+			</table>
+			<br>
+
+			<table cellSpacing=0 cellPadding=0 width="100%" border=0 background="<?=$styles['imagedir']?>/title_bg.gif" style="table-layout: fixed; word-wrap: break-word;">
+			<tr>
+				<td align="left" height="31" >&nbsp;<img src="<?=$styles['imagedir']?>/title_right.gif" align="middle">&nbsp;&nbsp;&nbsp;<font class="importanttxt"><b><?=$lang_product['description']?></b></font></td>
+				<td width="20%" align="right"><font class="importanttxt">◇&nbsp;◇&nbsp;◇&nbsp;◇&nbsp;&nbsp;</font></td>
+			</tr>
+			</table>
+
+			<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+			<tr class="bgcolor1">
+				<td><?=$product_detail['description']?></td>
+			</tr>
+			</table> 
+			
+			<br /><a name="review">
+			<table cellSpacing=0 cellPadding=0 width="100%" border=0 background="<?=$styles['imagedir']?>/title_bg.gif" style="table-layout: fixed; word-wrap: break-word;">
+			<tr>
+				<td align="left" height="31" width="20%">&nbsp;<img src="<?=$styles['imagedir']?>/title_right.gif" align="middle">&nbsp;&nbsp;&nbsp;<font class="importanttxt"><b><?=$lang_product['review']?></b></font></td>
+				<td align="right"><font class="importanttxt">◇&nbsp;◇&nbsp;◇&nbsp;◇&nbsp;&nbsp;</font></td>
+			</tr>
+			</table>
+
+			<a href="writereviews.php?products_id=<?=$products_id?>"><h2><?=$lang_product['write_review']?></h2></a>
+		
+			<h1><?php echo $review_array['multipage'];?></h1>
+			<br />
+			<table cellSpacing=1 cellPadding=4 width="100%" border=0 class="tableout" style="table-layout: fixed; word-wrap: break-word;">
+			<tr class="bgcolor1">
+				<td>
+					<br />
+					<?if(is_array($review_array['detail'])) { foreach($review_array['detail'] as $key=>$value){?> 
+					<table class="dobor" border="0" cellspacing="1" cellpadding="4" width="100%" align="center">
+					<tr>
+						<td width="10%" align="left"><?=$lang_product['review_rating_']?></td>
+						<td align="left" width="30%"><font class="importanttxt"><?for($i=0;$i<$value['rating'];$i++){?>★<?}?></font><?for($i=0;$i<(5-$value['rating']);$i++){?>☆<?}?></td>
+						<td width="40%"><?=$lang_product['review_author_']?><?=$value['email'];?></td>
+						<td align="left"><?=$value['date_added']?></td>
+					</tr>
+					<tr><td colspan="4" align="left"><P><?=$value['review'];?></P></td>
+					</tr>
+					</table><br>
+					<?}}?>
+				</td>
+			</tr>
+			</table>  
+			<br />
+			<h1><?php echo $review_array['multipage'];?></h1>
+			<br />
+			<br />
+
+		</td>
+
+	</tr>
+	</table>
+</div>
+<? include template("footer");?>				

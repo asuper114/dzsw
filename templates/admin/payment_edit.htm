@@ -1,0 +1,116 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<form name="form" action="admin.php" method="post">
+<input type="hidden" name="act" value="payment">
+<input type="hidden" name="action" value="doedit">
+<input type="hidden" name="id" value="<?=$payment_detail['id']?>">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center" style="table-layout: fixed; word-wrap: break-word">
+<?if($payment_detail['type'] == 'system'){?>
+<tr class="bgcolor1">
+	<td align="right" width="30%"><?=$lang_a_payment['title']?></td>
+	<td align="left"><?=$payment_detail['system_title']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td align="right" width="30%"><?=$lang_a_payment['define_title']?></td>
+	<td align="left"><input name="define_title" type="text" value="<?=$payment_detail['title']?>" size="40"></td>
+</tr>
+<?}else{?>
+<tr class="bgcolor1">
+	<td align="right" width="30%"><?=$lang_a_payment['title']?></td>
+	<td align="left"><input name="define_title" type="text" value="<?=$payment_detail['title']?>" size="40"></td>
+</tr>
+<?}?>
+<tr class="bgcolor1">
+	<td align="right"><?=$lang_common['description_']?></td>
+	<td align="left">
+	<TEXTAREA NAME="description" ROWS="4" COLS="60"><?=$payment_detail['description']?></TEXTAREA></td>
+</tr>
+<tr align="center" class="bgcolor1">
+	<td colspan="2"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></td>
+</tr>
+</table>
+</form>
+
+<br />
+<?if(is_array($payment_data)){?>
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="header">
+	<td colspan="5"><?=$lang_a_payment['configpam']?>
+	<?if($payment_detail['parent_pay_key'] == 'online'){?>
+	&nbsp;&nbsp;&nbsp;<a href="admin.php?act=payment&action=addnewpa&pid=<?=$payment_detail['id']?>"><?=$lang_a_payment['addpam']?></a>
+	<?}?>
+	</td>
+</tr>
+
+<?if($payment_detail['parent_pay_key'] == 'banktransfer'){?>
+	<tr>
+		<td class="bgcolor1" align="center"><?=$lang_common['sort']?></td>
+		<td class="bgcolor1" align="center"><?=$lang_common['title']?></td>
+		<td class="bgcolor1" align="center"><?=$lang_common['value']?></td>
+		<td class="bgcolor1" align="center"><?=$lang_a_payment['define_title']?></td>
+		<td class="bgcolor1" align="center"></td>
+	</tr>
+<?}?>
+
+<?foreach($payment_data as $val){?>
+<form name="form" action="admin.php" method="post">
+<input type="hidden" name="act" value="payment">
+<input type="hidden" name="action" value="updatepa">
+<input type="hidden" name="paid" value="<?=$val['id']?>">
+<?if($payment_detail['parent_pay_key'] == 'online'){?>
+<tr>
+	<td class="bgcolor1" align="left" width="10%"><?=$lang_common['sort_']?><br><input name="sort_order" type="text" value="<?=$val['sort_order']?>" size="2"></td>
+
+	<?if($val['type'] == 'system'){?>
+	<td class="bgcolor1" align="left" width="35%"><?=$lang_a_common['key:']?><?=$val['pakey']?></td>
+	<td class="bgcolor1" align="left" width="15%"><?=$lang_payment_a[$payment_detail['pay_key']][$val['pakey']]?></td>
+	<td class="bgcolor1" align="left" width="25%"><input name="pvalue" type="text" value="<?=$val['pvalue']?>"></td>
+
+	<?}else{?>
+	<td class="bgcolor1" align="left" width="35%"><?=$lang_a_common['key:']?><br><?=$lang_a_payment['payment_pakey_desc']?><br><input name="pakey" type="text" value="<?=$val['pakey']?>"></td>
+	<td class="bgcolor1" align="left" width="15%"><?=$lang_a_payment['payment_define_pa']?></td>
+	<td class="bgcolor1" align="left" width="25%"><?=$lang_a_payment['value']?><br><input name="pvalue" type="text" value="<?=$val['pvalue']?>"></td>
+	<?}?>
+
+	<td class="bgcolor1"  align="center">
+	<?if($val['type'] == 'define'){?>
+	<a href="admin.php?act=payment&action=delete_pa&paid=<?=$val['id']?>"><?=$lang_a_common['delete']?></a>
+	<?}?>
+	<input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">
+	</td>
+</tr>
+<?}elseif($payment_detail['parent_pay_key'] == 'banktransfer'){?>
+
+<tr>
+	<td class="bgcolor1" align="left"><input name="sort_order" type="text" value="<?=$val['sort_order']?>" size="2"></td>
+	<td class="bgcolor1" align="left"><?=$lang_payment_a['banktransfer'][$val['pakey']]?></td>
+	<td class="bgcolor1" align="left"><input name="pvalue" type="text" value="<?=$val['pvalue']?>"></td>
+	<td class="bgcolor1" align="left"><input name="title" type="text" value="<?=$val['title']?>"></td>
+	<td class="bgcolor1" align="center">
+	<input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">
+	</td>
+</tr>
+
+<?}else{?>
+<tr>
+	<td class="bgcolor1" align="left"><?=$lang_common['sort:']?><br><input name="sort_order" type="text" value="<?=$val['sort_order']?>" size="2"></td>
+
+	<td class="bgcolor1" align="left"><?=$lang_payment_a[$payment_detail['pay_key']][$val['pakey']]?><br><input name="pvalue" type="text" value="<?=$val['pvalue']?>"></td>
+	<td class="bgcolor1" align="left"><?=$lang_a_payment['define_title']?><br><input name="title" type="text" value="<?=$val['title']?>"></td>
+
+	<td class="bgcolor1" align="center">
+	<input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">
+	</td>
+</tr>
+<?}?>
+</form>
+<tr>
+	<td class="bgcolor1" colspan="5"></td>
+</tr>
+<?}?>
+</table>
+<?}?>
+<?include(ADMIN_TPL.'footer.htm')?>

@@ -1,0 +1,127 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+<SCRIPT language="JavaScript" src="./js/province.js" type="text/javascript"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/loadprovince.js" type="text/javascript"></SCRIPT>
+
+<?php include template("navbar");?>
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<tr class="bgcolor1">
+		<td valign="top">
+			<?include template("myaccount_left");?>
+		</td>
+		<td width="76%" valign="top">
+
+			<div>
+				<h1><?=$lang_myaccount_order['delling_address']?></h1>
+			</div>
+
+			<?if(is_array($message_all_d) && $message_all_d['0']){?>
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+			<?foreach($message_all_d as $key=>$value){?>
+			<tr class="bgcolor2" style="color:red">
+				<td><img src="./images/icons/error.gif" border="0">&nbsp;&nbsp;&nbsp;<?=$value?></td>
+			</tr>
+			<?}?>
+			</table>
+			<br />
+			<?}?>
+			
+			<form name="form" action="myaccount.php" method="post">
+			<input type="hidden" name="type" value="order">
+			<input type="hidden" name="action" value="update_d">
+			<input type="hidden" name="orders_id" value="<?=$orders_id?>">
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center" >
+			<tr class="bgcolor2">
+				<td width="64%">
+					<li>
+					<?if($show_country){?>
+					<?=$shipping_data['country']?>&nbsp;&nbsp;
+					<?}?>
+					<?=$shipping_data['province']?>&nbsp;&nbsp;
+					<?=$shipping_data['city']?>
+					</li>
+				</td>
+				<td><?=$lang_myaccount_order['regular_']?><input type="text" name="d_tel_regular" value="<?=$order_data['d_tel_regular']?>"></td>
+			</tr>
+			<tr class="bgcolor2">
+				<td><li><?=$lang_myaccount_order['name_']?><input type="text" name="d_name" value="<?=$order_data['d_name']?>"></td>
+				<td><?=$lang_myaccount_order['mobile_']?><input type="text" name="d_tel_mobile" value="<?=$order_data['d_tel_mobile']?>"></td>
+			</tr>
+			<tr class="bgcolor2">
+				<td><li><?=$lang_myaccount_order['street_']?><input type="text" name="d_street_address" value="<?=$order_data['d_street_address']?>" size="45"></td>
+				<td><?=$lang_myaccount_order['postcode_']?><input type="text" name="d_postcode" value="<?=$order_data['d_postcode']?>"></td>
+			</tr>
+			<tr  class="bgcolor2">
+				<td align="center" colspan="2"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">&nbsp;&nbsp;&nbsp;<input type="button" name="button" value="  <?=$lang_common['back']?>  " onclick="window.location='myaccount.php?type=order&act=detail&orders_id=<?=$orders_id?>'" class="bginput"></td>
+			</tr>
+			</table> 
+			</form>
+			
+			<br />
+			<div>
+				<h1><?=$lang_myaccount_order['billing_address']?></h1>
+			</div>
+		<?if($order_data['deli_s_bill'] == '1'){?>
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+			<tr class="bgcolor1">
+				<td><?=$lang_myaccount_order['billing_same_delling']?></td>
+			</tr>
+			</table>
+		<?}else{?>
+
+			<?if(is_array($message_all_b) && $message_all_b['0']){?>
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+			<?foreach($message_all_b as $key=>$value){?>
+			<tr class="bgcolor2" style="color:red">
+				<td><img src="./images/icons/error.gif" border="0">&nbsp;&nbsp;&nbsp;<?=$value?></td>
+			</tr>
+			<?}?>
+			</table>
+			<br />
+			<?}?>
+
+			<form name="form" action="myaccount.php" method="post">
+			<input type="hidden" name="type" value="order">
+			<input type="hidden" name="action" value="update_b">
+			<input type="hidden" name="orders_id" value="<?=$orders_id?>">
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+			<tr class="bgcolor2">
+				<td width="64%">
+					<li>
+					<?if($show_country){?>
+					<?=$bill_data['country']?>&nbsp;&nbsp;
+					<?}?>
+					<?=$bill_data['province']?>&nbsp;&nbsp;
+					<?=$bill_data['city']?>&nbsp;&nbsp;
+					</li>
+				</td>
+				<td>
+					<?=$lang_myaccount_order['regular_']?><input type="text" name="b_tel_regular" value="<?=$order_data['b_tel_regular']?>">
+				</td>
+			</tr>
+			<tr class="bgcolor2">
+				<td><li><?=$lang_myaccount_order['name_']?></li><input type="text" name="b_name" value="<?=$order_data['b_name']?>"></td>
+				<td><?=$lang_myaccount_order['mobile_']?><input type="text" name="b_tel_mobile" value="<?=$order_data['b_tel_mobile']?>"></td>
+			</tr>
+			<tr class="bgcolor2">
+				<td><li><?=$lang_myaccount_order['street_']?></li><input type="text" name="b_street_address" value="<?=$order_data['b_street_address']?>" size="45"></td>
+				<td><?=$lang_myaccount_order['postcode_']?><input type="text" name="b_postcode" value="<?=$order_data['b_postcode']?>"></td>
+			</tr>
+			<tr class="bgcolor2">
+				<td align="center" colspan="2"><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput">&nbsp;&nbsp;&nbsp;<input type="button" name="button" value="  <?=$lang_common['back']?>  " onclick="window.location='myaccount.php?type=order&act=detail&orders_id=<?=$orders_id?>'" class="bginput"></td>
+			</tr>
+			</table> 
+			</form>
+			
+		<?}?>
+			<br />
+			<br />
+			<br />
+		</td>
+	</tr>
+	</table>
+</div>
+<?include template("footer");?>
+
+

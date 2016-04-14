@@ -1,0 +1,210 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied'); include template("header_simple");?>
+
+<?php include template("navbar");?>
+
+<div class="main">
+	<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" style="table-layout: fixed; word-wrap: break-word">
+	<tr class="bgcolor1">
+		<td valign="top">
+			<?include template("myaccount_left");?>
+		</td>
+		<td width="76%" valign="top">
+
+			<div class="common">
+				<h1><?=$lang_myaccount_order['delling_address']?>&nbsp;&nbsp;&nbsp;<a href="myaccount.php?type=order&action=caddress&orders_id=<?php echo $orders_id;?>"><?=$lang_myaccount_order['change_address']?></a></h1>
+			</div>
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor">
+			<tr>
+				<td width="64%">
+					<li>
+					<?if($show_country){?>
+					<?=$order_detail['d_country']?>&nbsp;&nbsp;
+					<?}?>
+					<?=$order_detail['d_province']?>&nbsp;&nbsp;
+					<?=$order_detail['d_city']?>
+					</li>
+				</td>
+				<td>	<li><?=$lang_myaccount_order['regular_']?><?=$order_detail['d_tel_regular']?></li>
+				</td>
+			</tr>
+			<tr>
+				<td><li><?=$lang_myaccount_order['name_']?><?=$order_detail['d_name']?></li></td>
+				<td><li><?=$lang_myaccount_order['mobile_']?><?=$order_detail['d_tel_mobile']?></li></td>
+			</tr>
+			<tr>
+				<td><li><?=$lang_myaccount_order['street_']?><?=$order_detail['d_street_address']?></li></td>
+				<td><li><?=$lang_myaccount_order['postcode_']?><?=$order_detail['d_postcode']?></li></td>
+			</tr>
+			</table>
+		
+			<div class="common">
+				<h1><?=$lang_myaccount_order['billing_address']?><?php if($order_data['deli_s_bill'] != '1'){?>&nbsp;&nbsp;&nbsp;<a href="myaccount.php?type=order&action=caddress&orders_id=<?php echo $orders_id;?>"><?=$lang_myaccount_order['change_address']?></a>
+				<?php }?>
+				</h1>
+			</div>
+
+		<?if($order_detail['deli_s_bill'] == '1'){?>
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor">
+			<tr>
+				<td><?=$lang_myaccount_order['billing_same_delling']?></td>
+			</tr>
+			</table>
+
+		<?}else{?>
+			<table border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor" style="table-layout: fixed; word-wrap: break-word">
+			<tr>
+				<td width="65%">
+					<li>
+					<?if($show_country){?>
+					<?=$order_detail['b_country']?>&nbsp;&nbsp;
+					<?}?>
+					<?=$order_detail['b_province']?>&nbsp;&nbsp;
+					<?=$order_detail['b_city']?>&nbsp;&nbsp;
+					</li>
+				</td>
+				<td><li><?=$lang_myaccount_order['regular_']?><?=$order_detail['d_tel_regular']?></li></td>
+			</tr>
+			<tr>
+				<td><li><?=$lang_myaccount_order['name_']?><?=$order_detail['b_name']?></li></td>
+				<td><li><?=$lang_myaccount_order['mobile_']?><?=$order_detail['b_tel_mobile']?></li></td>
+			</tr>
+			<tr>
+				<td><li><?=$lang_myaccount_order['street_']?><?=$order_detail['b_street_address']?></li></td>
+				<td><li><?=$lang_myaccount_order['postcode_']?><?=$order_detail['b_postcode']?></li></td>
+			</tr>
+			</table>
+		<?}?>
+			
+			<br />
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor" style="table-layout: fixed; word-wrap: break-word">
+			<?if(is_array($order_products)){ foreach($order_products as $key=>$val){?>
+			<tr>
+				<td align="right" width="15%"><?=$val['quantity']?></td>
+				<td align="center" width="5%">x</td>
+				<td><a href="product_detail.php?products_id=<?=$val['products_id']?>" target="_blank"><?=$val['name']?> (<?=$val['model']?>)</a></td>
+				<td width="35%"><?=$val['final_price_text']?></td>
+			</tr>
+			<?}}?>
+			</table>
+			
+			<br />
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor" style="table-layout: fixed; word-wrap: break-word">
+			<?if(is_array($order_totallist)){ foreach($order_totallist as $key=>$val){?>
+			<tr>
+				<td align="right" width="25%"><?=$val['title']?></td>
+				<td><?=$val['value_text']?></td>
+			</tr>
+			<?}}?>
+			</table>
+
+			<div class="common">
+				<h1><?=$lang_myaccount_order['shipping_method_']?></h1>
+			</div>
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tablebordercolor">
+			<tr>
+				<td><?=$order_detail['shipping_title']?></td>
+			</tr>
+			</table>
+
+			<div class="common">
+				<h1><?=$lang_myaccount_order['order_history_']?></h1>
+			</div>
+			<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center" style="table-layout: fixed; word-wrap: break-word">
+			<tr class="bgcolor2">
+				<td><?=$lang_myaccount_order['order_status_']?></td>
+				<td align="center"><?=$lang_myaccount_order['date_status_']?></td>
+				<td><?=$lang_myaccount_order['pay_platform_']?></td>
+			</tr>
+			<?if(is_array($order_history)){ foreach($order_history as $key=>$val){?>
+			<tr class="bgcolor1">
+				<td><?=$val['orders_status']?></td>
+				<td align="center"><?=$val['date_added']?></td>
+				<td>
+				<?if($val['payment_title']){?>
+				<?=$val['payment_title']?>
+				<?}?>
+				</td>
+			</tr>
+			<?}}?>
+			</table>
+			
+			<div class="common">
+				<h1>
+					<?=$lang_myaccount_order['payment_method_']?><?=$order_detail['payment_title']?>
+				</h1>
+			</div>
+			<?php if($allow_cpayment){?>
+			<table border="0" cellspacing="1" cellpadding="4" width="100%"  align="center" class="tableout">
+			<tr class="bgcolor1">
+				<td>
+
+					<?if($pay_detail['payment_type'] == 'goodsarrivepay'){?>
+					<div><?php echo $pay_detail['payment_desc'];?></div>
+					<?}?>
+
+					<?if($pay_detail['payment_type'] == 'postpay'){?>
+					<div><?php echo $pay_detail['payment_desc'];?></div>
+					<table border="0" cellspacing="1" cellpadding="4" width="100%"  align="center">
+					<tr>
+						<td width="20%" align="right"><?=$pay_detail['address']['title']?></td>
+						<td><?=$pay_detail['address']['value']?></td>
+					</tr>
+					<tr>
+						<td align="right"><?=$pay_detail['manname']['title']?></td>
+						<td><?=$pay_detail['manname']['value']?></td>
+					</tr>
+					<tr>
+						<td align="right"><?=$pay_detail['postcode']['title']?></td>
+						<td><?=$pay_detail['postcode']['value']?></td>
+					</tr>
+					</table>
+					<?}?>
+
+					<?if($pay_detail['payment_type'] == 'banktransfer'){?>
+					<div><?php echo $pay_detail['payment_desc'];?><br /><br /></div>
+					<?if(is_array($pay_detail)){?>
+					<div>
+						<?=$pay_detail['bankname']?>&nbsp;&nbsp;&nbsp;
+						<?=$pay_detail['cartnum']['title']?><?=$pay_detail['cartnum']['value']?>&nbsp;&nbsp;&nbsp;
+						<?=$pay_detail['manname']['title']?><?=$pay_detail['manname']['value']?>
+					</div>
+					<?}?>
+					<?}?>
+
+					<?if($pay_detail['payment_type'] == 'online'){?>
+					<div align="center">
+						<div class="common"><?php echo $pay_detail['payment_desc'];?></div>
+						<form name="online" action="<?=$pay_detail['form_action']?>" method="post">
+							<?=$pay_detail['hidden']?>
+							<input type="submit" name="submit" value="   <?=$pay_detail['submit_name']?>   ">
+						</form>
+					</div>
+					<?}?>
+
+				</td>
+			</tr>
+			<tr class="bgcolor1">
+				<td  align="center"><input type="button" name="button" value=" <?=$lang_myaccount_order['change_payment']?>  " onclick="window.location='myaccount.php?type=order&action=cpayment&orders_id=<?=$orders_id?>'">&nbsp;&nbsp;&nbsp;<input type="button" name="button" value=" <?=$lang_common['back']?>  " onclick="javascript:history.back();"></td>
+			</tr>
+			</table>
+			<?php }else{?>
+			<table border="0" cellspacing="1" cellpadding="4" width="100%"  align="center" class="tablebordercolor">
+			<tr>
+				<td  align="center"><input type="button" name="button" value=" <?=$lang_common['back']?>  " onclick="javascript:history.back();"></td>
+			</tr>
+			</table>
+			<?php }?>
+
+
+
+			<br />
+			<br />
+			<br />
+
+		</td>
+	</tr>
+	</table>
+</div>
+<?include template("footer");?>
+
+

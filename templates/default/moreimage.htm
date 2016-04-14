@@ -1,0 +1,35 @@
+<?if(!defined('DIR_dzsw')) exit('Access Denied');?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd";>
+<html>
+<head>
+<title><?=$settings['store_name']?> - powered by dzsw</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<?=$charset?>">
+<meta name="robots" content="index,follow">
+<meta name="keywords" content="Soobic!,dzsw,oscommerce,dzsw Studio,PHP,MySQL,ecommerce,online store,shop,shopping,<?=$settings['seo_keywords']?>">
+<meta name="generator" content="dzsw <?=$settings['store_version']?>">
+<meta name="description" content="<?=$settings['store_name']?> - Powered by dzsw webshop <?=$settings['store_version']?>,<?=$settings['seo_description']?>">
+<?=$settings['seo_othor']?>
+<meta name="MSSmartTagsPreventParsing" content="TRUE">
+<meta http-equiv="MSThemeCompatible" content="Yes">
+<link rel="stylesheet" href="styles/<?=$styles['cssfilename']?>" type="text/css">
+</head>
+<body leftmargin="0" topmargin="0">
+<table bgcolor="#FFFFFF" bordercolor="#FFFFFF" width="780" cellpadding="1" cellspacing="3" border="1" align="center" height="100%">
+<tr><td valign="top">
+
+	<table style="margin-top:5px" border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td align="center"><?=$multipage?></td>
+	</tr></table>
+	
+	<table style="margin-top:5px" border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout">
+	<tr class="bgcolor1">
+		<td valign="top" align="center" height="300">
+			<?=$get_one['title']?><br>
+			<img src="<?=$imagesrc?>" border="0">
+		</td>
+	</tr></table>
+
+</td></tr></table>
+</body>
+</html>			

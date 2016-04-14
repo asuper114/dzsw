@@ -1,0 +1,42 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="6" width="100%" class="tableout" align="center">
+<tr class="header" >
+	<td><?=$lang_common['system_notice_']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_classes['notice_showinheader']?></td>
+</tr>
+</table>
+
+<br />
+<form method="get" name="classes" action="admin.php">
+<input type="hidden" name="act" value="classes">
+<input type="hidden" name="action" value="showinheader">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center" style="word-break:break-all;">
+<tr class="header">
+	<td><?=$lang_a_classes['class_name_']?></td>
+	<td><?=$lang_common['sort_']?></td>
+</tr>
+<?foreach($showinheader_array as $val){?>
+<tr class="bgcolor1">
+	<td width="50%"><a href="classes.php?classes_id=<?=$val['classes_id']?>" target="_blank"><?=$val['title']?></a></td>
+	<td><input type="text" size="8" name="showinheader[<?=$val['classes_id']?>]" value="<?=$val['showinheader']?>"></td>
+</tr>
+<?}?>
+</table>
+
+<br />
+<br />
+<center>
+<input type="submit" name="submit" value="   <?=$lang_common['submit']?>   " class="bginput">
+<input type="button" name="back" value="   <?=$lang_common['back']?>   " onclick="javascript:history.back(-1)" class="bginput">
+</center>
+</form>
+<br />
+<br />
+
+<?include(ADMIN_TPL.'footer.htm')?>

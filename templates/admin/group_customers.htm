@@ -1,0 +1,82 @@
+<?if(!defined('IN_dzsw')) exit('Access Denied');?>
+<?include(ADMIN_TPL.'header.htm')?>
+
+<?php include(ADMIN_TPL.'message_all.htm')?>
+
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="header">
+	<td><?=$lang_common['system_notice_']?></td>
+</tr>
+<tr class="bgcolor1">
+	<td><?=$lang_a_group_customer['notice']?></td>
+</tr>
+</table>
+
+<br />
+<form method="post" name="main" action="admin.php">
+<input type="hidden" name="act" value="group_customers">
+<input type="hidden" name="action" value="edit_member_group">
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<tr class="header">
+	<td colspan="7"><?=$lang_a_group_customer['member_group']?></td>
+</tr>
+<tr class="header" align="center">
+	<td><?=$lang_common['delete_small']?></td>
+	<td><?=$lang_a_group_customer['group_name']?></td>
+	<td colspan="3"><?=$lang_a_group_customer['creditarea']?></td>	<td><?=$lang_a_group_customer['discount']?></td>
+</tr>
+<?if(is_array($group_common)){foreach($group_common as $v){?>
+<tr align="center" class="bgcolor1">
+	<td><input type="checkbox" name="delete[<?=$v[groupid]?>]" value=""></td>
+	<td><input type="text" size="12" name="group_title[<?=$v[groupid]?>]" value="<?=$v[grouptitle]?>"></td>
+	<td><input type="text" size="6" name="group_creditshigher[<?=$v[groupid]?>]" value="<?=$v[creditshigher]?>"></td>
+	<td><?=$lang_a_group_customer['creditto']?></td>
+	<td><input type="text" size="6" name="group_creditslower[<?=$v[groupid]?>]" value="<?=$v[creditslower]?>"></td>
+	<td><input type="text" size="6" name="group_discount[<?=$v[groupid]?>]" value="<?=$v[groupdiscount]?>"></td>
+</tr>
+<?}}?>
+<tr align="center" class="bgcolor1">
+	<td><?=$lang_common['add']?></td>
+	<td><input type="text" size="12" name="group_titlenew" value=""></td>
+	<td><input type="text" size="6" name="group_creditshighernew" value=""></td>
+	<td><?=$lang_a_group_customer['creditto']?></td>
+	<td><input type="text" size="6" name="group_creditslowernew" value=""></td>
+	<td><input type="text" size="6" name="group_discountnew" value=""></td>
+</tr>
+</table>
+
+<br />
+<center>
+	<input type="submit" name="groupsubmit" value="  <?=$lang_common['submit']?>  " class="bginput">
+</center>
+</form>
+
+<br />
+<table  border="0" cellspacing="1" cellpadding="4" width="100%" class="tableout" align="center">
+<form method="post" name="main" action="admin.php">
+<input type="hidden" name="act" value="group_customers">
+<input type="hidden" name="action" value="edit_specils_group">
+
+<tr class="header">
+	<td colspan="6"><?=$lang_a_group_customer['specials_group']?></td>
+</tr>
+<tr class="bgcolor2" align="center">
+	<td><?=$lang_a_group_customer['group_name']?></td>
+	<td><?=$lang_a_group_customer['includeuser']?></td>
+	<td><?=$lang_a_group_customer['discount']?></td>
+</tr>
+<tr align="center" class="bgcolor1">
+	<td><input type="text" size="12" name="specifiedusers_group_title" value="<?=$group_specials[grouptitle]?>"></td>
+	<td><a href="admin.php?act=customers&action=search&groupid=<?php echo $group_specials[groupid];?>"><?=$lang_common['click_to_look']?></a>
+	</td>
+	<td><input type="text" size="5" name="specifiedusers_discount" value="<?=$group_specials[groupdiscount]?>"></td>
+</tr>
+</table>
+<br />
+
+<center><input type="submit" name="submit" value="  <?=$lang_common['submit']?>  " class="bginput"></center>
+</form>
+<br />
+<br />
+
+<?include(ADMIN_TPL.'footer.htm')?>
